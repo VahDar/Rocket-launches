@@ -16,6 +16,10 @@
 		FC9C637629D2D229006EA975 /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C637529D2D229006EA975 /* Rocket.swift */; };
 		FC9C637929D2D956006EA975 /* RocketNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C637829D2D956006EA975 /* RocketNetwork.swift */; };
 		FC9C637B29D2DA34006EA975 /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C637A29D2DA34006EA975 /* Launch.swift */; };
+		FCF048F529D32D8700E509C9 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF048F429D32D8700E509C9 /* Setting.swift */; };
+		FCF048F729D3531900E509C9 /* SettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF048F629D3531900E509C9 /* SettingsRepository.swift */; };
+		FCF048FD29D3672E00E509C9 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF048FC29D3672E00E509C9 /* MainPageViewController.swift */; };
+		FCF0490029D3680000E509C9 /* RocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF048FF29D3680000E509C9 /* RocketViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		FC9C637529D2D229006EA975 /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
 		FC9C637829D2D956006EA975 /* RocketNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketNetwork.swift; sourceTree = "<group>"; };
 		FC9C637A29D2DA34006EA975 /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
+		FCF048F429D32D8700E509C9 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		FCF048F629D3531900E509C9 /* SettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepository.swift; sourceTree = "<group>"; };
+		FCF048FC29D3672E00E509C9 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
+		FCF048FF29D3680000E509C9 /* RocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,7 @@
 		FC9C635F29D2CF4C006EA975 /* TestProjectRocket */ = {
 			isa = PBXGroup;
 			children = (
+				FCF048F829D3661900E509C9 /* Module */,
 				FC9C637729D2D924006EA975 /* NetworkService */,
 				FC9C637429D2D202006EA975 /* Model */,
 				FC9C636029D2CF4C006EA975 /* AppDelegate.swift */,
@@ -80,6 +89,7 @@
 			children = (
 				FC9C637529D2D229006EA975 /* Rocket.swift */,
 				FC9C637A29D2DA34006EA975 /* Launch.swift */,
+				FCF048F429D32D8700E509C9 /* Setting.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -88,8 +98,50 @@
 			isa = PBXGroup;
 			children = (
 				FC9C637829D2D956006EA975 /* RocketNetwork.swift */,
+				FCF048F629D3531900E509C9 /* SettingsRepository.swift */,
 			);
 			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		FCF048F829D3661900E509C9 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				FCF048FE29D367E400E509C9 /* Rocket */,
+				FCF048FB29D3665700E509C9 /* Main */,
+				FCF048FA29D3664900E509C9 /* Setting */,
+				FCF048F929D3662C00E509C9 /* Launch */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		FCF048F929D3662C00E509C9 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		FCF048FA29D3664900E509C9 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		FCF048FB29D3665700E509C9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				FCF048FC29D3672E00E509C9 /* MainPageViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		FCF048FE29D367E400E509C9 /* Rocket */ = {
+			isa = PBXGroup;
+			children = (
+				FCF048FF29D3680000E509C9 /* RocketViewController.swift */,
+			);
+			path = Rocket;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,9 +217,13 @@
 			files = (
 				FC9C636529D2CF4C006EA975 /* ViewController.swift in Sources */,
 				FC9C636129D2CF4C006EA975 /* AppDelegate.swift in Sources */,
+				FCF0490029D3680000E509C9 /* RocketViewController.swift in Sources */,
 				FC9C637929D2D956006EA975 /* RocketNetwork.swift in Sources */,
 				FC9C636329D2CF4C006EA975 /* SceneDelegate.swift in Sources */,
+				FCF048F729D3531900E509C9 /* SettingsRepository.swift in Sources */,
+				FCF048F529D32D8700E509C9 /* Setting.swift in Sources */,
 				FC9C637B29D2DA34006EA975 /* Launch.swift in Sources */,
+				FCF048FD29D3672E00E509C9 /* MainPageViewController.swift in Sources */,
 				FC9C637629D2D229006EA975 /* Rocket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
