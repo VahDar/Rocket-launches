@@ -9,12 +9,12 @@ import UIKit
 
 // MAERK: - MainPageViewController
 final class MainPageViewController: UIPageViewController {
-    private var rocketViewController = [RocketViewController]()
+    private var rocketViewController = [UIViewController]()
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
-        delegate = self
         //Delete
         rocketViewController = [
             {
@@ -33,35 +33,37 @@ final class MainPageViewController: UIPageViewController {
                 return vc
             }(),
         ]
+        setViewControllers([rocketViewController[0]], direction: .forward, animated: true)
     }
 }
 // MAERK: - UIPageViewControllerDataSource
 extension MainPageViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let viewControllers,
-            let index = viewControllers.firstIndex(of: viewController) else {
+        guard let index = rocketViewController.firstIndex(of: viewController) else {
             return nil
         }
-       return index == 0 ? viewControllers.last : viewControllers[index - 1]
+       return index == 0 ? rocketViewController.last : rocketViewController[index - 1]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let viewControllers,
-            let index = viewControllers.firstIndex(of: viewController) else {
+        guard let index = rocketViewController.firstIndex(of: viewController) else {
             return nil
         }
-        if viewController == viewControllers.last {
-           return viewControllers.first
+        if viewController == rocketViewController.last {
+           return rocketViewController.first
         }  else {
-           return viewControllers[index + 1]
+           return rocketViewController[index + 1]
         }
     }
     
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        rocketViewController.count
+    }
+    
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        0
+    }
     
 }
-// MAERK: - UIPageViewControllerDelegate
 
-extension MainPageViewController: UIPageViewControllerDelegate {
-    
-}

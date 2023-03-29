@@ -46,7 +46,7 @@ enum SettingType: Codable {
         }
     }
     
-    var rocketMetrics: [RocketMetrics] {
+    var units: [RocketMetrics] {
         switch self {
         case .height, .diameter:
             return [.meter, .feet]
@@ -58,5 +58,9 @@ enum SettingType: Codable {
 
 struct Setting: Codable {
     let type: SettingType
-    let selectedMetrics: Double
+    let selectedIndex: Int
+}
+
+extension Setting: Hashable {
+    
 }
