@@ -32,6 +32,7 @@ private extension RocketButtonCollectionViewCell {
     
     func setupScreen() {
         contentView.addSubview(openLaunchButton)
+        openLaunchButton.setTitle("Wtf", for: .normal)
         openLaunchButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             openLaunchButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),

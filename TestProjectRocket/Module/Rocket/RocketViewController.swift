@@ -15,7 +15,6 @@ final class RocketViewController: UIViewController {
         super.viewDidLoad()
         setupEverything()
         collectionView.dataSource = dataSource
-        //fix delete
         applySnapShot([
             .init(type: .button, item: [.button])
         ])
@@ -52,7 +51,7 @@ private extension RocketViewController {
             case .button:
                 let size: NSCollectionLayoutSize = .init(widthDimension: .absolute(100), heightDimension: .absolute(100))
                 let item: NSCollectionLayoutItem = .init(layoutSize: size)
-                let groupSize: NSCollectionLayoutSize = .init(widthDimension: .absolute(100), heightDimension: .absolute(100))
+                let groupSize: NSCollectionLayoutSize = .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
                 let group: NSCollectionLayoutGroup = .horizontal(layoutSize: groupSize, subitems: [item])
                 var section: NSCollectionLayoutSection = .init(group: group)
                 section.orthogonalScrollingBehavior = .continuous
