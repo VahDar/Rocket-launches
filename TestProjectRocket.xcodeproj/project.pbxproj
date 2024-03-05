@@ -7,49 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FC01101429D42CD600EECE6D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC01101329D42CD600EECE6D /* SettingsViewController.swift */; };
-		FC01101629D43C4900EECE6D /* SettingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC01101529D43C4900EECE6D /* SettingPresenter.swift */; };
-		FC01101829D43C5E00EECE6D /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC01101729D43C5E00EECE6D /* SettingTableViewCell.swift */; };
-		FC01101B29D43CFE00EECE6D /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC01101A29D43CFE00EECE6D /* Reusable.swift */; };
 		FC9C636129D2CF4C006EA975 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C636029D2CF4C006EA975 /* AppDelegate.swift */; };
 		FC9C636329D2CF4C006EA975 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C636229D2CF4C006EA975 /* SceneDelegate.swift */; };
-		FC9C636529D2CF4C006EA975 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C636429D2CF4C006EA975 /* ViewController.swift */; };
-		FC9C636829D2CF4C006EA975 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC9C636629D2CF4C006EA975 /* Main.storyboard */; };
 		FC9C636A29D2CF4E006EA975 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC9C636929D2CF4E006EA975 /* Assets.xcassets */; };
 		FC9C636D29D2CF4E006EA975 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC9C636B29D2CF4E006EA975 /* LaunchScreen.storyboard */; };
-		FC9C637629D2D229006EA975 /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C637529D2D229006EA975 /* Rocket.swift */; };
-		FC9C637929D2D956006EA975 /* RocketNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C637829D2D956006EA975 /* RocketNetwork.swift */; };
-		FC9C637B29D2DA34006EA975 /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C637A29D2DA34006EA975 /* Launch.swift */; };
-		FCAC1A5129D4855A00AF2554 /* RocketSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAC1A5029D4855A00AF2554 /* RocketSection.swift */; };
-		FCAC1A5329D492EB00AF2554 /* RocketButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAC1A5229D492EB00AF2554 /* RocketButtonCollectionViewCell.swift */; };
-		FCF048F529D32D8700E509C9 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF048F429D32D8700E509C9 /* Setting.swift */; };
-		FCF048F729D3531900E509C9 /* SettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF048F629D3531900E509C9 /* SettingsRepository.swift */; };
-		FCF048FD29D3672E00E509C9 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF048FC29D3672E00E509C9 /* MainPageViewController.swift */; };
-		FCF0490029D3680000E509C9 /* RocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF048FF29D3680000E509C9 /* RocketViewController.swift */; };
+		FCE9B55F2B97678100D79A71 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9B55E2B97678100D79A71 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FC01101329D42CD600EECE6D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		FC01101529D43C4900EECE6D /* SettingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPresenter.swift; sourceTree = "<group>"; };
-		FC01101729D43C5E00EECE6D /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
-		FC01101A29D43CFE00EECE6D /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		FC9C635D29D2CF4C006EA975 /* TestProjectRocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestProjectRocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC9C636029D2CF4C006EA975 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC9C636229D2CF4C006EA975 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FC9C636429D2CF4C006EA975 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FC9C636729D2CF4C006EA975 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FC9C636929D2CF4E006EA975 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC9C636C29D2CF4E006EA975 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC9C636E29D2CF4E006EA975 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FC9C637529D2D229006EA975 /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
-		FC9C637829D2D956006EA975 /* RocketNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketNetwork.swift; sourceTree = "<group>"; };
-		FC9C637A29D2DA34006EA975 /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
-		FCAC1A5029D4855A00AF2554 /* RocketSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketSection.swift; sourceTree = "<group>"; };
-		FCAC1A5229D492EB00AF2554 /* RocketButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketButtonCollectionViewCell.swift; sourceTree = "<group>"; };
-		FCF048F429D32D8700E509C9 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
-		FCF048F629D3531900E509C9 /* SettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepository.swift; sourceTree = "<group>"; };
-		FCF048FC29D3672E00E509C9 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
-		FCF048FF29D3680000E509C9 /* RocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketViewController.swift; sourceTree = "<group>"; };
+		FCE9B55E2B97678100D79A71 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,14 +35,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FC01101929D43C9A00EECE6D /* Extansion */ = {
-			isa = PBXGroup;
-			children = (
-				FC01101A29D43CFE00EECE6D /* Reusable.swift */,
-			);
-			path = Extansion;
-			sourceTree = "<group>";
-		};
 		FC9C635429D2CF4C006EA975 = {
 			isa = PBXGroup;
 			children = (
@@ -90,14 +54,9 @@
 		FC9C635F29D2CF4C006EA975 /* TestProjectRocket */ = {
 			isa = PBXGroup;
 			children = (
-				FC01101929D43C9A00EECE6D /* Extansion */,
-				FCF048F829D3661900E509C9 /* Module */,
-				FC9C637729D2D924006EA975 /* NetworkService */,
-				FC9C637429D2D202006EA975 /* Model */,
+				FCE9B55D2B9765F500D79A71 /* Coordinator */,
 				FC9C636029D2CF4C006EA975 /* AppDelegate.swift */,
 				FC9C636229D2CF4C006EA975 /* SceneDelegate.swift */,
-				FC9C636429D2CF4C006EA975 /* ViewController.swift */,
-				FC9C636629D2CF4C006EA975 /* Main.storyboard */,
 				FC9C636929D2CF4E006EA975 /* Assets.xcassets */,
 				FC9C636B29D2CF4E006EA975 /* LaunchScreen.storyboard */,
 				FC9C636E29D2CF4E006EA975 /* Info.plist */,
@@ -105,69 +64,12 @@
 			path = TestProjectRocket;
 			sourceTree = "<group>";
 		};
-		FC9C637429D2D202006EA975 /* Model */ = {
+		FCE9B55D2B9765F500D79A71 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				FC9C637529D2D229006EA975 /* Rocket.swift */,
-				FC9C637A29D2DA34006EA975 /* Launch.swift */,
-				FCF048F429D32D8700E509C9 /* Setting.swift */,
+				FCE9B55E2B97678100D79A71 /* Coordinator.swift */,
 			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		FC9C637729D2D924006EA975 /* NetworkService */ = {
-			isa = PBXGroup;
-			children = (
-				FC9C637829D2D956006EA975 /* RocketNetwork.swift */,
-				FCF048F629D3531900E509C9 /* SettingsRepository.swift */,
-			);
-			path = NetworkService;
-			sourceTree = "<group>";
-		};
-		FCF048F829D3661900E509C9 /* Module */ = {
-			isa = PBXGroup;
-			children = (
-				FCF048FE29D367E400E509C9 /* Rocket */,
-				FCF048FB29D3665700E509C9 /* Main */,
-				FCF048FA29D3664900E509C9 /* Setting */,
-				FCF048F929D3662C00E509C9 /* Launch */,
-			);
-			path = Module;
-			sourceTree = "<group>";
-		};
-		FCF048F929D3662C00E509C9 /* Launch */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Launch;
-			sourceTree = "<group>";
-		};
-		FCF048FA29D3664900E509C9 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-				FC01101329D42CD600EECE6D /* SettingsViewController.swift */,
-				FC01101529D43C4900EECE6D /* SettingPresenter.swift */,
-				FC01101729D43C5E00EECE6D /* SettingTableViewCell.swift */,
-			);
-			path = Setting;
-			sourceTree = "<group>";
-		};
-		FCF048FB29D3665700E509C9 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				FCF048FC29D3672E00E509C9 /* MainPageViewController.swift */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		FCF048FE29D367E400E509C9 /* Rocket */ = {
-			isa = PBXGroup;
-			children = (
-				FCF048FF29D3680000E509C9 /* RocketViewController.swift */,
-				FCAC1A5029D4855A00AF2554 /* RocketSection.swift */,
-				FCAC1A5229D492EB00AF2554 /* RocketButtonCollectionViewCell.swift */,
-			);
-			path = Rocket;
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,7 +132,6 @@
 			files = (
 				FC9C636D29D2CF4E006EA975 /* LaunchScreen.storyboard in Resources */,
 				FC9C636A29D2CF4E006EA975 /* Assets.xcassets in Resources */,
-				FC9C636829D2CF4C006EA975 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,36 +142,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC9C636529D2CF4C006EA975 /* ViewController.swift in Sources */,
-				FCAC1A5129D4855A00AF2554 /* RocketSection.swift in Sources */,
 				FC9C636129D2CF4C006EA975 /* AppDelegate.swift in Sources */,
-				FC01101429D42CD600EECE6D /* SettingsViewController.swift in Sources */,
-				FCF0490029D3680000E509C9 /* RocketViewController.swift in Sources */,
-				FC9C637929D2D956006EA975 /* RocketNetwork.swift in Sources */,
 				FC9C636329D2CF4C006EA975 /* SceneDelegate.swift in Sources */,
-				FC01101B29D43CFE00EECE6D /* Reusable.swift in Sources */,
-				FCF048F729D3531900E509C9 /* SettingsRepository.swift in Sources */,
-				FC01101629D43C4900EECE6D /* SettingPresenter.swift in Sources */,
-				FCAC1A5329D492EB00AF2554 /* RocketButtonCollectionViewCell.swift in Sources */,
-				FC01101829D43C5E00EECE6D /* SettingTableViewCell.swift in Sources */,
-				FCF048F529D32D8700E509C9 /* Setting.swift in Sources */,
-				FC9C637B29D2DA34006EA975 /* Launch.swift in Sources */,
-				FCF048FD29D3672E00E509C9 /* MainPageViewController.swift in Sources */,
-				FC9C637629D2D229006EA975 /* Rocket.swift in Sources */,
+				FCE9B55F2B97678100D79A71 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FC9C636629D2CF4C006EA975 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FC9C636729D2CF4C006EA975 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FC9C636B29D2CF4E006EA975 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -407,7 +287,6 @@
 				INFOPLIST_FILE = TestProjectRocket/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -434,7 +313,6 @@
 				INFOPLIST_FILE = TestProjectRocket/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
