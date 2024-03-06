@@ -19,6 +19,7 @@
 		FCE9B56B2B97813600D79A71 /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9B56A2B97813600D79A71 /* Injected.swift */; };
 		FCF529E12B98EE2800C4C44F /* RocketScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF529E02B98EE2800C4C44F /* RocketScreenCoordinator.swift */; };
 		FCF529E42B98EF4500C4C44F /* RocketScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF529E32B98EF4500C4C44F /* RocketScreenViewController.swift */; };
+		FCF529E72B98EF8A00C4C44F /* RoketScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF529E62B98EF8A00C4C44F /* RoketScreenViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		FCE9B56A2B97813600D79A71 /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
 		FCF529E02B98EE2800C4C44F /* RocketScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketScreenCoordinator.swift; sourceTree = "<group>"; };
 		FCF529E32B98EF4500C4C44F /* RocketScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketScreenViewController.swift; sourceTree = "<group>"; };
+		FCF529E62B98EF8A00C4C44F /* RoketScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoketScreenViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		FC9C635F29D2CF4C006EA975 /* TestProjectRocket */ = {
 			isa = PBXGroup;
 			children = (
+				FCF529E52B98EF7400C4C44F /* ViewModel */,
 				FCF529E22B98EF2800C4C44F /* RocketScreenViewController */,
 				FCF529DF2B98EE0200C4C44F /* RocketScreen */,
 				FCE9B5652B977FCE00D79A71 /* DI */,
@@ -123,6 +126,14 @@
 				FCF529E32B98EF4500C4C44F /* RocketScreenViewController.swift */,
 			);
 			path = RocketScreenViewController;
+			sourceTree = "<group>";
+		};
+		FCF529E52B98EF7400C4C44F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FCF529E62B98EF8A00C4C44F /* RoketScreenViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCF529E72B98EF8A00C4C44F /* RoketScreenViewModel.swift in Sources */,
 				FCE9B5642B977D4F00D79A71 /* ViewController.swift in Sources */,
 				FCE9B5692B97803600D79A71 /* InjectedValue.swift in Sources */,
 				FCE9B5672B977FF000D79A71 /* InjectionKey.swift in Sources */,
