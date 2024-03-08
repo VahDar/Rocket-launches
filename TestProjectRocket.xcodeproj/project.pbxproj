@@ -86,7 +86,7 @@
 		FC9C635F29D2CF4C006EA975 /* TestProjectRocket */ = {
 			isa = PBXGroup;
 			children = (
-				FCEFC7362B9A00E00039CE77 /* Network */,
+				FCEFC7362B9A00E00039CE77 /* NetworkService */,
 				FCEFC7322B99FCA30039CE77 /* RocketScene */,
 				FCEFC7332B99FCE70039CE77 /* Model */,
 				FCE9B5652B977FCE00D79A71 /* DI */,
@@ -146,16 +146,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		FCEFC7362B9A00E00039CE77 /* Network */ = {
+		FCEFC7362B9A00E00039CE77 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
 				FCEFC7482B9A4A590039CE77 /* RequestMethod */,
 				FCEFC7452B9A49C40039CE77 /* NetworkHTTPClient */,
 				FCEFC7422B9A48830039CE77 /* Endpoints */,
 				FCEFC73E2B9A1CE00039CE77 /* NetworkError */,
-				FCEFC73F2B9A1CF00039CE77 /* GetRocketsProtocol */,
+				FCEFC73F2B9A1CF00039CE77 /* GetRockets */,
 			);
-			path = Network;
+			path = NetworkService;
 			sourceTree = "<group>";
 		};
 		FCEFC73E2B9A1CE00039CE77 /* NetworkError */ = {
@@ -166,12 +166,12 @@
 			path = NetworkError;
 			sourceTree = "<group>";
 		};
-		FCEFC73F2B9A1CF00039CE77 /* GetRocketsProtocol */ = {
+		FCEFC73F2B9A1CF00039CE77 /* GetRockets */ = {
 			isa = PBXGroup;
 			children = (
 				FCEFC7402B9A1D0D0039CE77 /* GetRocketsProtocol.swift */,
 			);
-			path = GetRocketsProtocol;
+			path = GetRockets;
 			sourceTree = "<group>";
 		};
 		FCEFC7422B9A48830039CE77 /* Endpoints */ = {
