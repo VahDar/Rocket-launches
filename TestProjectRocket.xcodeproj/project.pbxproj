@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC2B14C72B9B1C5100179D1D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B14C62B9B1C5100179D1D /* NetworkManager.swift */; };
+		FC2B14CA2B9B1D1E00179D1D /* NetworkContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B14C92B9B1D1E00179D1D /* NetworkContainer.swift */; };
 		FC9C636129D2CF4C006EA975 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C636029D2CF4C006EA975 /* AppDelegate.swift */; };
 		FC9C636329D2CF4C006EA975 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C636229D2CF4C006EA975 /* SceneDelegate.swift */; };
 		FC9C636A29D2CF4E006EA975 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC9C636929D2CF4E006EA975 /* Assets.xcassets */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC2B14C62B9B1C5100179D1D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		FC2B14C92B9B1D1E00179D1D /* NetworkContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkContainer.swift; sourceTree = "<group>"; };
 		FC9C635D29D2CF4C006EA975 /* TestProjectRocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestProjectRocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC9C636029D2CF4C006EA975 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC9C636229D2CF4C006EA975 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC2B14C82B9B1CF600179D1D /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				FC2B14C92B9B1D1E00179D1D /* NetworkContainer.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 		FC9C635429D2CF4C006EA975 = {
 			isa = PBXGroup;
 			children = (
@@ -149,53 +161,23 @@
 		FCEFC7362B9A00E00039CE77 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
-				FCEFC7482B9A4A590039CE77 /* RequestMethod */,
-				FCEFC7452B9A49C40039CE77 /* NetworkHTTPClient */,
-				FCEFC7422B9A48830039CE77 /* Endpoints */,
-				FCEFC73E2B9A1CE00039CE77 /* NetworkError */,
-				FCEFC73F2B9A1CF00039CE77 /* GetRockets */,
+				FC2B14C82B9B1CF600179D1D /* DI */,
+				FCEFC73F2B9A1CF00039CE77 /* Protocol */,
+				FCEFC7492B9A4A700039CE77 /* RequestMethod.swift */,
+				FCEFC7462B9A49ED0039CE77 /* NetworkHTTPClient.swift */,
+				FCEFC7432B9A48A90039CE77 /* Endpoint.swift */,
+				FCEFC73C2B9A1C560039CE77 /* NetworkError.swift */,
+				FC2B14C62B9B1C5100179D1D /* NetworkManager.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
 		};
-		FCEFC73E2B9A1CE00039CE77 /* NetworkError */ = {
-			isa = PBXGroup;
-			children = (
-				FCEFC73C2B9A1C560039CE77 /* NetworkError.swift */,
-			);
-			path = NetworkError;
-			sourceTree = "<group>";
-		};
-		FCEFC73F2B9A1CF00039CE77 /* GetRockets */ = {
+		FCEFC73F2B9A1CF00039CE77 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
 				FCEFC7402B9A1D0D0039CE77 /* GetRocketsProtocol.swift */,
 			);
-			path = GetRockets;
-			sourceTree = "<group>";
-		};
-		FCEFC7422B9A48830039CE77 /* Endpoints */ = {
-			isa = PBXGroup;
-			children = (
-				FCEFC7432B9A48A90039CE77 /* Endpoint.swift */,
-			);
-			path = Endpoints;
-			sourceTree = "<group>";
-		};
-		FCEFC7452B9A49C40039CE77 /* NetworkHTTPClient */ = {
-			isa = PBXGroup;
-			children = (
-				FCEFC7462B9A49ED0039CE77 /* NetworkHTTPClient.swift */,
-			);
-			path = NetworkHTTPClient;
-			sourceTree = "<group>";
-		};
-		FCEFC7482B9A4A590039CE77 /* RequestMethod */ = {
-			isa = PBXGroup;
-			children = (
-				FCEFC7492B9A4A700039CE77 /* RequestMethod.swift */,
-			);
-			path = RequestMethod;
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		FCF529DF2B98EE0200C4C44F /* RocketScreenCoordinator */ = {
@@ -303,6 +285,7 @@
 				FCE9B5642B977D4F00D79A71 /* ViewController.swift in Sources */,
 				FCE9B5692B97803600D79A71 /* InjectedValue.swift in Sources */,
 				FCE9B5672B977FF000D79A71 /* InjectionKey.swift in Sources */,
+				FC2B14C72B9B1C5100179D1D /* NetworkManager.swift in Sources */,
 				FCEFC7442B9A48A90039CE77 /* Endpoint.swift in Sources */,
 				FCE9B5622B977C2100D79A71 /* AppCoordinator.swift in Sources */,
 				FCF529E42B98EF4500C4C44F /* RocketScreenViewController.swift in Sources */,
@@ -311,6 +294,7 @@
 				FCF529E12B98EE2800C4C44F /* RocketScreenCoordinator.swift in Sources */,
 				FC9C636129D2CF4C006EA975 /* AppDelegate.swift in Sources */,
 				FCE9B56B2B97813600D79A71 /* Injected.swift in Sources */,
+				FC2B14CA2B9B1D1E00179D1D /* NetworkContainer.swift in Sources */,
 				FCEFC7472B9A49ED0039CE77 /* NetworkHTTPClient.swift in Sources */,
 				FCEFC7352B99FD100039CE77 /* RocketModel.swift in Sources */,
 				FCEFC73D2B9A1C560039CE77 /* NetworkError.swift in Sources */,
