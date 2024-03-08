@@ -7,9 +7,15 @@
 
 import Foundation
 
-final class NetworkManager: GetRocketsProtocol {
+final class NetworkManager: GetRocketsProtocol, NetworkHTTPClient {
+    
     func getRockets() async throws -> RocketModel {
-        <#code#>
+        do {
+            return try await fetchData(from: Endpoint.rockets.path, requestMethod: RequestMethod.get, responseType: RocketModel.self)
+        } catch {
+            print("Error fetching data: \(error.localizedDescription)")
+            throw error
+        }
     }
     
     
