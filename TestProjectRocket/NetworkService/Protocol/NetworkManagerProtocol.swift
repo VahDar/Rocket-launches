@@ -8,6 +8,6 @@
 import Foundation
 
 
-protocol GetRocketsProtocol {
-    func getRockets() async throws -> RocketModel
+protocol NetworkManagerProtocol {
+    func getRockets() async throws -> [RocketModel]
 }

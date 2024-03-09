@@ -12,7 +12,7 @@ extension Container {
     static let network: Container = {
         let container = Container()
         
-        container.register(GetRocketsProtocol.self) { _ in
+        container.register(NetworkManagerProtocol.self) { _ in
             NetworkManager()
         }
         

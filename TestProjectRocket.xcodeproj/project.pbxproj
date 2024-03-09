@@ -18,7 +18,6 @@
 		FC9C636D29D2CF4E006EA975 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC9C636B29D2CF4E006EA975 /* LaunchScreen.storyboard */; };
 		FCE9B55F2B97678100D79A71 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9B55E2B97678100D79A71 /* Coordinator.swift */; };
 		FCE9B5622B977C2100D79A71 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9B5612B977C2100D79A71 /* AppCoordinator.swift */; };
-		FCE9B5642B977D4F00D79A71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9B5632B977D4F00D79A71 /* ViewController.swift */; };
 		FCE9B5672B977FF000D79A71 /* InjectionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9B5662B977FF000D79A71 /* InjectionKey.swift */; };
 		FCE9B5692B97803600D79A71 /* InjectedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9B5682B97803600D79A71 /* InjectedValue.swift */; };
 		FCE9B56B2B97813600D79A71 /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9B56A2B97813600D79A71 /* Injected.swift */; };
@@ -26,7 +25,7 @@
 		FCEFC7392B9A1BB50039CE77 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = FCEFC7382B9A1BB50039CE77 /* Swinject */; };
 		FCEFC73B2B9A1BB50039CE77 /* Swinject-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = FCEFC73A2B9A1BB50039CE77 /* Swinject-Dynamic */; };
 		FCEFC73D2B9A1C560039CE77 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEFC73C2B9A1C560039CE77 /* NetworkError.swift */; };
-		FCEFC7412B9A1D0D0039CE77 /* GetRocketsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEFC7402B9A1D0D0039CE77 /* GetRocketsProtocol.swift */; };
+		FCEFC7412B9A1D0D0039CE77 /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEFC7402B9A1D0D0039CE77 /* NetworkManagerProtocol.swift */; };
 		FCEFC7442B9A48A90039CE77 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEFC7432B9A48A90039CE77 /* Endpoint.swift */; };
 		FCEFC7472B9A49ED0039CE77 /* NetworkHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEFC7462B9A49ED0039CE77 /* NetworkHTTPClient.swift */; };
 		FCEFC74A2B9A4A700039CE77 /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEFC7492B9A4A700039CE77 /* RequestMethod.swift */; };
@@ -49,13 +48,12 @@
 		FC9C636E29D2CF4E006EA975 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCE9B55E2B97678100D79A71 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		FCE9B5612B977C2100D79A71 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		FCE9B5632B977D4F00D79A71 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FCE9B5662B977FF000D79A71 /* InjectionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionKey.swift; sourceTree = "<group>"; };
 		FCE9B5682B97803600D79A71 /* InjectedValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectedValue.swift; sourceTree = "<group>"; };
 		FCE9B56A2B97813600D79A71 /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
 		FCEFC7342B99FD100039CE77 /* RocketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketModel.swift; sourceTree = "<group>"; };
 		FCEFC73C2B9A1C560039CE77 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		FCEFC7402B9A1D0D0039CE77 /* GetRocketsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRocketsProtocol.swift; sourceTree = "<group>"; };
+		FCEFC7402B9A1D0D0039CE77 /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
 		FCEFC7432B9A48A90039CE77 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		FCEFC7462B9A49ED0039CE77 /* NetworkHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHTTPClient.swift; sourceTree = "<group>"; };
 		FCEFC7492B9A4A700039CE77 /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 				FC9C636929D2CF4E006EA975 /* Assets.xcassets */,
 				FC9C636B29D2CF4E006EA975 /* LaunchScreen.storyboard */,
 				FC9C636E29D2CF4E006EA975 /* Info.plist */,
-				FCE9B5632B977D4F00D79A71 /* ViewController.swift */,
 			);
 			path = TestProjectRocket;
 			sourceTree = "<group>";
@@ -190,7 +187,7 @@
 		FCEFC73F2B9A1CF00039CE77 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				FCEFC7402B9A1D0D0039CE77 /* GetRocketsProtocol.swift */,
+				FCEFC7402B9A1D0D0039CE77 /* NetworkManagerProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -299,7 +296,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCF529E72B98EF8A00C4C44F /* RoketScreenViewModel.swift in Sources */,
-				FCE9B5642B977D4F00D79A71 /* ViewController.swift in Sources */,
 				FC8DEE4C2B9C6DF40067706D /* RocketVMContainer.swift in Sources */,
 				FCE9B5692B97803600D79A71 /* InjectedValue.swift in Sources */,
 				FCE9B5672B977FF000D79A71 /* InjectionKey.swift in Sources */,
@@ -309,7 +305,7 @@
 				FCE9B5622B977C2100D79A71 /* AppCoordinator.swift in Sources */,
 				FCF529E42B98EF4500C4C44F /* RocketScreenViewController.swift in Sources */,
 				FCEFC74A2B9A4A700039CE77 /* RequestMethod.swift in Sources */,
-				FCEFC7412B9A1D0D0039CE77 /* GetRocketsProtocol.swift in Sources */,
+				FCEFC7412B9A1D0D0039CE77 /* NetworkManagerProtocol.swift in Sources */,
 				FCF529E12B98EE2800C4C44F /* RocketScreenCoordinator.swift in Sources */,
 				FC9C636129D2CF4C006EA975 /* AppDelegate.swift in Sources */,
 				FCE9B56B2B97813600D79A71 /* Injected.swift in Sources */,

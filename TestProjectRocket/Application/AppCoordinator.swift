@@ -26,7 +26,7 @@ class AppCoordinator: AppCoordinatorProtocol {
     func start() {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-        let vc = ViewController()
+        let vc = RocketScreenViewController()
         navigationController.pushViewController(vc, animated: true)
         
     }

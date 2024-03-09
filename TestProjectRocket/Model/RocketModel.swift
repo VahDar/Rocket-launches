@@ -31,6 +31,21 @@ struct RocketModel: Codable {
     let wikipedia: String
     let description: String
     let id: String
+    
+    enum CodingKeys: String, CodingKey {
+            case height, diameter, mass
+            case firstStage = "first_stage"
+            case secondStage
+            case engines
+            case landingLegs
+            case payloadWeights
+            case flickrImages
+            case name, type, active, stages, boosters
+            case costPerLaunch
+            case successRatePct
+            case firstFlight
+            case country, company, wikipedia, description, id
+        }
 }
 
 // MARK: - Diameter

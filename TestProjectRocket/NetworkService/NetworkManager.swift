@@ -7,9 +7,9 @@
 
 import Foundation
 
-final class NetworkManager: GetRocketsProtocol, NetworkHTTPClient {
+final class NetworkManager: NetworkManagerProtocol, NetworkHTTPClient {
     
-    func getRockets() async throws -> RocketModel {
+    func getRockets() async throws -> [RocketModel] {
         do {
             return try await fetchData(from: Endpoint.rockets.path, requestMethod: RequestMethod.get, responseType: RocketModel.self)
         } catch {
