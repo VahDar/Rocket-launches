@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+
+final class RocketScreenViewModel: RocketScreenViewModelProtocol {
+    var rocketData: [RocketModel] = []
+    
+    func getRocketData() async {
+        <#code#>
+    }
+    
+    
+}
