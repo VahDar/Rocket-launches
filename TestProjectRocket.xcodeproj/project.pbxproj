@@ -10,6 +10,7 @@
 		FC2B14C72B9B1C5100179D1D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B14C62B9B1C5100179D1D /* NetworkManager.swift */; };
 		FC2B14CA2B9B1D1E00179D1D /* NetworkContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B14C92B9B1D1E00179D1D /* NetworkContainer.swift */; };
 		FC2B14CC2B9B260700179D1D /* RocketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B14CB2B9B260700179D1D /* RocketCollectionViewCell.swift */; };
+		FC8DEE492B9C6B900067706D /* RocketScreenViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8DEE482B9C6B900067706D /* RocketScreenViewModelProtocol.swift */; };
 		FC9C636129D2CF4C006EA975 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C636029D2CF4C006EA975 /* AppDelegate.swift */; };
 		FC9C636329D2CF4C006EA975 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C636229D2CF4C006EA975 /* SceneDelegate.swift */; };
 		FC9C636A29D2CF4E006EA975 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC9C636929D2CF4E006EA975 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		FC2B14C62B9B1C5100179D1D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FC2B14C92B9B1D1E00179D1D /* NetworkContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkContainer.swift; sourceTree = "<group>"; };
 		FC2B14CB2B9B260700179D1D /* RocketCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC8DEE482B9C6B900067706D /* RocketScreenViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketScreenViewModelProtocol.swift; sourceTree = "<group>"; };
 		FC9C635D29D2CF4C006EA975 /* TestProjectRocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestProjectRocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC9C636029D2CF4C006EA975 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC9C636229D2CF4C006EA975 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				FCF529E62B98EF8A00C4C44F /* RoketScreenViewModel.swift */,
+				FC8DEE482B9C6B900067706D /* RocketScreenViewModelProtocol.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				FCE9B56B2B97813600D79A71 /* Injected.swift in Sources */,
 				FC2B14CA2B9B1D1E00179D1D /* NetworkContainer.swift in Sources */,
 				FCEFC7472B9A49ED0039CE77 /* NetworkHTTPClient.swift in Sources */,
+				FC8DEE492B9C6B900067706D /* RocketScreenViewModelProtocol.swift in Sources */,
 				FCEFC7352B99FD100039CE77 /* RocketModel.swift in Sources */,
 				FCEFC73D2B9A1C560039CE77 /* NetworkError.swift in Sources */,
 				FC9C636329D2CF4C006EA975 /* SceneDelegate.swift in Sources */,
