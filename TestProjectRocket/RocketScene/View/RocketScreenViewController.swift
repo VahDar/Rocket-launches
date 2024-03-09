@@ -15,10 +15,11 @@ class RocketScreenViewController: UIViewController, UICollectionViewDelegate, UI
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        constraints()
         viewModel = RocketScreenViewModel()
         Task {
             await viewModel.getRocketData()
+            collectionView.reloadData()
         }
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -28,20 +29,23 @@ class RocketScreenViewController: UIViewController, UICollectionViewDelegate, UI
     // MARK: - Views
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(RocketCollectionViewCell.self, forCellWithReuseIdentifier: RocketCollectionViewCell.identifier)
         return collectionView
     }()
 
     private func constraints() {
+        view.backgroundColor = .gray
         view.addSubview(collectionView)
         
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
@@ -53,6 +57,11 @@ class RocketScreenViewController: UIViewController, UICollectionViewDelegate, UI
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RocketCollectionViewCell.identifier, for: indexPath) as? RocketCollectionViewCell else {
             return UICollectionViewCell()
         }
+        let rocket = viewModel.rocketData[indexPath.row]
+        cell.configure(with: rocket)
+        return cell
     }
 
 }
+
+

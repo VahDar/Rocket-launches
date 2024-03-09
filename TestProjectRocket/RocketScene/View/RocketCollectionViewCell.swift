@@ -53,6 +53,7 @@ class RocketCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupUI()
         setupLayouts()
     }
     
@@ -60,7 +61,7 @@ class RocketCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func srtupUI() {
+    private func setupUI() {
         contentView.backgroundColor = .black
         contentView.layer.cornerRadius = 10
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -71,8 +72,6 @@ class RocketCollectionViewCell: UICollectionViewCell {
         
         
         NSLayoutConstraint.activate([
-            contentView.heightAnchor.constraint(equalToConstant: 150),
-            contentView.widthAnchor.constraint(equalToConstant: 150),
             heightLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             heightLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             heightLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
