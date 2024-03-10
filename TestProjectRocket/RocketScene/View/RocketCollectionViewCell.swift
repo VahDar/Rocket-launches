@@ -12,6 +12,7 @@ class RocketCollectionViewCell: UICollectionViewCell {
     
     // MARK - Properties
     static let identifier = "CollectionViewCell"
+    var viewMode: RocketScreenViewModelProtocol!
     
     // MARK - Views
     private let heightLabel: UILabel = {
@@ -99,15 +100,15 @@ class RocketCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(with rocket: RocketModel) {
-        heightLabel.text = "\(rocket.height)"
-        diameterLabel.text = "\(rocket.diameter)"
-        massLabel.text = "\(rocket.mass)"
-        
+        heightLabel.text = "\(rocket.height.meters.map { "\($0) м" } ?? "N/A")"
+        diameterLabel.text = "\(rocket.diameter.meters.map { "\($0) м" } ?? "N/A")"
+//            massLabel.text = "Масса: \(rocket.mass. { "\($0) кг" } ?? "N/A")"
+//        
         if let payloadLEO = rocket.payloadWeights.first(where: { $0.id == "leo" }) {
-            payloadLabel.text = "\(payloadLEO.lb)"
-        } else {
-            payloadLabel.text = "LEO: N/A"
-        }
+               payloadLabel.text = "Полезная нагрузка (LEO): \(payloadLEO.kg) kg"
+           } else {
+               payloadLabel.text = "Полезная нагрузка (LEO): N/A"
+           }
         
     }
 }

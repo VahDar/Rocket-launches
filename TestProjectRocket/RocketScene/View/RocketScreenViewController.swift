@@ -85,8 +85,10 @@ class RocketScreenViewController: UIViewController, UICollectionViewDelegate, UI
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RocketCollectionViewCell.identifier, for: indexPath) as? RocketCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let rocket = viewModel.rocketData[indexPath.row]
-        cell.configure(with: rocket)
+        if let rocket = viewModel.currentRocker {
+            cell.configure(with: rocket)
+            
+        }
         return cell
     }
 
