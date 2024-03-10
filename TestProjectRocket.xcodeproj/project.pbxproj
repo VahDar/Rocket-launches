@@ -212,8 +212,8 @@
 		FCF529E52B98EF7400C4C44F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				FCF529E62B98EF8A00C4C44F /* RoketScreenViewModel.swift */,
 				FC8DEE482B9C6B900067706D /* RocketScreenViewModelProtocol.swift */,
+				FCF529E62B98EF8A00C4C44F /* RoketScreenViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

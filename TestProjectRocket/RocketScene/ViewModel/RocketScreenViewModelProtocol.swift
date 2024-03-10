@@ -9,6 +9,7 @@ import Foundation
 
 protocol RocketScreenViewModelProtocol {
     var rocketData: [RocketModel] { get set }
+    var currentRocker: RocketModel? { get set }
     var networkManager: NetworkManagerProtocol! { get set }
     func getRocketData() async
 }

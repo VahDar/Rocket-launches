@@ -72,6 +72,10 @@ class RocketCollectionViewCell: UICollectionViewCell {
         
         
         NSLayoutConstraint.activate([
+            
+            contentView.heightAnchor.constraint(equalToConstant: 150),
+            contentView.widthAnchor.constraint(equalToConstant: 150),
+            
             heightLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             heightLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             heightLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
