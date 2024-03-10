@@ -19,6 +19,7 @@ class RocketScreenViewController: UIViewController, UICollectionViewDelegate, UI
         viewModel = RocketScreenViewModel()
         Task {
             await viewModel.getRocketData()
+            setupUI()
             collectionView.reloadData()
         }
         collectionView.dataSource = self
@@ -36,17 +37,44 @@ class RocketScreenViewController: UIViewController, UICollectionViewDelegate, UI
         collectionView.register(RocketCollectionViewCell.self, forCellWithReuseIdentifier: RocketCollectionViewCell.identifier)
         return collectionView
     }()
-
+    
+    private let rocketImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFit
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        return iv
+    }()
+    
+    private let rocketNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        label.textColor = .white
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private func constraints() {
-        view.backgroundColor = .gray
+        
         view.addSubview(collectionView)
+        view.addSubview(rocketImageView)
+        view.addSubview(rocketNameLabel)
         
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            rocketNameLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            rocketNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            collectionView.topAnchor.constraint(equalTo: rocketNameLabel.bottomAnchor, constant: 20),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    private func setupUI() {
+        view.backgroundColor = .gray
+        if let currentRocker = viewModel.currentRocker {
+            rocketNameLabel.text = currentRocker.name
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
