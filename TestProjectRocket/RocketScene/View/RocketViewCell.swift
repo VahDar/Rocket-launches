@@ -96,6 +96,16 @@ class RocketViewCell: UIView {
         return stack
     }()
     
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.alwaysBounceVertical = false
+        scrollView.alwaysBounceHorizontal = true
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayouts()
@@ -108,7 +118,8 @@ class RocketViewCell: UIView {
     private func setupLayouts() {
        
         self.addSubview(contentView)
-        contentView.addSubview(stack)
+        contentView.addSubview(scrollView)
+        scrollView.addSubview(stack)
         stack.addArrangedSubview(heightView)
         stack.addArrangedSubview(diameterView)
         stack.addArrangedSubview(massView)
@@ -124,10 +135,15 @@ class RocketViewCell: UIView {
             contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
-            stack.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-            stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            scrollView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+            scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            stack.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            stack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            stack.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             
             heightView.heightAnchor.constraint(equalToConstant: 100),
             heightView.widthAnchor.constraint(equalToConstant: 100),
@@ -159,9 +175,9 @@ class RocketViewCell: UIView {
         massLabel.text = "\(rocket.mass.lb)"
         
         if let payloadLEO = rocket.payloadWeights.first(where: { $0.id == "leo" }) {
-               payloadLabel.text = "Полезная нагрузка (LEO): \(payloadLEO.kg) kg"
+               payloadLabel.text = "\(payloadLEO.kg)"
            } else {
-               payloadLabel.text = "Полезная нагрузка (LEO): N/A"
+               payloadLabel.text = "N/A"
            }
     }
 }

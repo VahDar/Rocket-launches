@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC258B8D2B9E2C08003BAC0B /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = FC258B8C2B9E2C08003BAC0B /* SDWebImage */; };
+		FC258B8F2B9E2C08003BAC0B /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FC258B8E2B9E2C08003BAC0B /* SDWebImageMapKit */; };
 		FC2B14C72B9B1C5100179D1D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B14C62B9B1C5100179D1D /* NetworkManager.swift */; };
 		FC2B14CA2B9B1D1E00179D1D /* NetworkContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B14C92B9B1D1E00179D1D /* NetworkContainer.swift */; };
 		FC2B14CC2B9B260700179D1D /* RocketViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B14CB2B9B260700179D1D /* RocketViewCell.swift */; };
@@ -67,7 +69,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC258B8D2B9E2C08003BAC0B /* SDWebImage in Frameworks */,
 				FCEFC7392B9A1BB50039CE77 /* Swinject in Frameworks */,
+				FC258B8F2B9E2C08003BAC0B /* SDWebImageMapKit in Frameworks */,
 				FCEFC73B2B9A1BB50039CE77 /* Swinject-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +241,8 @@
 			packageProductDependencies = (
 				FCEFC7382B9A1BB50039CE77 /* Swinject */,
 				FCEFC73A2B9A1BB50039CE77 /* Swinject-Dynamic */,
+				FC258B8C2B9E2C08003BAC0B /* SDWebImage */,
+				FC258B8E2B9E2C08003BAC0B /* SDWebImageMapKit */,
 			);
 			productName = TestProjectRocket;
 			productReference = FC9C635D29D2CF4C006EA975 /* TestProjectRocket.app */;
@@ -268,6 +274,7 @@
 			mainGroup = FC9C635429D2CF4C006EA975;
 			packageReferences = (
 				FCEFC7372B9A1BB50039CE77 /* XCRemoteSwiftPackageReference "Swinject" */,
+				FC258B8B2B9E2C08003BAC0B /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = FC9C635E29D2CF4C006EA975 /* Products */;
 			projectDirPath = "";
@@ -523,6 +530,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FC258B8B2B9E2C08003BAC0B /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.19.0;
+			};
+		};
 		FCEFC7372B9A1BB50039CE77 /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject";
@@ -534,6 +549,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		FC258B8C2B9E2C08003BAC0B /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC258B8B2B9E2C08003BAC0B /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		FC258B8E2B9E2C08003BAC0B /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC258B8B2B9E2C08003BAC0B /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
 		FCEFC7382B9A1BB50039CE77 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FCEFC7372B9A1BB50039CE77 /* XCRemoteSwiftPackageReference "Swinject" */;
