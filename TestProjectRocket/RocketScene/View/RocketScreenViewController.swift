@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class RocketScreenViewController: UIViewController {
     
@@ -25,8 +26,22 @@ class RocketScreenViewController: UIViewController {
             await viewModel.getRocketData()
             setupUI()
         }
-        
-        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        // Создаем путь с закругленными верхними углами
+        let path = UIBezierPath(roundedRect: contentView.bounds,
+                                byRoundingCorners: [.topRight, .topLeft],
+                                cornerRadii: CGSize(width: 30.0, height: 30.0))
+
+        // Создаем маску для пути
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = path.cgPath
+
+        // Присваиваем маску слою contentView
+        contentView.layer.mask = maskLayer
     }
     
     // MARK: - Views
@@ -37,20 +52,9 @@ class RocketScreenViewController: UIViewController {
         return scroll
     }()
     
-//    private let collectionView: UICollectionView = {
-//        let layout = UICollectionViewFlowLayout()
-//        
-//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        layout.scrollDirection = .horizontal
-//        collectionView.showsHorizontalScrollIndicator = false
-//        collectionView.translatesAutoresizingMaskIntoConstraints = false
-//        collectionView.register(RocketCollectionViewCell.self, forCellWithReuseIdentifier: RocketCollectionViewCell.identifier)
-//        return collectionView
-//    }()
-    
     private let rocketImageView: UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
@@ -64,17 +68,42 @@ class RocketScreenViewController: UIViewController {
         return label
     }()
     
+    private let contentView: UIView = {
+       let view = UIView()
+        view.backgroundColor = .black
+        view.translatesAutoresizingMaskIntoConstraints = false
+//        let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 10, height: 10))
+//        
+//        let maskLayer = CAShapeLayer()
+//        maskLayer.path = path.cgPath
+        return view
+    }()
     
     private func constraints() {
         
-        view.addSubview(rocketCell)
-        
+        view.addSubview(rocketImageView)
+        view.addSubview(contentView)
+        contentView.addSubview(rocketNameLabel)
+        contentView.addSubview(rocketCell)
         
         NSLayoutConstraint.activate([
-            rocketCell.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
-            rocketCell.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            rocketCell.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            rocketCell.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            rocketImageView.topAnchor.constraint(equalTo: view.topAnchor),
+            rocketImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            rocketImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            rocketImageView.heightAnchor.constraint(equalToConstant: 320),
+            
+            contentView.topAnchor.constraint(equalTo: rocketImageView.bottomAnchor, constant: -25),
+            contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            rocketNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+            rocketNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            
+            rocketCell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 110),
+            rocketCell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            rocketCell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            rocketCell.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             rocketCell.heightAnchor.constraint(equalToConstant: 150),
         ])
     }
@@ -83,9 +112,10 @@ class RocketScreenViewController: UIViewController {
         view.backgroundColor = .gray
         rocketCell.translatesAutoresizingMaskIntoConstraints = false
         
-        if let currentRocker = viewModel.currentRocker {
-            rocketCell.configure(with: currentRocker)
-            rocketNameLabel.text = currentRocker.name
+        if let currentRocket = viewModel.currentRocker, !currentRocket.flickrImages.isEmpty, let urlString = currentRocket.flickrImages.first, let url = URL(string: urlString) {
+            rocketCell.configure(with: currentRocket)
+            rocketImageView.sd_setImage(with: url)
+            rocketNameLabel.text = currentRocket.name
         }
     }
     

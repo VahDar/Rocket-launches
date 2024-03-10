@@ -57,7 +57,7 @@ class RocketViewCell: UIView {
     
     private let heightView: UIView = {
        let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 28/255, alpha: 1)
         view.layer.cornerRadius = 30
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -65,7 +65,7 @@ class RocketViewCell: UIView {
     
     private let diameterView: UIView = {
        let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 28/255, alpha: 1)
         view.layer.cornerRadius = 30
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -73,7 +73,7 @@ class RocketViewCell: UIView {
     
     private let massView: UIView = {
        let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 28/255, alpha: 1)
         view.layer.cornerRadius = 30
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -81,7 +81,7 @@ class RocketViewCell: UIView {
     
     private let payloadView: UIView = {
        let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 28/255, alpha: 1)
         view.layer.cornerRadius = 30
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -136,7 +136,7 @@ class RocketViewCell: UIView {
             contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
             scrollView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+            scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 35),
             scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
