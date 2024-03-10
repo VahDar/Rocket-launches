@@ -7,36 +7,46 @@
 
 import UIKit
 
-class RocketScreenViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class RocketScreenViewController: UIViewController {
     
     // MARK: - Properties
     var viewModel: RocketScreenViewModelProtocol!
+    var rocketCell: RocketViewCell!
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        constraints()
+       
+        rocketCell = RocketViewCell()
+        
         viewModel = RocketScreenViewModel()
+        constraints()
         Task {
             await viewModel.getRocketData()
             setupUI()
-            collectionView.reloadData()
         }
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        
         
     }
     
     // MARK: - Views
-    private let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(RocketCollectionViewCell.self, forCellWithReuseIdentifier: RocketCollectionViewCell.identifier)
-        return collectionView
+    
+    private let scrollView: UIScrollView = {
+        let scroll = UIScrollView()
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+        return scroll
     }()
+    
+//    private let collectionView: UICollectionView = {
+//        let layout = UICollectionViewFlowLayout()
+//        
+//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+//        layout.scrollDirection = .horizontal
+//        collectionView.showsHorizontalScrollIndicator = false
+//        collectionView.translatesAutoresizingMaskIntoConstraints = false
+//        collectionView.register(RocketCollectionViewCell.self, forCellWithReuseIdentifier: RocketCollectionViewCell.identifier)
+//        return collectionView
+//    }()
     
     private let rocketImageView: UIImageView = {
         let iv = UIImageView()
@@ -54,44 +64,31 @@ class RocketScreenViewController: UIViewController, UICollectionViewDelegate, UI
         return label
     }()
     
+    
     private func constraints() {
         
-        view.addSubview(collectionView)
-        view.addSubview(rocketImageView)
-        view.addSubview(rocketNameLabel)
+        view.addSubview(rocketCell)
+        
         
         NSLayoutConstraint.activate([
-            rocketNameLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
-            rocketNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            collectionView.topAnchor.constraint(equalTo: rocketNameLabel.bottomAnchor, constant: 20),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            rocketCell.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            rocketCell.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            rocketCell.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            rocketCell.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            rocketCell.heightAnchor.constraint(equalToConstant: 150),
         ])
     }
     
     private func setupUI() {
         view.backgroundColor = .gray
+        rocketCell.translatesAutoresizingMaskIntoConstraints = false
+        
         if let currentRocker = viewModel.currentRocker {
+            rocketCell.configure(with: currentRocker)
             rocketNameLabel.text = currentRocker.name
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.rocketData.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RocketCollectionViewCell.identifier, for: indexPath) as? RocketCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        if let rocket = viewModel.currentRocker {
-            cell.configure(with: rocket)
-            
-        }
-        return cell
-    }
-
 }
 
 

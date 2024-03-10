@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		FC2B14C72B9B1C5100179D1D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B14C62B9B1C5100179D1D /* NetworkManager.swift */; };
 		FC2B14CA2B9B1D1E00179D1D /* NetworkContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B14C92B9B1D1E00179D1D /* NetworkContainer.swift */; };
-		FC2B14CC2B9B260700179D1D /* RocketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B14CB2B9B260700179D1D /* RocketCollectionViewCell.swift */; };
+		FC2B14CC2B9B260700179D1D /* RocketViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B14CB2B9B260700179D1D /* RocketViewCell.swift */; };
 		FC8DEE492B9C6B900067706D /* RocketScreenViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8DEE482B9C6B900067706D /* RocketScreenViewModelProtocol.swift */; };
 		FC8DEE4C2B9C6DF40067706D /* RocketVMContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8DEE4B2B9C6DF40067706D /* RocketVMContainer.swift */; };
 		FC9C636129D2CF4C006EA975 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C636029D2CF4C006EA975 /* AppDelegate.swift */; };
@@ -37,7 +37,7 @@
 /* Begin PBXFileReference section */
 		FC2B14C62B9B1C5100179D1D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FC2B14C92B9B1D1E00179D1D /* NetworkContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkContainer.swift; sourceTree = "<group>"; };
-		FC2B14CB2B9B260700179D1D /* RocketCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC2B14CB2B9B260700179D1D /* RocketViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketViewCell.swift; sourceTree = "<group>"; };
 		FC8DEE482B9C6B900067706D /* RocketScreenViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketScreenViewModelProtocol.swift; sourceTree = "<group>"; };
 		FC8DEE4B2B9C6DF40067706D /* RocketVMContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketVMContainer.swift; sourceTree = "<group>"; };
 		FC9C635D29D2CF4C006EA975 /* TestProjectRocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestProjectRocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,7 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				FCF529E32B98EF4500C4C44F /* RocketScreenViewController.swift */,
-				FC2B14CB2B9B260700179D1D /* RocketCollectionViewCell.swift */,
+				FC2B14CB2B9B260700179D1D /* RocketViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -299,7 +299,7 @@
 				FC8DEE4C2B9C6DF40067706D /* RocketVMContainer.swift in Sources */,
 				FCE9B5692B97803600D79A71 /* InjectedValue.swift in Sources */,
 				FCE9B5672B977FF000D79A71 /* InjectionKey.swift in Sources */,
-				FC2B14CC2B9B260700179D1D /* RocketCollectionViewCell.swift in Sources */,
+				FC2B14CC2B9B260700179D1D /* RocketViewCell.swift in Sources */,
 				FC2B14C72B9B1C5100179D1D /* NetworkManager.swift in Sources */,
 				FCEFC7442B9A48A90039CE77 /* Endpoint.swift in Sources */,
 				FCE9B5622B977C2100D79A71 /* AppCoordinator.swift in Sources */,
