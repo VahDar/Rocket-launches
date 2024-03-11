@@ -85,7 +85,7 @@ class RocketScreenViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.textColor = .white
         label.textAlignment = .left
-        label.text = "First Launch"
+        label.text = "First launch"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -105,7 +105,7 @@ class RocketScreenViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.textColor = .white
         label.textAlignment = .left
-        label.text = "Launch Cost"
+        label.text = "Launch cost"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -115,18 +115,49 @@ class RocketScreenViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textColor = .white
         label.textAlignment = .left
-        label.text = "First Stage"
+        label.text = "FIRST STAGE"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
+    private let numberOfEnginesLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.textColor = .white
+        label.textAlignment = .left
+        label.text = "Number of engines"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let amountOfFuelinTonsLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.textColor = .white
+        label.textAlignment = .left
+        label.text = "Amount of fuel in tons"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let burnTimeInSecondsLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.textColor = .white
+        label.textAlignment = .left
+        label.text = "Burn time in sec"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
     private func constraints() {
         
         view.addSubview(scrollView)
         scrollView.addSubview(rocketImageView)
         scrollView.addSubview(contentView)
-        [rocketNameLabel, rocketCell, firstLaunchLabel, countryLabel, costLabel, firstStageLabel].forEach(contentView.addSubview)
+        [
+        rocketNameLabel, rocketCell, firstLaunchLabel, countryLabel, costLabel, firstStageLabel, numberOfEnginesLabel, amountOfFuelinTonsLabel, burnTimeInSecondsLabel
+        ].forEach(contentView.addSubview)
         
         NSLayoutConstraint.activate([
             
@@ -170,6 +201,14 @@ class RocketScreenViewController: UIViewController {
             firstStageLabel.topAnchor.constraint(equalTo: costLabel.bottomAnchor, constant: 50),
             firstStageLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
 
+            numberOfEnginesLabel.topAnchor.constraint(equalTo: firstStageLabel.bottomAnchor, constant: 25),
+            numberOfEnginesLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            
+            amountOfFuelinTonsLabel.topAnchor.constraint(equalTo: numberOfEnginesLabel.bottomAnchor, constant: 25),
+            amountOfFuelinTonsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            
+            burnTimeInSecondsLabel.topAnchor.constraint(equalTo: amountOfFuelinTonsLabel.bottomAnchor, constant: 25),
+            burnTimeInSecondsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
         ])
     }
     
