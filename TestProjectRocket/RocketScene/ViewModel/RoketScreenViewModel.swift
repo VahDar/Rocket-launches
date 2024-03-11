@@ -26,8 +26,6 @@ final class RocketScreenViewModel: RocketScreenViewModelProtocol {
         do {
             let data = try await networkManager.getRockets()
             rocketData = data
-//            selectRocket()
-            print(rocketData)
         } catch {
             debugPrint(error.localizedDescription)
         }
