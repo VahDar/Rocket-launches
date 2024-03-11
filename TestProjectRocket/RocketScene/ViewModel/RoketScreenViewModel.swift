@@ -17,16 +17,16 @@ final class RocketScreenViewModel: RocketScreenViewModelProtocol {
         self.networkManager = networkManager
     }
     
-    func selectRandomRocket() {
-        guard !rocketData.isEmpty else { return }
-        currentRocker = rocketData.randomElement()
-    }
+//    func selectRocket() {
+//        guard !rocketData.isEmpty else { return }
+//        currentRocker = rocketData
+//    }
     
     func getRocketData() async {
         do {
             let data = try await networkManager.getRockets()
             rocketData = data
-            selectRandomRocket()
+//            selectRocket()
             print(rocketData)
         } catch {
             debugPrint(error.localizedDescription)

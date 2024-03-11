@@ -72,13 +72,44 @@ class RocketScreenViewController: UIViewController {
        let view = UIView()
         view.backgroundColor = .black
         view.translatesAutoresizingMaskIntoConstraints = false
-//        let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 10, height: 10))
-//        
-//        let maskLayer = CAShapeLayer()
-//        maskLayer.path = path.cgPath
         return view
     }()
     
+    private let firstLaunchLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        label.textColor = .white
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let countryLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        label.textColor = .white
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let costLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        label.textColor = .white
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let firstStageLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        label.textColor = .white
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     private func constraints() {
         
         view.addSubview(rocketImageView)
@@ -112,10 +143,17 @@ class RocketScreenViewController: UIViewController {
         view.backgroundColor = .gray
         rocketCell.translatesAutoresizingMaskIntoConstraints = false
         
-        if let currentRocket = viewModel.currentRocker, !currentRocket.flickrImages.isEmpty, let urlString = currentRocket.flickrImages.first, let url = URL(string: urlString) {
+        if let currentRocket = viewModel.rocketData.first {
             rocketCell.configure(with: currentRocket)
-            rocketImageView.sd_setImage(with: url)
             rocketNameLabel.text = currentRocket.name
+            
+            if !currentRocket.flickrImages.isEmpty {
+                        let randomIndex = Int(arc4random_uniform(UInt32(currentRocket.flickrImages.count)))
+                        let urlString = currentRocket.flickrImages[randomIndex]
+                        if let url = URL(string: urlString) {
+                            rocketImageView.sd_setImage(with: url)
+                        }
+                    }
         }
     }
     

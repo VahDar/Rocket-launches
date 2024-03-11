@@ -136,12 +136,12 @@ class RocketViewCell: UIView {
             contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
             scrollView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 35),
+            scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
             stack.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            stack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            stack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 35),
             stack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             stack.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             
