@@ -82,7 +82,7 @@ class RocketScreenViewController: UIViewController {
     
     private let firstLaunchLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.textColor = .white
         label.textAlignment = .left
         label.text = "First Launch"
@@ -92,7 +92,7 @@ class RocketScreenViewController: UIViewController {
     
     private let countryLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.textColor = .white
         label.textAlignment = .left
         label.text = "Country"
@@ -102,7 +102,7 @@ class RocketScreenViewController: UIViewController {
     
     private let costLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.textColor = .white
         label.textAlignment = .left
         label.text = "Launch Cost"
@@ -126,8 +126,7 @@ class RocketScreenViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(rocketImageView)
         scrollView.addSubview(contentView)
-        contentView.addSubview(rocketNameLabel)
-        contentView.addSubview(rocketCell)
+        [rocketNameLabel, rocketCell, firstLaunchLabel, countryLabel, costLabel, firstStageLabel].forEach(contentView.addSubview)
         
         NSLayoutConstraint.activate([
             
@@ -143,11 +142,12 @@ class RocketScreenViewController: UIViewController {
             rocketImageView.heightAnchor.constraint(equalToConstant: 320),
             rocketImageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-            contentView.topAnchor.constraint(equalTo: rocketImageView.bottomAnchor, constant: -25),
+            contentView.topAnchor.constraint(equalTo: rocketImageView.bottomAnchor, constant: -55),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
             
             rocketNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
             rocketNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
@@ -156,7 +156,20 @@ class RocketScreenViewController: UIViewController {
             rocketCell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             rocketCell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             rocketCell.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            rocketCell.heightAnchor.constraint(equalToConstant: 150),
+            rocketCell.heightAnchor.constraint(equalToConstant: 120),
+            
+            firstLaunchLabel.topAnchor.constraint(equalTo: rocketCell.bottomAnchor, constant: 25),
+            firstLaunchLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            
+            countryLabel.topAnchor.constraint(equalTo: firstLaunchLabel.bottomAnchor, constant: 25),
+            countryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            
+            costLabel.topAnchor.constraint(equalTo: countryLabel.bottomAnchor, constant: 25),
+            costLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            
+            firstStageLabel.topAnchor.constraint(equalTo: costLabel.bottomAnchor, constant: 50),
+            firstStageLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+
         ])
     }
     
