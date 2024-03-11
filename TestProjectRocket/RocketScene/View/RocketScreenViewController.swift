@@ -47,9 +47,14 @@ class RocketScreenViewController: UIViewController {
     // MARK: - Views
     
     private let scrollView: UIScrollView = {
-        let scroll = UIScrollView()
-        scroll.translatesAutoresizingMaskIntoConstraints = false
-        return scroll
+        let scrollView = UIScrollView()
+        scrollView.alwaysBounceVertical = true
+        scrollView.alwaysBounceHorizontal = false
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.showsVerticalScrollIndicator = true
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
     }()
     
     private let rocketImageView: UIImageView = {
@@ -80,6 +85,7 @@ class RocketScreenViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
         label.textColor = .white
         label.textAlignment = .left
+        label.text = "First Launch"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -89,6 +95,7 @@ class RocketScreenViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
         label.textColor = .white
         label.textAlignment = .left
+        label.text = "Country"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -98,6 +105,7 @@ class RocketScreenViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
         label.textColor = .white
         label.textAlignment = .left
+        label.text = "Launch Cost"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -107,26 +115,39 @@ class RocketScreenViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textColor = .white
         label.textAlignment = .left
+        label.text = "First Stage"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    
     private func constraints() {
         
-        view.addSubview(rocketImageView)
-        view.addSubview(contentView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(rocketImageView)
+        scrollView.addSubview(contentView)
         contentView.addSubview(rocketNameLabel)
         contentView.addSubview(rocketCell)
         
         NSLayoutConstraint.activate([
-            rocketImageView.topAnchor.constraint(equalTo: view.topAnchor),
-            rocketImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            rocketImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            rocketImageView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            rocketImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            rocketImageView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             rocketImageView.heightAnchor.constraint(equalToConstant: 320),
+            rocketImageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
             contentView.topAnchor.constraint(equalTo: rocketImageView.bottomAnchor, constant: -25),
-            contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
             rocketNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
             rocketNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
@@ -148,12 +169,12 @@ class RocketScreenViewController: UIViewController {
             rocketNameLabel.text = currentRocket.name
             
             if !currentRocket.flickrImages.isEmpty {
-                        let randomIndex = Int(arc4random_uniform(UInt32(currentRocket.flickrImages.count)))
-                        let urlString = currentRocket.flickrImages[randomIndex]
-                        if let url = URL(string: urlString) {
-                            rocketImageView.sd_setImage(with: url)
-                        }
-                    }
+                let randomIndex = Int(arc4random_uniform(UInt32(currentRocket.flickrImages.count)))
+                let urlString = currentRocket.flickrImages[randomIndex]
+            if let url = URL(string: urlString) {
+                rocketImageView.sd_setImage(with: url)
+                }
+            }
         }
     }
     
