@@ -53,6 +53,24 @@ class RocketScreenViewController: UIViewController {
         return scrollView
     }()
     
+    private let gearButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "gearshape"), for: .normal)
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private let launchesButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("View Launches", for: .normal)
+        button.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 28/255, alpha: 1)
+        button.tintColor = .white
+        button.layer.cornerRadius = 15
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private let pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.numberOfPages = 4
@@ -294,7 +312,7 @@ class RocketScreenViewController: UIViewController {
         scrollView.addSubview(rocketImageView)
         scrollView.addSubview(contentView)
         [
-            rocketNameLabel, rocketCell, firstLaunchLabel, countryLabel, costLabel, firstStageLabel, numberOfEnginesLabel, amountOfFuelinTonsLabel, burnTimeInSecondsLabel, secondStageLabel, secondNumberOfEnginesLabel, secondAmountOfFuelinTonsLabel, secondBurnTimeInSecondsLabel, launchLabel, priceLabel, whatCountryLabel, enginesLabel, amountOfFuelinLabel, burnTimeLabel, secondNumberLabel, secondBurnTimeLabel, secondAmountOfFuelinLabel
+            rocketNameLabel, rocketCell, firstLaunchLabel, countryLabel, costLabel, firstStageLabel, numberOfEnginesLabel, amountOfFuelinTonsLabel, burnTimeInSecondsLabel, secondStageLabel, secondNumberOfEnginesLabel, secondAmountOfFuelinTonsLabel, secondBurnTimeInSecondsLabel, launchLabel, priceLabel, whatCountryLabel, enginesLabel, amountOfFuelinLabel, burnTimeLabel, secondNumberLabel, secondBurnTimeLabel, secondAmountOfFuelinLabel, gearButton, launchesButton
         ].forEach(contentView.addSubview)
         
         NSLayoutConstraint.activate([
@@ -329,11 +347,23 @@ class RocketScreenViewController: UIViewController {
             rocketNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
             rocketNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
             
+            gearButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+            gearButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            gearButton.heightAnchor.constraint(equalToConstant: 20),
+            gearButton.widthAnchor.constraint(equalToConstant: 20),
+            
+            launchesButton.topAnchor.constraint(equalTo: secondBurnTimeInSecondsLabel.bottomAnchor, constant: 25),
+            launchesButton.widthAnchor.constraint(equalToConstant: 150),
+            launchesButton.heightAnchor.constraint(equalToConstant: 50),
+            launchesButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            
             rocketCell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 110),
             rocketCell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             rocketCell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             rocketCell.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             rocketCell.heightAnchor.constraint(equalToConstant: 120),
+            
+            
             
             firstLaunchLabel.topAnchor.constraint(equalTo: rocketCell.bottomAnchor, constant: 25),
             firstLaunchLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
