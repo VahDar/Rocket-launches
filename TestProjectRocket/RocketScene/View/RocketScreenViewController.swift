@@ -22,7 +22,8 @@ class RocketScreenViewController: UIViewController {
         constraints()
         Task {
             await viewModel.getRocketData()
-            setupUI()
+            setupUI(for: 0)
+            pageControl.numberOfPages = viewModel.rocketData.count
         }
     }
     
@@ -52,6 +53,24 @@ class RocketScreenViewController: UIViewController {
         return scrollView
     }()
     
+    private let pageControl: UIPageControl = {
+        let pc = UIPageControl()
+        pc.numberOfPages = 4
+        pc.currentPage = 0
+        pc.tintColor = .white
+        pc.pageIndicatorTintColor = .gray
+        pc.currentPageIndicatorTintColor = .white
+        pc.translatesAutoresizingMaskIntoConstraints = false
+        return pc
+    }()
+    
+    private let pageControlBackgroundView: UIView = {
+            let view = UIView()
+            view.backgroundColor = UIColor(red: 13/255, green: 13/255, blue: 13/255, alpha: 1)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            return view
+        }()
+    
     private let rocketImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
@@ -78,7 +97,7 @@ class RocketScreenViewController: UIViewController {
     private let firstLaunchLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
+        label.textColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
         label.textAlignment = .left
         label.text = "First launch"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -97,7 +116,7 @@ class RocketScreenViewController: UIViewController {
     private let countryLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
+        label.textColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
         label.textAlignment = .left
         label.text = "Country"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -116,7 +135,7 @@ class RocketScreenViewController: UIViewController {
     private let costLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
+        label.textColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
         label.textAlignment = .left
         label.text = "Launch cost"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -155,7 +174,7 @@ class RocketScreenViewController: UIViewController {
     private let numberOfEnginesLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
+        label.textColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
         label.textAlignment = .left
         label.text = "Number of engines"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -174,7 +193,7 @@ class RocketScreenViewController: UIViewController {
     private let amountOfFuelinTonsLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
+        label.textColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
         label.textAlignment = .left
         label.text = "Amount of fuel in tons"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -193,7 +212,7 @@ class RocketScreenViewController: UIViewController {
     private let burnTimeInSecondsLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
+        label.textColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
         label.textAlignment = .left
         label.text = "Burn time in sec"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -212,7 +231,7 @@ class RocketScreenViewController: UIViewController {
     private let secondNumberOfEnginesLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
+        label.textColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
         label.textAlignment = .left
         label.text = "Number of engines"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -231,7 +250,7 @@ class RocketScreenViewController: UIViewController {
     private let secondAmountOfFuelinTonsLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
+        label.textColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
         label.textAlignment = .left
         label.text = "Amount of fuel in tons"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -250,7 +269,7 @@ class RocketScreenViewController: UIViewController {
     private let secondBurnTimeInSecondsLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
+        label.textColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
         label.textAlignment = .left
         label.text = "Burn time in sec"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -270,6 +289,8 @@ class RocketScreenViewController: UIViewController {
     private func constraints() {
         
         view.addSubview(scrollView)
+        view.addSubview(pageControlBackgroundView)
+        pageControlBackgroundView.addSubview(pageControl)
         scrollView.addSubview(rocketImageView)
         scrollView.addSubview(contentView)
         [
@@ -283,6 +304,14 @@ class RocketScreenViewController: UIViewController {
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            pageControlBackgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            pageControlBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            pageControlBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            pageControlBackgroundView.heightAnchor.constraint(equalToConstant: 55),
+            
+            pageControl.bottomAnchor.constraint(equalTo: pageControlBackgroundView.bottomAnchor, constant: -10),
+            pageControl.centerXAnchor.constraint(equalTo: pageControlBackgroundView.centerXAnchor),
             
             rocketImageView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             rocketImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
@@ -366,13 +395,20 @@ class RocketScreenViewController: UIViewController {
             secondBurnTimeLabel.topAnchor.constraint(equalTo: secondAmountOfFuelinLabel.bottomAnchor, constant: 25),
             secondBurnTimeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
         ])
+        
     }
     
-    private func setupUI() {
-        view.backgroundColor = .white
-        rocketCell.translatesAutoresizingMaskIntoConstraints = false
+    private func setupUI(for currentPage: Int) {
+        view.backgroundColor = .black
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.view.backgroundColor = .clear
         
-        if let currentRocket = viewModel.rocketData.first {
+        rocketCell.translatesAutoresizingMaskIntoConstraints = false
+        guard viewModel.rocketData.indices.contains(currentPage) else { return }
+            let currentRocket = viewModel.rocketData[currentPage]
+        
             rocketCell.configure(with: currentRocket)
             rocketNameLabel.text = currentRocket.name
             launchLabel.text = currentRocket.firstFlight
@@ -398,8 +434,14 @@ class RocketScreenViewController: UIViewController {
                     rocketImageView.sd_setImage(with: url)
                 }
             }
-        }
+        
+        pageControl.addTarget(self, action: #selector(pageControlDidChange(_:)), for: .valueChanged)
+    }
+    
+    @objc private func pageControlDidChange(_ sender: UIPageControl) {
+        setupUI(for: sender.currentPage)
     }
 }
+
 
 
