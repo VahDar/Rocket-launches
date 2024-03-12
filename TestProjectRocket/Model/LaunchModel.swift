@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - LaunchElement
-struct LaunchModel: Codable {
+struct LaunchElement: Codable {
     let fairings: Fairings?
     let links: Links
     let staticFireDateUTC: String?

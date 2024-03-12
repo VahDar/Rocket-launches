@@ -10,4 +10,5 @@ import Foundation
 
 protocol NetworkManagerProtocol {
     func getRockets() async throws -> [RocketModel]
+    func getLunchData() async throws -> [LaunchModel]
 }

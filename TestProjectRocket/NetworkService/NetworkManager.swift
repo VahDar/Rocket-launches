@@ -18,5 +18,13 @@ final class NetworkManager: NetworkManagerProtocol, NetworkHTTPClient {
         }
     }
     
+    func getLunchData() async throws -> [LaunchModel] {
+        do {
+            return try await fetchData(from: Endpoint.launches.path, requestMethod: RequestMethod.get, responseType: LaunchModel.self)
+        } catch {
+            print("Error fetching data: \(error.localizedDescription)")
+            throw error
+        }
+    }
     
 }
