@@ -106,6 +106,7 @@ class RocketViewCell: UIView {
         return scrollView
     }()
     
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayouts()
@@ -115,6 +116,7 @@ class RocketViewCell: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Constraints
     private func setupLayouts() {
        
         self.addSubview(contentView)
@@ -169,6 +171,7 @@ class RocketViewCell: UIView {
         ])
     }
     
+    // MARK: - Configure
     func configure(with rocket: RocketModel) {
         heightLabel.text = "\(rocket.height.feet.map { "\($0)" } ?? "N/A")"
         diameterLabel.text = "\(rocket.diameter.feet.map { "\($0)" } ?? "N/A")"

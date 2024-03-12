@@ -17,9 +17,7 @@ class RocketScreenViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         rocketCell = RocketViewCell()
-        
         viewModel = RocketScreenViewModel()
         constraints()
         Task {
@@ -30,17 +28,14 @@ class RocketScreenViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
-        // Создаем путь с закругленными верхними углами
+        
         let path = UIBezierPath(roundedRect: contentView.bounds,
                                 byRoundingCorners: [.topRight, .topLeft],
                                 cornerRadii: CGSize(width: 30.0, height: 30.0))
-
-        // Создаем маску для пути
+        
         let maskLayer = CAShapeLayer()
         maskLayer.path = path.cgPath
-
-        // Присваиваем маску слою contentView
+        
         contentView.layer.mask = maskLayer
     }
     
@@ -74,7 +69,7 @@ class RocketScreenViewController: UIViewController {
     }()
     
     private let contentView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.backgroundColor = .black
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -271,13 +266,14 @@ class RocketScreenViewController: UIViewController {
         return label
     }()
     
+    // MARK: - Constraints and setupUI
     private func constraints() {
         
         view.addSubview(scrollView)
         scrollView.addSubview(rocketImageView)
         scrollView.addSubview(contentView)
         [
-        rocketNameLabel, rocketCell, firstLaunchLabel, countryLabel, costLabel, firstStageLabel, numberOfEnginesLabel, amountOfFuelinTonsLabel, burnTimeInSecondsLabel, secondStageLabel, secondNumberOfEnginesLabel, secondAmountOfFuelinTonsLabel, secondBurnTimeInSecondsLabel, launchLabel, priceLabel, whatCountryLabel, enginesLabel, amountOfFuelinLabel, burnTimeLabel, secondNumberLabel, secondBurnTimeLabel, secondAmountOfFuelinLabel
+            rocketNameLabel, rocketCell, firstLaunchLabel, countryLabel, costLabel, firstStageLabel, numberOfEnginesLabel, amountOfFuelinTonsLabel, burnTimeInSecondsLabel, secondStageLabel, secondNumberOfEnginesLabel, secondAmountOfFuelinTonsLabel, secondBurnTimeInSecondsLabel, launchLabel, priceLabel, whatCountryLabel, enginesLabel, amountOfFuelinLabel, burnTimeLabel, secondNumberLabel, secondBurnTimeLabel, secondAmountOfFuelinLabel
         ].forEach(contentView.addSubview)
         
         NSLayoutConstraint.activate([
@@ -325,17 +321,29 @@ class RocketScreenViewController: UIViewController {
             costLabel.topAnchor.constraint(equalTo: countryLabel.bottomAnchor, constant: 25),
             costLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
             
+            priceLabel.topAnchor.constraint(equalTo: whatCountryLabel.bottomAnchor, constant: 25),
+            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            
             firstStageLabel.topAnchor.constraint(equalTo: costLabel.bottomAnchor, constant: 50),
             firstStageLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-
+            
             numberOfEnginesLabel.topAnchor.constraint(equalTo: firstStageLabel.bottomAnchor, constant: 25),
             numberOfEnginesLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            
+            enginesLabel.topAnchor.constraint(equalTo: firstStageLabel.bottomAnchor, constant: 25),
+            enginesLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
             
             amountOfFuelinTonsLabel.topAnchor.constraint(equalTo: numberOfEnginesLabel.bottomAnchor, constant: 25),
             amountOfFuelinTonsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
             
+            amountOfFuelinLabel.topAnchor.constraint(equalTo: enginesLabel.bottomAnchor, constant: 25),
+            amountOfFuelinLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            
             burnTimeInSecondsLabel.topAnchor.constraint(equalTo: amountOfFuelinTonsLabel.bottomAnchor, constant: 25),
             burnTimeInSecondsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            
+            burnTimeLabel.topAnchor.constraint(equalTo: amountOfFuelinLabel.bottomAnchor, constant: 25),
+            burnTimeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
             
             secondStageLabel.topAnchor.constraint(equalTo: burnTimeInSecondsLabel.bottomAnchor, constant: 50),
             secondStageLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
@@ -343,11 +351,20 @@ class RocketScreenViewController: UIViewController {
             secondNumberOfEnginesLabel.topAnchor.constraint(equalTo: secondStageLabel.bottomAnchor, constant: 25),
             secondNumberOfEnginesLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
             
+            secondNumberLabel.topAnchor.constraint(equalTo: secondStageLabel.bottomAnchor, constant: 25),
+            secondNumberLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            
             secondAmountOfFuelinTonsLabel.topAnchor.constraint(equalTo: secondNumberOfEnginesLabel.bottomAnchor, constant: 25),
             secondAmountOfFuelinTonsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
             
+            secondAmountOfFuelinLabel.topAnchor.constraint(equalTo: secondNumberLabel.bottomAnchor, constant: 25),
+            secondAmountOfFuelinLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            
             secondBurnTimeInSecondsLabel.topAnchor.constraint(equalTo: secondAmountOfFuelinTonsLabel.bottomAnchor, constant: 25),
             secondBurnTimeInSecondsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            
+            secondBurnTimeLabel.topAnchor.constraint(equalTo: secondAmountOfFuelinLabel.bottomAnchor, constant: 25),
+            secondBurnTimeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
         ])
     }
     
@@ -360,18 +377,29 @@ class RocketScreenViewController: UIViewController {
             rocketNameLabel.text = currentRocket.name
             launchLabel.text = currentRocket.firstFlight
             whatCountryLabel.text = currentRocket.country
-            priceLabel.text = "\(currentRocket.costPerLaunch)"
+            enginesLabel.text = "\(currentRocket.firstStage.engines)"
+            secondNumberLabel.text = "\(currentRocket.secondStage.engines)"
+            amountOfFuelinLabel.text = "\(currentRocket.firstStage.fuelAmountTons) ton"
+            secondAmountOfFuelinLabel.text = "\(currentRocket.secondStage.fuelAmountTons) ton"
+            burnTimeLabel.text = "\(currentRocket.firstStage.burnTimeSEC ?? 0) sec"
+            secondBurnTimeLabel.text = "\(currentRocket.secondStage.burnTimeSEC ?? 0) sec"
+            let costInMillions = Double(currentRocket.costPerLaunch) / 1_000_000
+            
+            if floor(costInMillions) == costInMillions {
+                priceLabel.text = "$\(Int(costInMillions))mln"
+            } else {
+                priceLabel.text = "$\(String(format: "%.1f", costInMillions))mln"
+            }
             
             if !currentRocket.flickrImages.isEmpty {
                 let randomIndex = Int(arc4random_uniform(UInt32(currentRocket.flickrImages.count)))
                 let urlString = currentRocket.flickrImages[randomIndex]
-            if let url = URL(string: urlString) {
-                rocketImageView.sd_setImage(with: url)
+                if let url = URL(string: urlString) {
+                    rocketImageView.sd_setImage(with: url)
                 }
             }
         }
     }
-    
 }
 
 
