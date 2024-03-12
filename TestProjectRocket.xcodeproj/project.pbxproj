@@ -13,7 +13,7 @@
 		FC2B14CA2B9B1D1E00179D1D /* NetworkContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B14C92B9B1D1E00179D1D /* NetworkContainer.swift */; };
 		FC2B14CC2B9B260700179D1D /* RocketViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B14CB2B9B260700179D1D /* RocketViewCell.swift */; };
 		FC8DEE492B9C6B900067706D /* RocketScreenViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8DEE482B9C6B900067706D /* RocketScreenViewModelProtocol.swift */; };
-		FC8DEE4C2B9C6DF40067706D /* RocketVMContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8DEE4B2B9C6DF40067706D /* RocketVMContainer.swift */; };
+		FC8DEE4C2B9C6DF40067706D /* RocketContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8DEE4B2B9C6DF40067706D /* RocketContainer.swift */; };
 		FC9C636129D2CF4C006EA975 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C636029D2CF4C006EA975 /* AppDelegate.swift */; };
 		FC9C636329D2CF4C006EA975 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C636229D2CF4C006EA975 /* SceneDelegate.swift */; };
 		FC9C636A29D2CF4E006EA975 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC9C636929D2CF4E006EA975 /* Assets.xcassets */; };
@@ -35,6 +35,9 @@
 		FCF529E42B98EF4500C4C44F /* RocketScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF529E32B98EF4500C4C44F /* RocketScreenViewController.swift */; };
 		FCF529E72B98EF8A00C4C44F /* RoketScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF529E62B98EF8A00C4C44F /* RoketScreenViewModel.swift */; };
 		FCF9FEE02BA0A69D00855467 /* LaunchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF9FEDF2BA0A69D00855467 /* LaunchModel.swift */; };
+		FCF9FEE52BA0AA1500855467 /* LaunchSceneViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF9FEE42BA0AA1500855467 /* LaunchSceneViewModelProtocol.swift */; };
+		FCF9FEE72BA0AA5900855467 /* LaunchSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF9FEE62BA0AA5900855467 /* LaunchSceneViewModel.swift */; };
+		FCF9FEEA2BA0AE3F00855467 /* LaunchContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF9FEE92BA0AE3F00855467 /* LaunchContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +45,7 @@
 		FC2B14C92B9B1D1E00179D1D /* NetworkContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkContainer.swift; sourceTree = "<group>"; };
 		FC2B14CB2B9B260700179D1D /* RocketViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketViewCell.swift; sourceTree = "<group>"; };
 		FC8DEE482B9C6B900067706D /* RocketScreenViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketScreenViewModelProtocol.swift; sourceTree = "<group>"; };
-		FC8DEE4B2B9C6DF40067706D /* RocketVMContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketVMContainer.swift; sourceTree = "<group>"; };
+		FC8DEE4B2B9C6DF40067706D /* RocketContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketContainer.swift; sourceTree = "<group>"; };
 		FC9C635D29D2CF4C006EA975 /* TestProjectRocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestProjectRocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC9C636029D2CF4C006EA975 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC9C636229D2CF4C006EA975 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +67,9 @@
 		FCF529E32B98EF4500C4C44F /* RocketScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketScreenViewController.swift; sourceTree = "<group>"; };
 		FCF529E62B98EF8A00C4C44F /* RoketScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoketScreenViewModel.swift; sourceTree = "<group>"; };
 		FCF9FEDF2BA0A69D00855467 /* LaunchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchModel.swift; sourceTree = "<group>"; };
+		FCF9FEE42BA0AA1500855467 /* LaunchSceneViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSceneViewModelProtocol.swift; sourceTree = "<group>"; };
+		FCF9FEE62BA0AA5900855467 /* LaunchSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSceneViewModel.swift; sourceTree = "<group>"; };
+		FCF9FEE92BA0AE3F00855467 /* LaunchContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +98,7 @@
 		FC8DEE4A2B9C6DC50067706D /* DI */ = {
 			isa = PBXGroup;
 			children = (
-				FC8DEE4B2B9C6DF40067706D /* RocketVMContainer.swift */,
+				FC8DEE4B2B9C6DF40067706D /* RocketContainer.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -116,6 +122,7 @@
 		FC9C635F29D2CF4C006EA975 /* TestProjectRocket */ = {
 			isa = PBXGroup;
 			children = (
+				FCF9FEE12BA0A96800855467 /* LaunchScene */,
 				FCEFC7322B99FCA30039CE77 /* RocketScene */,
 				FCEFC7362B9A00E00039CE77 /* NetworkService */,
 				FCEFC7332B99FCE70039CE77 /* Model */,
@@ -225,6 +232,40 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		FCF9FEE12BA0A96800855467 /* LaunchScene */ = {
+			isa = PBXGroup;
+			children = (
+				FCF9FEE82BA0AE2100855467 /* DI */,
+				FCF9FEE32BA0A99100855467 /* ViewModel */,
+				FCF9FEE22BA0A98100855467 /* LaunchSceneCoordinator */,
+			);
+			path = LaunchScene;
+			sourceTree = "<group>";
+		};
+		FCF9FEE22BA0A98100855467 /* LaunchSceneCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LaunchSceneCoordinator;
+			sourceTree = "<group>";
+		};
+		FCF9FEE32BA0A99100855467 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FCF9FEE42BA0AA1500855467 /* LaunchSceneViewModelProtocol.swift */,
+				FCF9FEE62BA0AA5900855467 /* LaunchSceneViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FCF9FEE82BA0AE2100855467 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				FCF9FEE92BA0AE3F00855467 /* LaunchContainer.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -305,8 +346,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCF9FEE52BA0AA1500855467 /* LaunchSceneViewModelProtocol.swift in Sources */,
 				FCF529E72B98EF8A00C4C44F /* RoketScreenViewModel.swift in Sources */,
-				FC8DEE4C2B9C6DF40067706D /* RocketVMContainer.swift in Sources */,
+				FCF9FEE72BA0AA5900855467 /* LaunchSceneViewModel.swift in Sources */,
+				FC8DEE4C2B9C6DF40067706D /* RocketContainer.swift in Sources */,
 				FCF9FEE02BA0A69D00855467 /* LaunchModel.swift in Sources */,
 				FCE9B5692B97803600D79A71 /* InjectedValue.swift in Sources */,
 				FCE9B5672B977FF000D79A71 /* InjectionKey.swift in Sources */,
@@ -322,6 +365,7 @@
 				FCE9B56B2B97813600D79A71 /* Injected.swift in Sources */,
 				FC2B14CA2B9B1D1E00179D1D /* NetworkContainer.swift in Sources */,
 				FCEFC7472B9A49ED0039CE77 /* NetworkHTTPClient.swift in Sources */,
+				FCF9FEEA2BA0AE3F00855467 /* LaunchContainer.swift in Sources */,
 				FC8DEE492B9C6B900067706D /* RocketScreenViewModelProtocol.swift in Sources */,
 				FCEFC7352B99FD100039CE77 /* RocketModel.swift in Sources */,
 				FCEFC73D2B9A1C560039CE77 /* NetworkError.swift in Sources */,

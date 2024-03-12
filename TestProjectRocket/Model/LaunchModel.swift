@@ -7,8 +7,8 @@
 
 import Foundation
 
-// MARK: - LaunchElement
-struct LaunchElement: Codable {
+// MARK: - LaunchModel
+struct LaunchModel: Codable {
     let fairings: Fairings?
     let links: Links
     let staticFireDateUTC: String?
@@ -159,7 +159,7 @@ enum Rocket: String, Codable {
     case the5E9D0D95Eda69974Db09D1Ed = "5e9d0d95eda69974db09d1ed"
 }
 
-typealias Launch = [LaunchElement]
+typealias Launch = [LaunchModel]
 
 // MARK: - Encode/decode helpers
 

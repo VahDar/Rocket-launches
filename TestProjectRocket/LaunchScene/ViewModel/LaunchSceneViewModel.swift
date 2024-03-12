@@ -1,29 +1,29 @@
 //
-//  RoketScreenViewModel.swift
+//  LaunchSceneViewModel.swift
 //  TestProjectRocket
 //
-//  Created by Vakhtang on 06.03.2024.
+//  Created by Vakhtang on 12.03.2024.
 //
 
 import Foundation
 
-
-
-final class RocketScreenViewModel: RocketScreenViewModelProtocol {
+class LaunchSceneViewModel: LaunchSceneViewModelProtocol {
+    
+    var launchData: [LaunchModel] = []
     var networkManager: NetworkManagerProtocol!
-    var rocketData: [RocketModel] = []
     
     init(networkManager: NetworkManagerProtocol = NetworkManager()) {
         self.networkManager = networkManager
     }
-
     
-    func getRocketData() async {
+    func getLaunchData() async {
         do {
-            let data = try await networkManager.getRockets()
-            rocketData = data
+            let data = try await networkManager.getLunchData()
+            launchData = data
         } catch {
             debugPrint(error.localizedDescription)
         }
     }
+    
+    
 }
