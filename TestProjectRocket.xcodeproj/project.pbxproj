@@ -34,6 +34,7 @@
 		FCF529E12B98EE2800C4C44F /* RocketScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF529E02B98EE2800C4C44F /* RocketScreenCoordinator.swift */; };
 		FCF529E42B98EF4500C4C44F /* RocketScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF529E32B98EF4500C4C44F /* RocketScreenViewController.swift */; };
 		FCF529E72B98EF8A00C4C44F /* RoketScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF529E62B98EF8A00C4C44F /* RoketScreenViewModel.swift */; };
+		FCF9FEE02BA0A69D00855467 /* LaunchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF9FEDF2BA0A69D00855467 /* LaunchModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		FCF529E02B98EE2800C4C44F /* RocketScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketScreenCoordinator.swift; sourceTree = "<group>"; };
 		FCF529E32B98EF4500C4C44F /* RocketScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketScreenViewController.swift; sourceTree = "<group>"; };
 		FCF529E62B98EF8A00C4C44F /* RoketScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoketScreenViewModel.swift; sourceTree = "<group>"; };
+		FCF9FEDF2BA0A69D00855467 /* LaunchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				FCEFC7342B99FD100039CE77 /* RocketModel.swift */,
+				FCF9FEDF2BA0A69D00855467 /* LaunchModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			files = (
 				FCF529E72B98EF8A00C4C44F /* RoketScreenViewModel.swift in Sources */,
 				FC8DEE4C2B9C6DF40067706D /* RocketVMContainer.swift in Sources */,
+				FCF9FEE02BA0A69D00855467 /* LaunchModel.swift in Sources */,
 				FCE9B5692B97803600D79A71 /* InjectedValue.swift in Sources */,
 				FCE9B5672B977FF000D79A71 /* InjectionKey.swift in Sources */,
 				FC2B14CC2B9B260700179D1D /* RocketViewCell.swift in Sources */,
