@@ -38,6 +38,7 @@
 		FCF9FEE52BA0AA1500855467 /* LaunchSceneViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF9FEE42BA0AA1500855467 /* LaunchSceneViewModelProtocol.swift */; };
 		FCF9FEE72BA0AA5900855467 /* LaunchSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF9FEE62BA0AA5900855467 /* LaunchSceneViewModel.swift */; };
 		FCF9FEEA2BA0AE3F00855467 /* LaunchContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF9FEE92BA0AE3F00855467 /* LaunchContainer.swift */; };
+		FCF9FEEF2BA1DC6D00855467 /* LaunchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF9FEEE2BA1DC6D00855467 /* LaunchCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		FCF9FEE42BA0AA1500855467 /* LaunchSceneViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSceneViewModelProtocol.swift; sourceTree = "<group>"; };
 		FCF9FEE62BA0AA5900855467 /* LaunchSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSceneViewModel.swift; sourceTree = "<group>"; };
 		FCF9FEE92BA0AE3F00855467 /* LaunchContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchContainer.swift; sourceTree = "<group>"; };
+		FCF9FEEE2BA1DC6D00855467 /* LaunchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,9 +237,10 @@
 		FCF9FEE12BA0A96800855467 /* LaunchScene */ = {
 			isa = PBXGroup;
 			children = (
+				FCF9FEED2BA1DC4900855467 /* View */,
+				FCF9FEE22BA0A98100855467 /* LaunchSceneCoordinator */,
 				FCF9FEE82BA0AE2100855467 /* DI */,
 				FCF9FEE32BA0A99100855467 /* ViewModel */,
-				FCF9FEE22BA0A98100855467 /* LaunchSceneCoordinator */,
 			);
 			path = LaunchScene;
 			sourceTree = "<group>";
@@ -264,6 +267,14 @@
 				FCF9FEE92BA0AE3F00855467 /* LaunchContainer.swift */,
 			);
 			path = DI;
+			sourceTree = "<group>";
+		};
+		FCF9FEED2BA1DC4900855467 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FCF9FEEE2BA1DC6D00855467 /* LaunchCollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,6 +378,7 @@
 				FCEFC7472B9A49ED0039CE77 /* NetworkHTTPClient.swift in Sources */,
 				FCF9FEEA2BA0AE3F00855467 /* LaunchContainer.swift in Sources */,
 				FC8DEE492B9C6B900067706D /* RocketScreenViewModelProtocol.swift in Sources */,
+				FCF9FEEF2BA1DC6D00855467 /* LaunchCollectionViewCell.swift in Sources */,
 				FCEFC7352B99FD100039CE77 /* RocketModel.swift in Sources */,
 				FCEFC73D2B9A1C560039CE77 /* NetworkError.swift in Sources */,
 				FC9C636329D2CF4C006EA975 /* SceneDelegate.swift in Sources */,
