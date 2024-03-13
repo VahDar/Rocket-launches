@@ -11,6 +11,7 @@ class LaunchViewController: UIViewController {
 
     //MARK: - Properties
     var viewModel: LaunchSceneViewModelProtocol!
+    var launchCell: LaunchCollectionViewCell!
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -25,20 +26,39 @@ class LaunchViewController: UIViewController {
         return collectionView
     }()
     
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = LaunchSceneViewModel()
+        launchCell = LaunchCollectionViewCell()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK: - CollectionView Delegate
+    private func collectionViewDelegate() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
-    */
-
+    
+    // MARK: - SetupUI and Constraints
+    private func setupUI() {
+        navigationController?.isNavigationBarHidden = false
+        view.backgroundColor = .black
+        title = "\(launchCell.nameRocketLabel)"
+        let backButton = UIBarButtonItem()
+        backButton.title = "Back"
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+    }
+    
+    private func constraints() {
+        view.addSubview(collectionView)
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
 }
+
+extension

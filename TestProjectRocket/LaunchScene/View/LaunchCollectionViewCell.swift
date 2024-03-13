@@ -14,7 +14,7 @@ class LaunchCollectionViewCell: UICollectionViewCell {
     
     // MARK: - View
     
-    private let nameRocketLabel: UILabel = {
+       let nameRocketLabel: UILabel = {
        let label = UILabel()
         label.textColor = .white
         label.font = .systemFont(ofSize: 20, weight: .semibold)
