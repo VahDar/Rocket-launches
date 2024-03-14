@@ -12,6 +12,8 @@ class LaunchViewController: UIViewController {
     //MARK: - Properties
     var viewModel: LaunchSceneViewModelProtocol!
     var launchCell: LaunchCollectionViewCell!
+    var rocketID: String?
+    var rocketName: String?
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -31,6 +33,13 @@ class LaunchViewController: UIViewController {
         super.viewDidLoad()
         viewModel = LaunchSceneViewModel()
         launchCell = LaunchCollectionViewCell()
+        setupUI()
+        constraints()
+        collectionViewDelegate()
+                Task {
+            await viewModel.getLaunchData()
+            
+        }
     }
     
     //MARK: - CollectionView Delegate
@@ -42,8 +51,7 @@ class LaunchViewController: UIViewController {
     // MARK: - SetupUI and Constraints
     private func setupUI() {
         navigationController?.isNavigationBarHidden = false
-        view.backgroundColor = .black
-        title = "\(launchCell.nameRocketLabel)"
+        view.backgroundColor = .white
         let backButton = UIBarButtonItem()
         backButton.title = "Back"
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton

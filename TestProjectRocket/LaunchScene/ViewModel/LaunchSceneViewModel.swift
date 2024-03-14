@@ -18,8 +18,9 @@ class LaunchSceneViewModel: LaunchSceneViewModelProtocol {
     
     func getLaunchData() async {
         do {
-            let data = try await networkManager.getLunchData()
+            let data = try await networkManager.getLaunchData()
             launchData = data
+            print(launchData)
         } catch {
             debugPrint(error.localizedDescription)
         }

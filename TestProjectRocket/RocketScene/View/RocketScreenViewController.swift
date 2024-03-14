@@ -20,6 +20,7 @@ class RocketScreenViewController: UIViewController {
         rocketCell = RocketViewCell()
         viewModel = RocketScreenViewModel()
         constraints()
+        launcButton()
         Task {
             await viewModel.getRocketData()
             setupUI(for: 0)
@@ -44,7 +45,7 @@ class RocketScreenViewController: UIViewController {
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.alwaysBounceVertical = true
+        scrollView.alwaysBounceVertical = false
         scrollView.alwaysBounceHorizontal = false
         scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.showsVerticalScrollIndicator = true
@@ -83,11 +84,11 @@ class RocketScreenViewController: UIViewController {
     }()
     
     private let pageControlBackgroundView: UIView = {
-            let view = UIView()
-            view.backgroundColor = UIColor(red: 13/255, green: 13/255, blue: 13/255, alpha: 1)
-            view.translatesAutoresizingMaskIntoConstraints = false
-            return view
-        }()
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 13/255, green: 13/255, blue: 13/255, alpha: 1)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     private let rocketImageView: UIImageView = {
         let iv = UIImageView()
@@ -342,7 +343,7 @@ class RocketScreenViewController: UIViewController {
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
+            contentView.heightAnchor.constraint(equalToConstant: 1000),
             
             rocketNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
             rocketNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
@@ -437,33 +438,33 @@ class RocketScreenViewController: UIViewController {
         
         rocketCell.translatesAutoresizingMaskIntoConstraints = false
         guard viewModel.rocketData.indices.contains(currentPage) else { return }
-            let currentRocket = viewModel.rocketData[currentPage]
+        let currentRocket = viewModel.rocketData[currentPage]
         
-            rocketCell.configure(with: currentRocket)
-            rocketNameLabel.text = currentRocket.name
-            launchLabel.text = currentRocket.firstFlight
-            whatCountryLabel.text = currentRocket.country
-            enginesLabel.text = "\(currentRocket.firstStage.engines)"
-            secondNumberLabel.text = "\(currentRocket.secondStage.engines)"
-            amountOfFuelinLabel.text = "\(currentRocket.firstStage.fuelAmountTons) ton"
-            secondAmountOfFuelinLabel.text = "\(currentRocket.secondStage.fuelAmountTons) ton"
-            burnTimeLabel.text = "\(currentRocket.firstStage.burnTimeSEC ?? 0) sec"
-            secondBurnTimeLabel.text = "\(currentRocket.secondStage.burnTimeSEC ?? 0) sec"
-            let costInMillions = Double(currentRocket.costPerLaunch) / 1_000_000
-            
-            if floor(costInMillions) == costInMillions {
-                priceLabel.text = "$\(Int(costInMillions))mln"
-            } else {
-                priceLabel.text = "$\(String(format: "%.1f", costInMillions))mln"
+        rocketCell.configure(with: currentRocket)
+        rocketNameLabel.text = currentRocket.name
+        launchLabel.text = currentRocket.firstFlight
+        whatCountryLabel.text = currentRocket.country
+        enginesLabel.text = "\(currentRocket.firstStage.engines)"
+        secondNumberLabel.text = "\(currentRocket.secondStage.engines)"
+        amountOfFuelinLabel.text = "\(currentRocket.firstStage.fuelAmountTons) ton"
+        secondAmountOfFuelinLabel.text = "\(currentRocket.secondStage.fuelAmountTons) ton"
+        burnTimeLabel.text = "\(currentRocket.firstStage.burnTimeSEC ?? 0) sec"
+        secondBurnTimeLabel.text = "\(currentRocket.secondStage.burnTimeSEC ?? 0) sec"
+        let costInMillions = Double(currentRocket.costPerLaunch) / 1_000_000
+        
+        if floor(costInMillions) == costInMillions {
+            priceLabel.text = "$\(Int(costInMillions))mln"
+        } else {
+            priceLabel.text = "$\(String(format: "%.1f", costInMillions))mln"
+        }
+        
+        if !currentRocket.flickrImages.isEmpty {
+            let randomIndex = Int(arc4random_uniform(UInt32(currentRocket.flickrImages.count)))
+            let urlString = currentRocket.flickrImages[randomIndex]
+            if let url = URL(string: urlString) {
+                rocketImageView.sd_setImage(with: url)
             }
-            
-            if !currentRocket.flickrImages.isEmpty {
-                let randomIndex = Int(arc4random_uniform(UInt32(currentRocket.flickrImages.count)))
-                let urlString = currentRocket.flickrImages[randomIndex]
-                if let url = URL(string: urlString) {
-                    rocketImageView.sd_setImage(with: url)
-                }
-            }
+        }
         
         pageControl.addTarget(self, action: #selector(pageControlDidChange(_:)), for: .valueChanged)
     }
@@ -471,7 +472,27 @@ class RocketScreenViewController: UIViewController {
     @objc private func pageControlDidChange(_ sender: UIPageControl) {
         setupUI(for: sender.currentPage)
     }
+    
+    func openLaunchVC(serialNumber: Int) {
+        guard viewModel.rocketData.indices.contains(serialNumber) else { return }
+        let rocket = viewModel.rocketData[serialNumber]
+        
+        let launchVC = LaunchViewController()
+        launchVC.rocketID = rocket.id
+        launchVC.rocketName = rocket.name
+        launchVC.title = rocket.name
+        
+        navigationController?.pushViewController(launchVC, animated: true)
+    }
+    
+    private func launcButton() {
+        launchesButton.addTarget(self, action: #selector(launchesButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func launchesButtonTapped() {
+        openLaunchVC(serialNumber: pageControl.currentPage)
+    }
+    
 }
-
 
 
