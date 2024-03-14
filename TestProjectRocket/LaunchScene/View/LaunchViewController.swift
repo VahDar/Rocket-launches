@@ -61,4 +61,22 @@ class LaunchViewController: UIViewController {
     }
 }
 
-extension
+extension LaunchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.launchData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LaunchCollectionViewCell.identifier, for: indexPath) as? LaunchCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        let launchModel = viewModel.launchData[indexPath.item]
+        cell.confugire(with: launchModel)
+        
+        return cell
+    }
+    
+    
+}
