@@ -33,12 +33,13 @@ class LaunchViewController: UIViewController {
         super.viewDidLoad()
         viewModel = LaunchSceneViewModel()
         launchCell = LaunchCollectionViewCell()
+        viewModel.rocketID = rocketID
         setupUI()
         constraints()
         collectionViewDelegate()
                 Task {
             await viewModel.getLaunchData()
-            
+                collectionView.reloadData()
         }
     }
     

@@ -10,5 +10,6 @@ import Foundation
 protocol LaunchSceneViewModelProtocol {
     var launchData: [LaunchModel] { get set }
     var networkManager: NetworkManagerProtocol! { get set }
+    var rocketID: String? { get set }
     func getLaunchData() async
 }
