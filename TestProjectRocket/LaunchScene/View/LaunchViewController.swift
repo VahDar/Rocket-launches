@@ -8,7 +8,7 @@
 import UIKit
 
 class LaunchViewController: UIViewController {
-
+    
     //MARK: - Properties
     var viewModel: LaunchSceneViewModelProtocol!
     var launchCell: LaunchCollectionViewCell!
@@ -18,7 +18,6 @@ class LaunchViewController: UIViewController {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: 150, height: 100)
         layout.minimumLineSpacing = 16
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
@@ -37,9 +36,9 @@ class LaunchViewController: UIViewController {
         setupUI()
         constraints()
         collectionViewDelegate()
-                Task {
+        Task {
             await viewModel.getLaunchData()
-                collectionView.reloadData()
+            collectionView.reloadData()
         }
     }
     
@@ -52,10 +51,12 @@ class LaunchViewController: UIViewController {
     // MARK: - SetupUI and Constraints
     private func setupUI() {
         navigationController?.isNavigationBarHidden = false
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         let backButton = UIBarButtonItem()
         backButton.title = "Back"
+        backButton.tintColor = .white
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
     private func constraints() {
@@ -70,7 +71,7 @@ class LaunchViewController: UIViewController {
     }
 }
 
-extension LaunchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension LaunchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.launchData.count
@@ -87,5 +88,20 @@ extension LaunchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let horizontalPadding: CGFloat = 60
+        let availableWidth = view.frame.width - horizontalPadding
+        let height: CGFloat = 100
+        
+        return CGSize(width: availableWidth, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 30
+    }
     
 }

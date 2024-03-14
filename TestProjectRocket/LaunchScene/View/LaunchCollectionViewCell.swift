@@ -53,7 +53,6 @@ class LaunchCollectionViewCell: UICollectionViewCell {
     
     // MARK: - SetupUI and Constraints
     private func setupUI() {
-        
         contentView.backgroundColor = UIColor(red: 33/255,
                                               green: 33/255,
                                               blue: 33/255,
@@ -73,15 +72,21 @@ class LaunchCollectionViewCell: UICollectionViewCell {
             dateLaunchLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             
             statusLaunchImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            statusLaunchImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            statusLaunchImageView.heightAnchor.constraint(equalToConstant: 60)
+            statusLaunchImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            statusLaunchImageView.heightAnchor.constraint(equalToConstant: 60),
+            statusLaunchImageView.widthAnchor.constraint(equalToConstant: 60)
             
         ])
     }
     
     func confugire(with launch: LaunchModel) {
         nameRocketLabel.text = launch.name
-        dateLaunchLabel.text = launch.dateLocal
-        statusLaunchImageView.image = UIImage(named: "\(String(describing: launch.success))")
+        dateLaunchLabel.text = launch.date
+        
+        if let success = launch.success {
+            statusLaunchImageView.image = UIImage(named: success ? "ok" : "fail")
+        } else {
+            statusLaunchImageView.image = UIImage(named: "fail")
+        }
     }
 }
