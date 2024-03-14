@@ -40,6 +40,7 @@
 		FCF9FEEA2BA0AE3F00855467 /* LaunchContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF9FEE92BA0AE3F00855467 /* LaunchContainer.swift */; };
 		FCF9FEEF2BA1DC6D00855467 /* LaunchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF9FEEE2BA1DC6D00855467 /* LaunchCollectionViewCell.swift */; };
 		FCF9FEF12BA1E30D00855467 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF9FEF02BA1E30D00855467 /* LaunchViewController.swift */; };
+		FCF9FEF32BA32AD000855467 /* LaunchScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF9FEF22BA32AD000855467 /* LaunchScreenCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		FCF9FEE92BA0AE3F00855467 /* LaunchContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchContainer.swift; sourceTree = "<group>"; };
 		FCF9FEEE2BA1DC6D00855467 /* LaunchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCF9FEF02BA1E30D00855467 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		FCF9FEF22BA32AD000855467 /* LaunchScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,8 +241,8 @@
 		FCF9FEE12BA0A96800855467 /* LaunchScene */ = {
 			isa = PBXGroup;
 			children = (
-				FCF9FEED2BA1DC4900855467 /* View */,
 				FCF9FEE22BA0A98100855467 /* LaunchSceneCoordinator */,
+				FCF9FEED2BA1DC4900855467 /* View */,
 				FCF9FEE82BA0AE2100855467 /* DI */,
 				FCF9FEE32BA0A99100855467 /* ViewModel */,
 			);
@@ -250,6 +252,7 @@
 		FCF9FEE22BA0A98100855467 /* LaunchSceneCoordinator */ = {
 			isa = PBXGroup;
 			children = (
+				FCF9FEF22BA32AD000855467 /* LaunchScreenCoordinator.swift */,
 			);
 			path = LaunchSceneCoordinator;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				FCF9FEE02BA0A69D00855467 /* LaunchModel.swift in Sources */,
 				FCE9B5692B97803600D79A71 /* InjectedValue.swift in Sources */,
 				FCE9B5672B977FF000D79A71 /* InjectionKey.swift in Sources */,
+				FCF9FEF32BA32AD000855467 /* LaunchScreenCoordinator.swift in Sources */,
 				FC2B14CC2B9B260700179D1D /* RocketViewCell.swift in Sources */,
 				FC2B14C72B9B1C5100179D1D /* NetworkManager.swift in Sources */,
 				FCEFC7442B9A48A90039CE77 /* Endpoint.swift in Sources */,
