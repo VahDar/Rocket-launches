@@ -12,7 +12,7 @@
 		FC2B14C72B9B1C5100179D1D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B14C62B9B1C5100179D1D /* NetworkManager.swift */; };
 		FC2B14CA2B9B1D1E00179D1D /* NetworkContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B14C92B9B1D1E00179D1D /* NetworkContainer.swift */; };
 		FC2B14CC2B9B260700179D1D /* RocketViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B14CB2B9B260700179D1D /* RocketViewCell.swift */; };
-		FC5C37F62BA4AE870072FB2D /* GenericSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C37F52BA4AE870072FB2D /* GenericSegmentedControl.swift */; };
+		FC5C37F82BA4B1280072FB2D /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C37F72BA4B1280072FB2D /* SettingViewController.swift */; };
 		FC8DEE492B9C6B900067706D /* RocketScreenViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8DEE482B9C6B900067706D /* RocketScreenViewModelProtocol.swift */; };
 		FC8DEE4C2B9C6DF40067706D /* RocketContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8DEE4B2B9C6DF40067706D /* RocketContainer.swift */; };
 		FC9C636129D2CF4C006EA975 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C636029D2CF4C006EA975 /* AppDelegate.swift */; };
@@ -47,7 +47,7 @@
 		FC2B14C62B9B1C5100179D1D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FC2B14C92B9B1D1E00179D1D /* NetworkContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkContainer.swift; sourceTree = "<group>"; };
 		FC2B14CB2B9B260700179D1D /* RocketViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketViewCell.swift; sourceTree = "<group>"; };
-		FC5C37F52BA4AE870072FB2D /* GenericSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericSegmentedControl.swift; sourceTree = "<group>"; };
+		FC5C37F72BA4B1280072FB2D /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		FC8DEE482B9C6B900067706D /* RocketScreenViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketScreenViewModelProtocol.swift; sourceTree = "<group>"; };
 		FC8DEE4B2B9C6DF40067706D /* RocketContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketContainer.swift; sourceTree = "<group>"; };
 		FC9C635D29D2CF4C006EA975 /* TestProjectRocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestProjectRocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,7 +104,7 @@
 		FC5C37F42BA4ABFC0072FB2D /* SettingScreen */ = {
 			isa = PBXGroup;
 			children = (
-				FC5C37F52BA4AE870072FB2D /* GenericSegmentedControl.swift */,
+				FC5C37F72BA4B1280072FB2D /* SettingViewController.swift */,
 			);
 			path = SettingScreen;
 			sourceTree = "<group>";
@@ -363,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC5C37F82BA4B1280072FB2D /* SettingViewController.swift in Sources */,
 				FCF9FEE52BA0AA1500855467 /* LaunchSceneViewModelProtocol.swift in Sources */,
 				FCF529E72B98EF8A00C4C44F /* RoketScreenViewModel.swift in Sources */,
 				FCF9FEE72BA0AA5900855467 /* LaunchSceneViewModel.swift in Sources */,
@@ -389,7 +390,6 @@
 				FCEFC73D2B9A1C560039CE77 /* NetworkError.swift in Sources */,
 				FC9C636329D2CF4C006EA975 /* SceneDelegate.swift in Sources */,
 				FCF9FEF12BA1E30D00855467 /* LaunchViewController.swift in Sources */,
-				FC5C37F62BA4AE870072FB2D /* GenericSegmentedControl.swift in Sources */,
 				FCE9B55F2B97678100D79A71 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
