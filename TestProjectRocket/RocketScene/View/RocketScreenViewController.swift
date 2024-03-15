@@ -437,8 +437,11 @@ class RocketScreenViewController: UIViewController {
         navigationController?.view.backgroundColor = .clear
         
         rocketCell.translatesAutoresizingMaskIntoConstraints = false
+        
         guard viewModel.rocketData.indices.contains(currentPage) else { return }
         let currentRocket = viewModel.rocketData[currentPage]
+        
+        
         
         rocketCell.configure(with: currentRocket)
         rocketNameLabel.text = currentRocket.name
