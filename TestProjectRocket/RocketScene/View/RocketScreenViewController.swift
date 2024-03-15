@@ -21,6 +21,7 @@ class RocketScreenViewController: UIViewController {
         viewModel = RocketScreenViewModel()
         constraints()
         launcButton()
+        setupGearButton()
         Task {
             await viewModel.getRocketData()
             setupUI(for: 0)
@@ -494,6 +495,16 @@ class RocketScreenViewController: UIViewController {
     
     @objc func launchesButtonTapped() {
         openLaunchVC(serialNumber: pageControl.currentPage)
+    }
+    
+    private func setupGearButton() {
+        gearButton.addTarget(self, action: #selector(gearButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func gearButtonTapped() {
+        let settingsVC = SettingViewController()
+        // Настройка презентации в виде sheet
+        navigationController?.pushViewController(settingsVC, animated: true)
     }
     
 }

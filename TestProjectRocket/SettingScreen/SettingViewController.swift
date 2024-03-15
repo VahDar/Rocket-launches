@@ -15,7 +15,7 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        constraints()
         // Do any additional setup after loading the view.
     }
     
@@ -47,6 +47,16 @@ class SettingViewController: UIViewController {
             // Здесь вы можете обрабатывать изменение выбранного сегмента
             print("Выбран сегмент \(sender.selectedSegmentIndex)")
         }
+    
+    func constraints() {
+        view.backgroundColor = .black
+        [heightSegmentalControl, diamentrSegmentalControl, weightSegmentalControl, usefulLoadSegmentalControl].forEach(view.addSubview)
+        
+        NSLayoutConstraint.activate([
+            heightSegmentalControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            heightSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
+        ])
+    }
 
 }
 
