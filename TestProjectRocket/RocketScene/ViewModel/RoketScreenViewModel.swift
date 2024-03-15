@@ -10,6 +10,8 @@ import Foundation
 
 
 final class RocketScreenViewModel: RocketScreenViewModelProtocol {
+    
+    
     var networkManager: NetworkManagerProtocol!
     var rocketData: [RocketModel] = []
     

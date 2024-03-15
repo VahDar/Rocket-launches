@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Swinject
 
 protocol AppCoordinatorProtocol: Coordinator {
     var window: UIWindow? { get }
@@ -26,12 +27,18 @@ class AppCoordinator: AppCoordinatorProtocol {
     func start() {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-        let vc = RocketScreenViewController()
-        navigationController.pushViewController(vc, animated: true)
+       openRocketScreen()
         
     }
     
     func finish() {
         
+    }
+    
+    private func openRocketScreen() {
+        guard let viewModel = Container.rocket.resolve(RocketScreenViewModelProtocol.self) else { return }
+        let rocketCoordinator = RocketScreenCoordinator(navigationController: navigationController, viewModel)
+        rocketCoordinator.start()
+        addChildCoordinator(rocketCoordinator)
     }
 }

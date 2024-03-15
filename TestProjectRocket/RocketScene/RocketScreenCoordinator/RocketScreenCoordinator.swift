@@ -24,6 +24,7 @@ final class RocketScreenCoordinator: Coordinator {
         openRocketViewController()
         guard let networkManager = Container.network.resolve(NetworkManagerProtocol.self) else { return }
         viewModel.networkManager = networkManager
+        
     }
     
     func finish() {
@@ -36,5 +37,10 @@ final class RocketScreenCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
+    
+    
+    private func childScreen() {
+        
+    }
 }
 
