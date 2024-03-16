@@ -13,6 +13,7 @@ class RocketScreenViewController: UIViewController {
     // MARK: - Properties
     var viewModel: RocketScreenViewModelProtocol!
     var rocketCell: RocketViewCell!
+    private var textColor: UIColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -114,62 +115,17 @@ class RocketScreenViewController: UIViewController {
         return view
     }()
     
-    private let firstLaunchLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
-        label.textAlignment = .left
-        label.text = "First launch"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var firstLaunchLabel = label(text: "First launch", textColor: textColor, textAlignment: .left)
     
-    private let launchLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
-        label.textAlignment = .right
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var launchLabel = label(text: "", textColor: .white, textAlignment: .right)
     
-    private let countryLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
-        label.textAlignment = .left
-        label.text = "Country"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var countryLabel = label(text: "Country", textColor: textColor, textAlignment: .left)
     
-    private let whatCountryLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
-        label.textAlignment = .right
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var whatCountryLabel = label(text: "", textColor: .white, textAlignment: .right)
     
-    private let costLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
-        label.textAlignment = .left
-        label.text = "Launch cost"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var costLabel = label(text: "Launch cost", textColor: textColor, textAlignment: .left)
     
-    private let priceLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
-        label.textAlignment = .right
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var priceLabel = label(text: "", textColor: .white, textAlignment: .right)
     
     private let firstStageLabel: UILabel = {
         let label = UILabel()
@@ -191,119 +147,29 @@ class RocketScreenViewController: UIViewController {
         return label
     }()
     
-    private let numberOfEnginesLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
-        label.textAlignment = .left
-        label.text = "Number of engines"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var numberOfEnginesLabel = label(text: "Number of engines", textColor: textColor, textAlignment: .left)
     
-    private let enginesLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
-        label.textAlignment = .right
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var enginesLabel = label(text: "", textColor: .white, textAlignment: .left)
     
-    private let amountOfFuelinTonsLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
-        label.textAlignment = .left
-        label.text = "Amount of fuel in tons"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var amountOfFuelinTonsLabel = label(text: "Amount of fuel in tons", textColor: textColor, textAlignment: .left)
     
-    private let amountOfFuelinLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
-        label.textAlignment = .right
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var amountOfFuelinLabel = label(text: "", textColor: .white, textAlignment: .right)
     
-    private let burnTimeInSecondsLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
-        label.textAlignment = .left
-        label.text = "Burn time in sec"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var burnTimeInSecondsLabel = label(text: "Burn time in sec", textColor: textColor, textAlignment: .left)
     
-    private let burnTimeLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
-        label.textAlignment = .right
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var burnTimeLabel = label(text: "", textColor: .white, textAlignment: .right)
     
-    private let secondNumberOfEnginesLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
-        label.textAlignment = .left
-        label.text = "Number of engines"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var secondNumberOfEnginesLabel = label(text: "Number of engines", textColor: textColor, textAlignment: .left)
+   
+    private lazy var secondNumberLabel = label(text: "", textColor: .white, textAlignment: .left)
     
-    private let secondNumberLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
-        label.textAlignment = .right
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var secondAmountOfFuelinTonsLabel = label(text: "Amount of fuel in tons", textColor: textColor, textAlignment: .left)
     
-    private let secondAmountOfFuelinTonsLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
-        label.textAlignment = .left
-        label.text = "Amount of fuel in tons"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var secondAmountOfFuelinLabel = label(text: "", textColor: .white, textAlignment: .right)
     
-    private let secondAmountOfFuelinLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
-        label.textAlignment = .right
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var secondBurnTimeInSecondsLabel = label(text: "Burn time in sec", textColor: textColor, textAlignment: .left)
     
-    private let secondBurnTimeInSecondsLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
-        label.textAlignment = .left
-        label.text = "Burn time in sec"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let secondBurnTimeLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
-        label.textAlignment = .right
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var secondBurnTimeLabel = label(text: "", textColor: .white, textAlignment: .right)
     
     // MARK: - Constraints and setupUI
     private func constraints() {
@@ -509,4 +375,14 @@ class RocketScreenViewController: UIViewController {
     
 }
 
-
+extension RocketScreenViewController {
+    func label(text: String, textColor: UIColor, textAlignment: NSTextAlignment) -> UILabel {
+        let label = UILabel()
+        label.text = text
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.textColor = textColor
+        label.textAlignment = textAlignment
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }
+}
