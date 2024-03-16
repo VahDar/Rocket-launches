@@ -23,11 +23,7 @@ class RocketScreenViewController: UIViewController {
         constraints()
         launcButton()
         setupGearButton()
-        Task {
-            await viewModel.getRocketData()
-            setupUI(for: 0)
-            pageControl.numberOfPages = viewModel.rocketData.count
-        }
+        fetchData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -185,7 +181,6 @@ class RocketScreenViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             
-            
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -230,8 +225,6 @@ class RocketScreenViewController: UIViewController {
             rocketCell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             rocketCell.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             rocketCell.heightAnchor.constraint(equalToConstant: 120),
-            
-            
             
             firstLaunchLabel.topAnchor.constraint(equalTo: rocketCell.bottomAnchor, constant: 25),
             firstLaunchLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
@@ -293,7 +286,6 @@ class RocketScreenViewController: UIViewController {
             secondBurnTimeLabel.topAnchor.constraint(equalTo: secondAmountOfFuelinLabel.bottomAnchor, constant: 25),
             secondBurnTimeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
         ])
-        
     }
     
     private func setupUI(for currentPage: Int) {
@@ -307,9 +299,6 @@ class RocketScreenViewController: UIViewController {
         
         guard viewModel.rocketData.indices.contains(currentPage) else { return }
         let currentRocket = viewModel.rocketData[currentPage]
-        
-        
-        
         rocketCell.configure(with: currentRocket)
         rocketNameLabel.text = currentRocket.name
         launchLabel.text = currentRocket.firstFlight
@@ -343,6 +332,14 @@ class RocketScreenViewController: UIViewController {
         setupUI(for: sender.currentPage)
     }
     
+    private func fetchData() {
+        Task {
+            await viewModel.getRocketData()
+            setupUI(for: 0)
+            pageControl.numberOfPages = viewModel.rocketData.count
+        }
+    }
+    
     func openLaunchVC(serialNumber: Int) {
         guard viewModel.rocketData.indices.contains(serialNumber) else { return }
         let rocket = viewModel.rocketData[serialNumber]
@@ -369,7 +366,6 @@ class RocketScreenViewController: UIViewController {
     
     @objc private func gearButtonTapped() {
         let settingsVC = SettingViewController()
-        // Настройка презентации в виде sheet
         navigationController?.pushViewController(settingsVC, animated: true)
     }
     
