@@ -20,6 +20,11 @@ class SettingViewController: UIViewController {
     }
     
     // MARK: - View
+    lazy var heightLabel = createLabel(text: "Height")
+    lazy var diametrLabel = createLabel(text: "Diametr")
+    lazy var weightLabel = createLabel(text: "Weight")
+    lazy var usefulLoadLabel = createLabel(text: "Useful load")
+    
     lazy var heightSegmentalControl = createSegmentedControl(items: lengthUnits, action: #selector(heightSegmentControlChanged))
     
     @objc func heightSegmentControlChanged(_ sender: UISegmentedControl) {
@@ -34,14 +39,14 @@ class SettingViewController: UIViewController {
             print("Выбран сегмент \(sender.selectedSegmentIndex)")
         }
     
-    lazy var weightSegmentalControl = createSegmentedControl(items: lengthUnits, action: #selector(weightSegmentControlChanged))
+    lazy var weightSegmentalControl = createSegmentedControl(items: weightUnits, action: #selector(weightSegmentControlChanged))
     
     @objc func weightSegmentControlChanged(_ sender: UISegmentedControl) {
             // Здесь вы можете обрабатывать изменение выбранного сегмента
             print("Выбран сегмент \(sender.selectedSegmentIndex)")
         }
     
-    lazy var usefulLoadSegmentalControl = createSegmentedControl(items: lengthUnits, action: #selector(usefulLoadSegmentControlChanged))
+    lazy var usefulLoadSegmentalControl = createSegmentedControl(items: weightUnits, action: #selector(usefulLoadSegmentControlChanged))
     
     @objc func usefulLoadSegmentControlChanged(_ sender: UISegmentedControl) {
             // Здесь вы можете обрабатывать изменение выбранного сегмента
@@ -53,8 +58,18 @@ class SettingViewController: UIViewController {
         [heightSegmentalControl, diamentrSegmentalControl, weightSegmentalControl, usefulLoadSegmentalControl].forEach(view.addSubview)
         
         NSLayoutConstraint.activate([
-            heightSegmentalControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            heightSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
+            heightSegmentalControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 140),
+            heightSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            heightSegmentalControl.widthAnchor.constraint(equalToConstant: 85),
+            diamentrSegmentalControl.topAnchor.constraint(equalTo: heightSegmentalControl.bottomAnchor, constant: 20),
+            diamentrSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            diamentrSegmentalControl.widthAnchor.constraint(equalToConstant: 85),
+            weightSegmentalControl.topAnchor.constraint(equalTo: diamentrSegmentalControl.bottomAnchor, constant: 20),
+            weightSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            weightSegmentalControl.widthAnchor.constraint(equalToConstant: 85),
+            usefulLoadSegmentalControl.topAnchor.constraint(equalTo: weightSegmentalControl.bottomAnchor, constant: 20),
+            usefulLoadSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            usefulLoadSegmentalControl.widthAnchor.constraint(equalToConstant: 85),
         ])
     }
 
@@ -62,7 +77,7 @@ class SettingViewController: UIViewController {
 
 extension UIViewController {
     func createSegmentedControl(items: [String], action: Selector) -> UISegmentedControl {
-        let font = UIFont.systemFont(ofSize: 17.5)
+        let font = UIFont.systemFont(ofSize: 14)
         let segmentedControl = UISegmentedControl(items: items)
         segmentedControl.setTitleTextAttributes([.font: font, .foregroundColor: UIColor.black], for: .selected)
         segmentedControl.setTitleTextAttributes([.font: font, .foregroundColor: UIColor.lightGray], for: .normal)
@@ -70,5 +85,14 @@ extension UIViewController {
         segmentedControl.addTarget(self, action: action, for: .valueChanged)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         return segmentedControl
+    }
+    
+    func createLabel(text: String) -> UILabel {
+        let label = UILabel()
+        label.text = text
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = .white
+        return label
     }
 }
