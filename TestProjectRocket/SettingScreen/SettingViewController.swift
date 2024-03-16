@@ -55,21 +55,32 @@ class SettingViewController: UIViewController {
     
     func constraints() {
         view.backgroundColor = .black
-        [heightSegmentalControl, diamentrSegmentalControl, weightSegmentalControl, usefulLoadSegmentalControl].forEach(view.addSubview)
+        [heightSegmentalControl, diamentrSegmentalControl, weightSegmentalControl, usefulLoadSegmentalControl, heightLabel, weightLabel, diametrLabel, usefulLoadLabel].forEach(view.addSubview)
         
         NSLayoutConstraint.activate([
             heightSegmentalControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 140),
             heightSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            heightSegmentalControl.widthAnchor.constraint(equalToConstant: 85),
+            heightSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
+            heightLabel.centerYAnchor.constraint(equalTo: heightSegmentalControl.centerYAnchor),
+            heightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            
             diamentrSegmentalControl.topAnchor.constraint(equalTo: heightSegmentalControl.bottomAnchor, constant: 20),
             diamentrSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            diamentrSegmentalControl.widthAnchor.constraint(equalToConstant: 85),
+            diamentrSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
+            diametrLabel.centerYAnchor.constraint(equalTo: diamentrSegmentalControl.centerYAnchor),
+            diametrLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            
             weightSegmentalControl.topAnchor.constraint(equalTo: diamentrSegmentalControl.bottomAnchor, constant: 20),
             weightSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            weightSegmentalControl.widthAnchor.constraint(equalToConstant: 85),
+            weightSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
+            weightLabel.centerYAnchor.constraint(equalTo: weightSegmentalControl.centerYAnchor),
+            weightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            
             usefulLoadSegmentalControl.topAnchor.constraint(equalTo: weightSegmentalControl.bottomAnchor, constant: 20),
             usefulLoadSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            usefulLoadSegmentalControl.widthAnchor.constraint(equalToConstant: 85),
+            usefulLoadSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
+            usefulLoadLabel.centerYAnchor.constraint(equalTo: usefulLoadSegmentalControl.centerYAnchor),
+            usefulLoadLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
         ])
     }
 
