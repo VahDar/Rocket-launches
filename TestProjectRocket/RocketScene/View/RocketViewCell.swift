@@ -10,58 +10,39 @@ import UIKit
 
 class RocketViewCell: UIView {
     
-    let settingsViewController = SettingsViewController()
-    var currentHeightUnit: String
-    var currentDiameterUnit: String
-    var currentMassUnit: String
-    var currentPayloadUnit: String
-    var rocket: RocketModel?
-        
+    // MARK: - Properties
+    private let settingsViewController = SettingsViewController()
+    private var currentHeightUnit: String
+    private var currentDiameterUnit: String
+    private var currentMassUnit: String
+    private var currentPayloadUnit: String
+    private var rocket: RocketModel?
+    private var textColor: UIColor = UIColor(red: 106/255, green: 106/255, blue: 107/255, alpha: 1)
+    
     // MARK - Views
-    private let contentView: UIView = {
+    private lazy var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private let heightLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 13)
-        label.textColor = .white
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var heightLabel = label(text: "", textColor: .white, textAlignment: .center, UIFont.systemFont(ofSize: 13))
     
-    private let diameterLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 13)
-        label.textColor = .white
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var heingtTextLabel = label(text: currentHeightUnit == "ft" ? "Height, m" : "Height, ft", textColor: textColor, textAlignment: .center, UIFont.systemFont(ofSize: 13))
+       
+    private lazy var diameterLabel = label(text: "", textColor: .white, textAlignment: .center, UIFont.systemFont(ofSize: 13))
     
-    private let massLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 13)
-        label.textColor = .white
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var diameterTextLabel = label(text: currentDiameterUnit == "ft" ? "Diameter, m" : "Diameter, ft", textColor: textColor, textAlignment: .center, UIFont.systemFont(ofSize: 13))
     
-    private let payloadLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 13)
-        label.textColor = .white
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private lazy var massLabel = label(text: "", textColor: .white, textAlignment: .center, UIFont.systemFont(ofSize: 13))
     
-    private let heightView: UIView = {
+    private lazy var massTextLabel = label(text: currentMassUnit == "lb" ? "Mass, kg" : "Mass, lb", textColor: textColor, textAlignment: .center, UIFont.systemFont(ofSize: 13))
+    
+    private lazy var payloadLabel = label(text: "", textColor: .white, textAlignment: .center, UIFont.systemFont(ofSize: 13))
+    
+    private lazy var payLoadTextLabel = label(text: currentPayloadUnit == "lb" ? "Payload, kg" : "Payload, lb", textColor: textColor, textAlignment: .center, UIFont.systemFont(ofSize: 13))
+    
+    private lazy var heightView: UIView = {
        let view = UIView()
         view.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 28/255, alpha: 1)
         view.layer.cornerRadius = 30
@@ -69,7 +50,7 @@ class RocketViewCell: UIView {
         return view
     }()
     
-    private let diameterView: UIView = {
+    private lazy var diameterView: UIView = {
        let view = UIView()
         view.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 28/255, alpha: 1)
         view.layer.cornerRadius = 30
@@ -77,7 +58,7 @@ class RocketViewCell: UIView {
         return view
     }()
     
-    private let massView: UIView = {
+    private lazy var massView: UIView = {
        let view = UIView()
         view.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 28/255, alpha: 1)
         view.layer.cornerRadius = 30
@@ -85,7 +66,7 @@ class RocketViewCell: UIView {
         return view
     }()
     
-    private let payloadView: UIView = {
+    private lazy var payloadView: UIView = {
        let view = UIView()
         view.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 28/255, alpha: 1)
         view.layer.cornerRadius = 30
@@ -93,7 +74,7 @@ class RocketViewCell: UIView {
         return view
     }()
     
-    private let stack: UIStackView = {
+    private lazy var stack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.spacing = 10
@@ -102,7 +83,7 @@ class RocketViewCell: UIView {
         return stack
     }()
     
-    private let scrollView: UIScrollView = {
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.alwaysBounceVertical = false
         scrollView.alwaysBounceHorizontal = true
@@ -120,6 +101,7 @@ class RocketViewCell: UIView {
         self.currentPayloadUnit = SettingsStorage.getPayloadUnit() ?? "kg"
         
         super.init(frame: frame)
+        updateLabelsText()
         setupLayouts()
         settingsViewController.delegate = self
 
@@ -140,9 +122,13 @@ class RocketViewCell: UIView {
         stack.addArrangedSubview(massView)
         stack.addArrangedSubview(payloadView)
         heightView.addSubview(heightLabel)
+        heightView.addSubview(heingtTextLabel)
         diameterView.addSubview(diameterLabel)
+        diameterView.addSubview(diameterTextLabel)
         massView.addSubview(massLabel)
+        massView.addSubview(massTextLabel)
         payloadView.addSubview(payloadLabel)
+        payloadView.addSubview(payLoadTextLabel)
         
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -169,23 +155,31 @@ class RocketViewCell: UIView {
             payloadView.heightAnchor.constraint(equalToConstant: 100),
             payloadView.widthAnchor.constraint(equalToConstant: 100),
             
+            heightLabel.topAnchor.constraint(equalTo: heightView.topAnchor, constant: 32),
             heightLabel.centerXAnchor.constraint(equalTo: heightView.centerXAnchor),
-            heightLabel.centerYAnchor.constraint(equalTo: heightView.centerYAnchor),
+            heingtTextLabel.topAnchor.constraint(equalTo: heightLabel.bottomAnchor, constant: 8),
+            heingtTextLabel.centerXAnchor.constraint(equalTo: heightView.centerXAnchor),
             
+            diameterLabel.topAnchor.constraint(equalTo: diameterView.topAnchor, constant: 32),
             diameterLabel.centerXAnchor.constraint(equalTo: diameterView.centerXAnchor),
-            diameterLabel.centerYAnchor.constraint(equalTo: diameterView.centerYAnchor),
+            diameterTextLabel.topAnchor.constraint(equalTo: diameterLabel.bottomAnchor, constant: 8),
+            diameterTextLabel.centerXAnchor.constraint(equalTo: diameterView.centerXAnchor),
             
+            massLabel.topAnchor.constraint(equalTo: massView.topAnchor, constant: 32),
             massLabel.centerXAnchor.constraint(equalTo: massView.centerXAnchor),
-            massLabel.centerYAnchor.constraint(equalTo: massView.centerYAnchor),
+            massTextLabel.topAnchor.constraint(equalTo: massLabel.bottomAnchor, constant: 8),
+            massTextLabel.centerXAnchor.constraint(equalTo: massView.centerXAnchor),
             
+            payloadLabel.topAnchor.constraint(equalTo: payloadView.topAnchor, constant: 32),
             payloadLabel.centerXAnchor.constraint(equalTo: payloadView.centerXAnchor),
-            payloadLabel.centerYAnchor.constraint(equalTo: payloadView.centerYAnchor),
-            
+            payLoadTextLabel.topAnchor.constraint(equalTo: payloadLabel.bottomAnchor, constant: 8),
+            payLoadTextLabel.centerXAnchor.constraint(equalTo: payloadView.centerXAnchor),
         ])
     }
     
     // MARK: - Configure
     func configure(with rocket: RocketModel) {
+        updateLabelsText()
         self.rocket = rocket
         heightLabel.text = currentHeightUnit == "ft" ? "\(rocket.height.feet.map { "\($0)" } ?? "N/A")" : "\(rocket.height.meters.map { "\($0)" } ?? "N/A")"
         diameterLabel.text = currentDiameterUnit == "ft" ? "\(rocket.diameter.feet.map { "\($0)" } ?? "N/A")" : "\(rocket.diameter.meters.map { "\($0)" } ?? "N/A")"
@@ -197,11 +191,20 @@ class RocketViewCell: UIView {
                payloadLabel.text = "N/A"
            }
     }
+    
+    private func updateLabelsText() {
+        
+            heingtTextLabel.text = currentHeightUnit == "ft" ? "Height, ft" : "Height, m"
+            diameterTextLabel.text = currentDiameterUnit == "ft" ? "Diameter, ft" : "Diameter, m"
+            massTextLabel.text = currentMassUnit == "lb" ? "Mass, lb" : "Mass, kg"
+            payLoadTextLabel.text = currentPayloadUnit == "lb" ? "Payload, lb" : "Payload, kg"
+        }
 }
 
 extension RocketViewCell: SettingsDelegate {
     func didChangeHeightUnit(to unit: String) {
         currentHeightUnit = unit
+        heingtTextLabel.text = unit == "ft" ? "Height, ft" : "Height, m"
         if let rocket = rocket {
             configure(with: rocket)
         }
@@ -209,6 +212,7 @@ extension RocketViewCell: SettingsDelegate {
 
     func didChangeDiameterUnit(to unit: String) {
         currentDiameterUnit = unit
+        diameterTextLabel.text = unit == "ft" ? "Diameter, ft" : "Diameter, m"
         if let rocket = rocket {
             configure(with: rocket)
         }
@@ -216,6 +220,7 @@ extension RocketViewCell: SettingsDelegate {
 
     func didChangeMassUnit(to unit: String) {
         currentMassUnit = unit
+        massTextLabel.text = unit == "lb" ? "Mass, lb" : "Mass, kg"
         if let rocket = rocket {
             configure(with: rocket)
         }
@@ -223,8 +228,19 @@ extension RocketViewCell: SettingsDelegate {
 
     func didChangePayloadUnit(to unit: String) {
         currentPayloadUnit = unit
+        payLoadTextLabel.text = unit == "lb" ? "Payload, lb" : "Payload, kg"
         if let rocket = rocket {
             configure(with: rocket)
         }
     }
+    
+    private func label(text: String, textColor: UIColor, textAlignment: NSTextAlignment, _ uiFont: UIFont) -> UILabel {
+         let label = UILabel()
+         label.text = text
+         label.font = uiFont
+         label.textColor = textColor
+         label.textAlignment = textAlignment
+         label.translatesAutoresizingMaskIntoConstraints = false
+         return label
+     }
 }
