@@ -7,16 +7,23 @@
 
 import UIKit
 
-class SettingViewController: UIViewController {
+protocol SettingsDelegate: AnyObject {
+    func didChangeHeightUnit(to unit: String)
+    func didChangeDiameterUnit(to unit: String)
+    func didChangeMassUnit(to unit: String)
+    func didChangePayloadUnit(to unit: String)
+}
+
+class SettingsViewController: UIViewController {
 
     // MARK: - Properties
     private let lengthUnits = ["m", "ft"]
     private let weightUnits = ["kg", "lb"]
+    weak var delegate: SettingsDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         constraints()
-        // Do any additional setup after loading the view.
     }
     
     // MARK: - View
@@ -28,29 +35,33 @@ class SettingViewController: UIViewController {
     lazy var heightSegmentalControl = createSegmentedControl(items: lengthUnits, action: #selector(heightSegmentControlChanged))
     
     @objc func heightSegmentControlChanged(_ sender: UISegmentedControl) {
-            // Здесь вы можете обрабатывать изменение выбранного сегмента
-            print("Выбран сегмент \(sender.selectedSegmentIndex)")
+        let unit = lengthUnits[sender.selectedSegmentIndex]
+            delegate?.didChangeHeightUnit(to: unit)
+            SettingsStorage.saveHeightUnit(unit)
         }
     
     lazy var diamentrSegmentalControl = createSegmentedControl(items: lengthUnits, action: #selector(diamentrSegmentControlChanged))
 
     @objc func diamentrSegmentControlChanged(_ sender: UISegmentedControl) {
-            // Здесь вы можете обрабатывать изменение выбранного сегмента
-            print("Выбран сегмент \(sender.selectedSegmentIndex)")
+        let unit = lengthUnits[sender.selectedSegmentIndex]
+            delegate?.didChangeDiameterUnit(to: unit)
+            SettingsStorage.saveDiameterUnit(unit)
         }
     
     lazy var weightSegmentalControl = createSegmentedControl(items: weightUnits, action: #selector(weightSegmentControlChanged))
     
     @objc func weightSegmentControlChanged(_ sender: UISegmentedControl) {
-            // Здесь вы можете обрабатывать изменение выбранного сегмента
-            print("Выбран сегмент \(sender.selectedSegmentIndex)")
+        let unit = weightUnits[sender.selectedSegmentIndex]
+            delegate?.didChangeMassUnit(to: unit)
+            SettingsStorage.saveMassUnit(unit)
         }
     
     lazy var usefulLoadSegmentalControl = createSegmentedControl(items: weightUnits, action: #selector(usefulLoadSegmentControlChanged))
     
     @objc func usefulLoadSegmentControlChanged(_ sender: UISegmentedControl) {
-            // Здесь вы можете обрабатывать изменение выбранного сегмента
-            print("Выбран сегмент \(sender.selectedSegmentIndex)")
+        let unit = weightUnits[sender.selectedSegmentIndex]
+            delegate?.didChangePayloadUnit(to: unit)
+            SettingsStorage.savePayloadUnit(unit)
         }
     
     func constraints() {

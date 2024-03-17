@@ -10,7 +10,13 @@ import UIKit
 
 class RocketViewCell: UIView {
     
-    
+    let settingsViewController = SettingsViewController()
+    var currentHeightUnit: String = "ft"
+    var currentDiameterUnit: String = "ft"
+    var currentMassUnit: String = "lb"
+    var currentPayloadUnit: String = "kg"
+    var rocket: RocketModel?
+        
     // MARK - Views
     private let contentView: UIView = {
         let view = UIView()
@@ -110,6 +116,8 @@ class RocketViewCell: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayouts()
+        settingsViewController.delegate = self
+
     }
     
     required init?(coder: NSCoder) {
@@ -173,14 +181,45 @@ class RocketViewCell: UIView {
     
     // MARK: - Configure
     func configure(with rocket: RocketModel) {
-        heightLabel.text = "\(rocket.height.feet.map { "\($0)" } ?? "N/A")"
-        diameterLabel.text = "\(rocket.diameter.feet.map { "\($0)" } ?? "N/A")"
-        massLabel.text = "\(rocket.mass.lb)"
+        self.rocket = rocket
+        heightLabel.text = currentHeightUnit == "ft" ? "\(rocket.height.feet.map { "\($0)" } ?? "N/A")" : "\(rocket.height.meters.map { "\($0)" } ?? "N/A")"
+        diameterLabel.text = currentDiameterUnit == "ft" ? "\(rocket.diameter.feet.map { "\($0)" } ?? "N/A")" : "\(rocket.diameter.meters.map { "\($0)" } ?? "N/A")"
+        massLabel.text = currentMassUnit == "lb" ? "\(rocket.mass.lb)" : "\(rocket.mass.kg)"
         
         if let payloadLEO = rocket.payloadWeights.first(where: { $0.id == "leo" }) {
                payloadLabel.text = "\(payloadLEO.kg)"
            } else {
                payloadLabel.text = "N/A"
            }
+    }
+}
+
+extension RocketViewCell: SettingsDelegate {
+    func didChangeHeightUnit(to unit: String) {
+        currentHeightUnit = unit
+        if let rocket = rocket {
+            configure(with: rocket)
+        }
+    }
+
+    func didChangeDiameterUnit(to unit: String) {
+        currentDiameterUnit = unit
+        if let rocket = rocket {
+            configure(with: rocket)
+        }
+    }
+
+    func didChangeMassUnit(to unit: String) {
+        currentMassUnit = unit
+        if let rocket = rocket {
+            configure(with: rocket)
+        }
+    }
+
+    func didChangePayloadUnit(to unit: String) {
+        currentPayloadUnit = unit
+        if let rocket = rocket {
+            configure(with: rocket)
+        }
     }
 }
