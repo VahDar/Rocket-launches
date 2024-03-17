@@ -24,6 +24,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         constraints()
+        restoreSettings()
     }
     
     // MARK: - View
@@ -64,37 +65,56 @@ class SettingsViewController: UIViewController {
             SettingsStorage.savePayloadUnit(unit)
         }
     
-    func constraints() {
-        view.backgroundColor = .black
-        [heightSegmentalControl, diamentrSegmentalControl, weightSegmentalControl, usefulLoadSegmentalControl, heightLabel, weightLabel, diametrLabel, usefulLoadLabel].forEach(view.addSubview)
+    private func restoreSettings() {
+        if let heightUnit = SettingsStorage.getHeightUnit(), let index = lengthUnits.firstIndex(of: heightUnit) {
+            heightSegmentalControl.selectedSegmentIndex = index
+        }
         
-        NSLayoutConstraint.activate([
-            heightSegmentalControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 140),
-            heightSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            heightSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
-            heightLabel.centerYAnchor.constraint(equalTo: heightSegmentalControl.centerYAnchor),
-            heightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            
-            diamentrSegmentalControl.topAnchor.constraint(equalTo: heightSegmentalControl.bottomAnchor, constant: 20),
-            diamentrSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            diamentrSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
-            diametrLabel.centerYAnchor.constraint(equalTo: diamentrSegmentalControl.centerYAnchor),
-            diametrLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            
-            weightSegmentalControl.topAnchor.constraint(equalTo: diamentrSegmentalControl.bottomAnchor, constant: 20),
-            weightSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            weightSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
-            weightLabel.centerYAnchor.constraint(equalTo: weightSegmentalControl.centerYAnchor),
-            weightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            
-            usefulLoadSegmentalControl.topAnchor.constraint(equalTo: weightSegmentalControl.bottomAnchor, constant: 20),
-            usefulLoadSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            usefulLoadSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
-            usefulLoadLabel.centerYAnchor.constraint(equalTo: usefulLoadSegmentalControl.centerYAnchor),
-            usefulLoadLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-        ])
+        if let diameterUnit = SettingsStorage.getDiameterUnit(), let index =
+            lengthUnits.firstIndex(of: diameterUnit) {
+            diamentrSegmentalControl.selectedSegmentIndex = index
+        }
+        
+        if let massUnit = SettingsStorage.getMassUnit(), let index =
+            weightUnits.firstIndex(of: massUnit) {
+            weightSegmentalControl.selectedSegmentIndex = index
+        }
+        
+        if let payLoadUnit = SettingsStorage.getPayloadUnit(), let index =
+            weightUnits.firstIndex(of: payLoadUnit) {
+            usefulLoadSegmentalControl.selectedSegmentIndex = index
+        }
     }
-
+        func constraints() {
+            view.backgroundColor = .black
+            [heightSegmentalControl, diamentrSegmentalControl, weightSegmentalControl, usefulLoadSegmentalControl, heightLabel, weightLabel, diametrLabel, usefulLoadLabel].forEach(view.addSubview)
+            
+            NSLayoutConstraint.activate([
+                heightSegmentalControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 140),
+                heightSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+                heightSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
+                heightLabel.centerYAnchor.constraint(equalTo: heightSegmentalControl.centerYAnchor),
+                heightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+                
+                diamentrSegmentalControl.topAnchor.constraint(equalTo: heightSegmentalControl.bottomAnchor, constant: 20),
+                diamentrSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+                diamentrSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
+                diametrLabel.centerYAnchor.constraint(equalTo: diamentrSegmentalControl.centerYAnchor),
+                diametrLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+                
+                weightSegmentalControl.topAnchor.constraint(equalTo: diamentrSegmentalControl.bottomAnchor, constant: 20),
+                weightSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+                weightSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
+                weightLabel.centerYAnchor.constraint(equalTo: weightSegmentalControl.centerYAnchor),
+                weightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+                
+                usefulLoadSegmentalControl.topAnchor.constraint(equalTo: weightSegmentalControl.bottomAnchor, constant: 20),
+                usefulLoadSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+                usefulLoadSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
+                usefulLoadLabel.centerYAnchor.constraint(equalTo: usefulLoadSegmentalControl.centerYAnchor),
+                usefulLoadLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            ])
+    }
 }
 
 extension UIViewController {
