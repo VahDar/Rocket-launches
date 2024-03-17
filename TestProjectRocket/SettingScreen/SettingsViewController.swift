@@ -21,19 +21,22 @@ class SettingsViewController: UIViewController {
     private let weightUnits = ["kg", "lb"]
     weak var delegate: SettingsDelegate?
     
+    // MARKL - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         constraints()
         restoreSettings()
+        setupUI()
     }
     
     // MARK: - View
-    lazy var heightLabel = createLabel(text: "Height")
-    lazy var diametrLabel = createLabel(text: "Diametr")
-    lazy var weightLabel = createLabel(text: "Weight")
-    lazy var usefulLoadLabel = createLabel(text: "Useful load")
+    private lazy var heightLabel = createLabel(text: "Height")
+    private lazy var diametrLabel = createLabel(text: "Diametr")
+    private lazy var weightLabel = createLabel(text: "Weight")
+    private lazy var usefulLoadLabel = createLabel(text: "Useful load")
+    private lazy var titleLabel = createLabel(text: "Settings")
     
-    lazy var heightSegmentalControl = createSegmentedControl(items: lengthUnits, action: #selector(heightSegmentControlChanged))
+    private lazy var heightSegmentalControl = createSegmentedControl(items: lengthUnits, action: #selector(heightSegmentControlChanged))
     
     @objc func heightSegmentControlChanged(_ sender: UISegmentedControl) {
         let unit = lengthUnits[sender.selectedSegmentIndex]
@@ -41,7 +44,7 @@ class SettingsViewController: UIViewController {
             SettingsStorage.saveHeightUnit(unit)
         }
     
-    lazy var diamentrSegmentalControl = createSegmentedControl(items: lengthUnits, action: #selector(diamentrSegmentControlChanged))
+    private lazy var diamentrSegmentalControl = createSegmentedControl(items: lengthUnits, action: #selector(diamentrSegmentControlChanged))
 
     @objc func diamentrSegmentControlChanged(_ sender: UISegmentedControl) {
         let unit = lengthUnits[sender.selectedSegmentIndex]
@@ -49,7 +52,7 @@ class SettingsViewController: UIViewController {
             SettingsStorage.saveDiameterUnit(unit)
         }
     
-    lazy var weightSegmentalControl = createSegmentedControl(items: weightUnits, action: #selector(weightSegmentControlChanged))
+    private lazy var weightSegmentalControl = createSegmentedControl(items: weightUnits, action: #selector(weightSegmentControlChanged))
     
     @objc func weightSegmentControlChanged(_ sender: UISegmentedControl) {
         let unit = weightUnits[sender.selectedSegmentIndex]
@@ -57,7 +60,7 @@ class SettingsViewController: UIViewController {
             SettingsStorage.saveMassUnit(unit)
         }
     
-    lazy var usefulLoadSegmentalControl = createSegmentedControl(items: weightUnits, action: #selector(usefulLoadSegmentControlChanged))
+    private lazy var usefulLoadSegmentalControl = createSegmentedControl(items: weightUnits, action: #selector(usefulLoadSegmentControlChanged))
     
     @objc func usefulLoadSegmentControlChanged(_ sender: UISegmentedControl) {
         let unit = weightUnits[sender.selectedSegmentIndex]
@@ -65,6 +68,20 @@ class SettingsViewController: UIViewController {
             SettingsStorage.savePayloadUnit(unit)
         }
     
+    private lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Back", for: .normal)
+        button.backgroundColor = .clear
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc private func backButtonTapped() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Setting storage
     private func restoreSettings() {
         if let heightUnit = SettingsStorage.getHeightUnit(), let index = lengthUnits.firstIndex(of: heightUnit) {
             heightSegmentalControl.selectedSegmentIndex = index
@@ -85,12 +102,24 @@ class SettingsViewController: UIViewController {
             usefulLoadSegmentalControl.selectedSegmentIndex = index
         }
     }
-        func constraints() {
-            view.backgroundColor = .black
-            [heightSegmentalControl, diamentrSegmentalControl, weightSegmentalControl, usefulLoadSegmentalControl, heightLabel, weightLabel, diametrLabel, usefulLoadLabel].forEach(view.addSubview)
+    
+    //MARK: - SetupUI and constraints
+    private func setupUI() {
+        view.backgroundColor = .black
+    }
+    
+    private func constraints() {
+        
+            [heightSegmentalControl, diamentrSegmentalControl, weightSegmentalControl, usefulLoadSegmentalControl, heightLabel, weightLabel, diametrLabel, usefulLoadLabel, backButton, titleLabel].forEach(view.addSubview)
             
             NSLayoutConstraint.activate([
-                heightSegmentalControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 140),
+                
+                backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+                backButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+                titleLabel.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
+                titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                
+                heightSegmentalControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
                 heightSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
                 heightSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
                 heightLabel.centerYAnchor.constraint(equalTo: heightSegmentalControl.centerYAnchor),

@@ -32,7 +32,6 @@ class RocketScreenViewController: UIViewController {
     }
     
     // MARK: - Views
-    
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.alwaysBounceVertical = false
@@ -257,6 +256,17 @@ class RocketScreenViewController: UIViewController {
         ])
     }
     
+    private func contentViewUI() {
+        let path = UIBezierPath(roundedRect: contentView.bounds,
+                                byRoundingCorners: [.topRight, .topLeft],
+                                cornerRadii: CGSize(width: 30.0, height: 30.0))
+        
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = path.cgPath
+        
+        contentView.layer.mask = maskLayer
+    }
+    
     private func setupUI(for currentPage: Int) {
         view.backgroundColor = .black
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -309,17 +319,8 @@ class RocketScreenViewController: UIViewController {
         }
     }
     
-    private func contentViewUI() {
-        let path = UIBezierPath(roundedRect: contentView.bounds,
-                                byRoundingCorners: [.topRight, .topLeft],
-                                cornerRadii: CGSize(width: 30.0, height: 30.0))
-        
-        let maskLayer = CAShapeLayer()
-        maskLayer.path = path.cgPath
-        
-        contentView.layer.mask = maskLayer
-    }
     
+    //MARK: - Buttons and preset
     func openLaunchVC(serialNumber: Int) {
         guard viewModel.rocketData.indices.contains(serialNumber) else { return }
         let rocket = viewModel.rocketData[serialNumber]
@@ -347,9 +348,13 @@ class RocketScreenViewController: UIViewController {
     @objc private func gearButtonTapped() {
         let settingsVC = SettingsViewController()
         settingsVC.delegate = rocketCell
-        navigationController?.pushViewController(settingsVC, animated: true)
+        let sheet = settingsVC.sheetPresentationController
+        sheet?.detents = [.large()]
+        sheet?.preferredCornerRadius = 25
+        present(settingsVC, animated: true, completion: nil)
     }
     
+    //MARK: - Preset for label
    private func label(text: String, textColor: UIColor, textAlignment: NSTextAlignment, _ uiFont: UIFont) -> UILabel {
         let label = UILabel()
         label.text = text
