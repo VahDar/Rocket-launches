@@ -11,10 +11,10 @@ import UIKit
 class RocketViewCell: UIView {
     
     let settingsViewController = SettingsViewController()
-    var currentHeightUnit: String = "ft"
-    var currentDiameterUnit: String = "ft"
-    var currentMassUnit: String = "lb"
-    var currentPayloadUnit: String = "kg"
+    var currentHeightUnit: String
+    var currentDiameterUnit: String
+    var currentMassUnit: String
+    var currentPayloadUnit: String
     var rocket: RocketModel?
         
     // MARK - Views
@@ -114,6 +114,11 @@ class RocketViewCell: UIView {
     
     // MARK: - Init
     override init(frame: CGRect) {
+        self.currentHeightUnit = SettingsStorage.getHeightUnit() ?? "ft"
+        self.currentDiameterUnit = SettingsStorage.getDiameterUnit() ?? "ft"
+        self.currentMassUnit = SettingsStorage.getMassUnit() ?? "lb"
+        self.currentPayloadUnit = SettingsStorage.getPayloadUnit() ?? "kg"
+        
         super.init(frame: frame)
         setupLayouts()
         settingsViewController.delegate = self
@@ -187,7 +192,7 @@ class RocketViewCell: UIView {
         massLabel.text = currentMassUnit == "lb" ? "\(rocket.mass.lb)" : "\(rocket.mass.kg)"
         
         if let payloadLEO = rocket.payloadWeights.first(where: { $0.id == "leo" }) {
-               payloadLabel.text = "\(payloadLEO.kg)"
+            payloadLabel.text = currentPayloadUnit == "lb" ? "\(payloadLEO.lb)" : "\(payloadLEO.kg)"
            } else {
                payloadLabel.text = "N/A"
            }

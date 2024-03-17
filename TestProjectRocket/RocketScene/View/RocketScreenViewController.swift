@@ -346,6 +346,7 @@ class RocketScreenViewController: UIViewController {
     
     @objc private func gearButtonTapped() {
         let settingsVC = SettingsViewController()
+        settingsVC.delegate = rocketCell
         navigationController?.pushViewController(settingsVC, animated: true)
     }
     
