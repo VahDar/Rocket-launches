@@ -11,24 +11,9 @@
 ---
 
 
-## Features
-
-* Live Exchange Updates: Tap into the pulse of the currency markets. Our app delivers on-the-spot currency conversions, mirroring the latest shifts in exchange rates for spot-on accuracy.
-
-* Unified Currency Repository: Effortlessly carry a virtual cash trove. The app's integrated multi-currency wallet replaces the clutter of managing separate accounts, streamlining your financial toolkit.
-
-* Transaction Ledger: Trace your currency trail with an in-app ledger. It chronicles your conversion chronology, providing a clear audit trail for review and reconciliation.
-
-* User-Centric Design: Navigate with ease. The app's intuitive interface invites both novices and finance aficionados to convert currencies without complexity.
-
-* Autonomous Operation: Stay financially fluent, online or off. The app preserves essential exchange data, granting you autonomy from the web to access recent rates and your conversion catalogue.
-
-
 ## Technologies Used
 
 - UIKit
-
-- SwiftUI
 
 - MVVM + Coordinator
 
@@ -36,6 +21,9 @@
 
 - SPM
 
+- SDWebImage
+
+- Swinject
 
 ## Requirement
 
