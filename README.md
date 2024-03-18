@@ -1,14 +1,12 @@
 # Rocket-launches
 
-<img src="https://github.com/VahDar/CurrencyConverterApp/assets/118889967/3b738f36-ad86-4942-91ff-ff66357b486c" width="920" height="560">
-
-### Transform your monetary maneuvers with the sleek Currency Converter App. It's precision in your pocket, offering live currency swap rates, a robust multi-currency wallet, and a detailed log of your past exchanges. Experience the next level of fiscal fluency across borders with our cutting-edge tool
 
 ## Preview
 
-<img src="https://github.com/VahDar/CurrencyConverterApp/assets/118889967/4c1d8d6c-45e0-4edd-a3ba-65df1ad9068f" width="210" height="450">
-<img src="https://github.com/VahDar/CurrencyConverterApp/assets/118889967/1e365bdb-4658-41f5-b47b-354874c2bce2" width="210" height="450">
-<img src="https://github.com/VahDar/CurrencyConverterApp/assets/118889967/d6f8a612-b8a0-467f-8e9e-42c11e1b5aee" width="210" height="450">
+<img src="https://github.com/VahDar/Rocket-launches/assets/118889967/da72b793-1785-49a8-bd52-4c1e8caeacdc" width="210" height="450">
+<img src="https://github.com/VahDar/Rocket-launches/assets/118889967/a40cb688-5e82-45a3-9acf-aa7ce99aa022" width="210" height="450">
+<img src="https://github.com/VahDar/Rocket-launches/assets/118889967/a801cef4-5109-45f2-8f94-8348a12e59d8" width="210" height="450">
+
 
 ---
 
