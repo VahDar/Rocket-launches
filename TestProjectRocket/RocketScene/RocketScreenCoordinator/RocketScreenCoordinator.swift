@@ -22,13 +22,15 @@ final class RocketScreenCoordinator: Coordinator {
     
     func start() {
         openRocketViewController()
+        viewModel = Container.rocket.resolve(RocketScreenViewModelProtocol.self)!
         guard let networkManager = Container.network.resolve(NetworkManagerProtocol.self) else { return }
         viewModel.networkManager = networkManager
         
     }
     
     func finish() {
-        
+        removeChildCoordinator(self)
+        navigationController.removeFromParent()
     }
     
     private func openRocketViewController() {
@@ -37,10 +39,5 @@ final class RocketScreenCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    
-    
-    private func childScreen() {
-        
-    }
 }
 

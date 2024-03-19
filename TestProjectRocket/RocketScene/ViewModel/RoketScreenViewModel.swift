@@ -11,7 +11,7 @@ import Foundation
 
 final class RocketScreenViewModel: RocketScreenViewModelProtocol {
     
-    
+    var onAddLaunch: (() -> Void)?
     var networkManager: NetworkManagerProtocol!
     var rocketData: [RocketModel] = []
     

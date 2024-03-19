@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import Swinject
 
 class RocketScreenViewController: UIViewController {
     
@@ -19,7 +20,7 @@ class RocketScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         rocketCell = RocketViewCell()
-        viewModel = RocketScreenViewModel()
+        viewModel = Container.rocket.resolve(RocketScreenViewModelProtocol.self)
         constraints()
         launcButton()
         setupGearButton()
@@ -329,8 +330,8 @@ class RocketScreenViewController: UIViewController {
         launchVC.rocketID = rocket.id
         launchVC.rocketName = rocket.name
         launchVC.title = rocket.name
-        
         navigationController?.pushViewController(launchVC, animated: true)
+        
     }
     
     private func launcButton() {
@@ -339,6 +340,7 @@ class RocketScreenViewController: UIViewController {
     
     @objc func launchesButtonTapped() {
         openLaunchVC(serialNumber: pageControl.currentPage)
+        
     }
     
     private func setupGearButton() {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Swinject
 
 class LaunchViewController: UIViewController {
     
@@ -30,16 +31,13 @@ class LaunchViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = LaunchSceneViewModel()
+        viewModel = Container.launch.resolve(LaunchSceneViewModelProtocol.self)
         launchCell = LaunchCollectionViewCell()
         viewModel.rocketID = rocketID
         setupUI()
         constraints()
         collectionViewDelegate()
-        Task {
-            await viewModel.getLaunchData()
-            collectionView.reloadData()
-        }
+        fetchData()
     }
     
     //MARK: - CollectionView Delegate
@@ -68,6 +66,14 @@ class LaunchViewController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    //MARK: - Fetch data
+    private func fetchData() {
+        Task {
+            await viewModel.getLaunchData()
+            collectionView.reloadData()
+        }
     }
 }
 
