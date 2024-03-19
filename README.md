@@ -19,6 +19,8 @@
 
 - URLSession
 
+- Async/Await
+
 - SPM
 
 - SDWebImage
@@ -27,5 +29,5 @@
 
 ## Requirement
 
-- iOS 16.0+
-- Xcode 14.0+
+- iOS 16.1+
+- Xcode 15.0.1+
