@@ -22,9 +22,6 @@
 		FC9C636D29D2CF4E006EA975 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC9C636B29D2CF4E006EA975 /* LaunchScreen.storyboard */; };
 		FCE9B55F2B97678100D79A71 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9B55E2B97678100D79A71 /* Coordinator.swift */; };
 		FCE9B5622B977C2100D79A71 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9B5612B977C2100D79A71 /* AppCoordinator.swift */; };
-		FCE9B5672B977FF000D79A71 /* InjectionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9B5662B977FF000D79A71 /* InjectionKey.swift */; };
-		FCE9B5692B97803600D79A71 /* InjectedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9B5682B97803600D79A71 /* InjectedValue.swift */; };
-		FCE9B56B2B97813600D79A71 /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9B56A2B97813600D79A71 /* Injected.swift */; };
 		FCEFC7352B99FD100039CE77 /* RocketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEFC7342B99FD100039CE77 /* RocketModel.swift */; };
 		FCEFC7392B9A1BB50039CE77 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = FCEFC7382B9A1BB50039CE77 /* Swinject */; };
 		FCEFC73B2B9A1BB50039CE77 /* Swinject-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = FCEFC73A2B9A1BB50039CE77 /* Swinject-Dynamic */; };
@@ -60,9 +57,6 @@
 		FC9C636E29D2CF4E006EA975 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCE9B55E2B97678100D79A71 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		FCE9B5612B977C2100D79A71 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		FCE9B5662B977FF000D79A71 /* InjectionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionKey.swift; sourceTree = "<group>"; };
-		FCE9B5682B97803600D79A71 /* InjectedValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectedValue.swift; sourceTree = "<group>"; };
-		FCE9B56A2B97813600D79A71 /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
 		FCEFC7342B99FD100039CE77 /* RocketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketModel.swift; sourceTree = "<group>"; };
 		FCEFC73C2B9A1C560039CE77 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		FCEFC7402B9A1D0D0039CE77 /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
@@ -144,7 +138,6 @@
 				FCEFC7322B99FCA30039CE77 /* RocketScene */,
 				FCEFC7362B9A00E00039CE77 /* NetworkService */,
 				FCEFC7332B99FCE70039CE77 /* Model */,
-				FCE9B5652B977FCE00D79A71 /* DI */,
 				FCE9B55D2B9765F500D79A71 /* Coordinator */,
 				FCE9B5602B977C0100D79A71 /* Application */,
 				FC9C636929D2CF4E006EA975 /* Assets.xcassets */,
@@ -170,16 +163,6 @@
 				FCE9B5612B977C2100D79A71 /* AppCoordinator.swift */,
 			);
 			path = Application;
-			sourceTree = "<group>";
-		};
-		FCE9B5652B977FCE00D79A71 /* DI */ = {
-			isa = PBXGroup;
-			children = (
-				FCE9B5662B977FF000D79A71 /* InjectionKey.swift */,
-				FCE9B5682B97803600D79A71 /* InjectedValue.swift */,
-				FCE9B56A2B97813600D79A71 /* Injected.swift */,
-			);
-			path = DI;
 			sourceTree = "<group>";
 		};
 		FCEFC7322B99FCA30039CE77 /* RocketScene */ = {
@@ -372,9 +355,7 @@
 				FCF9FEE72BA0AA5900855467 /* LaunchSceneViewModel.swift in Sources */,
 				FC8DEE4C2B9C6DF40067706D /* RocketContainer.swift in Sources */,
 				FCF9FEE02BA0A69D00855467 /* LaunchModel.swift in Sources */,
-				FCE9B5692B97803600D79A71 /* InjectedValue.swift in Sources */,
 				FC5C37FA2BA719200072FB2D /* SettingsStorage.swift in Sources */,
-				FCE9B5672B977FF000D79A71 /* InjectionKey.swift in Sources */,
 				FC2B14CC2B9B260700179D1D /* RocketViewCell.swift in Sources */,
 				FC2B14C72B9B1C5100179D1D /* NetworkManager.swift in Sources */,
 				FCEFC7442B9A48A90039CE77 /* Endpoint.swift in Sources */,
@@ -384,7 +365,6 @@
 				FCEFC7412B9A1D0D0039CE77 /* NetworkManagerProtocol.swift in Sources */,
 				FCF529E12B98EE2800C4C44F /* RocketScreenCoordinator.swift in Sources */,
 				FC9C636129D2CF4C006EA975 /* AppDelegate.swift in Sources */,
-				FCE9B56B2B97813600D79A71 /* Injected.swift in Sources */,
 				FC2B14CA2B9B1D1E00179D1D /* NetworkContainer.swift in Sources */,
 				FCEFC7472B9A49ED0039CE77 /* NetworkHTTPClient.swift in Sources */,
 				FCF9FEEA2BA0AE3F00855467 /* LaunchContainer.swift in Sources */,
