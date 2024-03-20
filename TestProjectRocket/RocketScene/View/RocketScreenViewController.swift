@@ -21,9 +21,9 @@ class RocketScreenViewController: UIViewController {
         super.viewDidLoad()
         rocketCell = RocketViewCell()
         viewModel = Container.rocket.resolve(RocketScreenViewModelProtocol.self)
+        setupActions()
+        setupView()
         constraints()
-        launcButton()
-        setupGearButton()
         fetchData()
     }
     
@@ -125,7 +125,7 @@ class RocketScreenViewController: UIViewController {
     private lazy var burnTimeLabel = label(text: "", textColor: .white, textAlignment: .right, UIFont.systemFont(ofSize: 16, weight: .semibold))
     
     private lazy var secondNumberOfEnginesLabel = label(text: "Number of engines", textColor: textColor, textAlignment: .left, UIFont.systemFont(ofSize: 16, weight: .semibold))
-   
+    
     private lazy var secondNumberLabel = label(text: "", textColor: .white, textAlignment: .left, UIFont.systemFont(ofSize: 16, weight: .semibold))
     
     private lazy var secondAmountOfFuelinTonsLabel = label(text: "Amount of fuel in tons", textColor: textColor, textAlignment: .left, UIFont.systemFont(ofSize: 16, weight: .semibold))
@@ -137,126 +137,138 @@ class RocketScreenViewController: UIViewController {
     private lazy var secondBurnTimeLabel = label(text: "", textColor: .white, textAlignment: .right, UIFont.systemFont(ofSize: 16, weight: .semibold))
     
     // MARK: - Constraints and setupUI
-    private func constraints() {
-        
+    
+    private func setupView() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.view.backgroundColor = .clear
+        view.backgroundColor = .black
         view.addSubview(scrollView)
         view.addSubview(pageControlBackgroundView)
         pageControlBackgroundView.addSubview(pageControl)
         scrollView.addSubview(rocketImageView)
         scrollView.addSubview(contentView)
-        [
-            rocketNameLabel, rocketCell, firstLaunchLabel, countryLabel, costLabel, firstStageLabel, numberOfEnginesLabel, amountOfFuelinTonsLabel, burnTimeInSecondsLabel, secondStageLabel, secondNumberOfEnginesLabel, secondAmountOfFuelinTonsLabel, secondBurnTimeInSecondsLabel, launchLabel, priceLabel, whatCountryLabel, enginesLabel, amountOfFuelinLabel, burnTimeLabel, secondNumberLabel, secondBurnTimeLabel, secondAmountOfFuelinLabel, gearButton, launchesButton
+        rocketCell.translatesAutoresizingMaskIntoConstraints = false
+        [rocketNameLabel, rocketCell, firstLaunchLabel, countryLabel, costLabel, firstStageLabel, numberOfEnginesLabel, amountOfFuelinTonsLabel, burnTimeInSecondsLabel, secondStageLabel, secondNumberOfEnginesLabel, secondAmountOfFuelinTonsLabel, secondBurnTimeInSecondsLabel, launchLabel, priceLabel, whatCountryLabel, enginesLabel, amountOfFuelinLabel, burnTimeLabel, secondNumberLabel, secondBurnTimeLabel, secondAmountOfFuelinLabel, gearButton, launchesButton
         ].forEach(contentView.addSubview)
+    }
+    
+    private func constraints() {
+        let labelsWithLeading = [firstLaunchLabel, firstStageLabel, countryLabel, costLabel, numberOfEnginesLabel, amountOfFuelinTonsLabel, burnTimeInSecondsLabel, secondStageLabel, secondNumberOfEnginesLabel, secondAmountOfFuelinTonsLabel, secondBurnTimeInSecondsLabel]
         
+        let labelsWithTrailing = [launchLabel, whatCountryLabel, priceLabel, enginesLabel, amountOfFuelinLabel, burnTimeLabel, secondNumberLabel, secondAmountOfFuelinLabel, secondBurnTimeLabel]
         
         scrollView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
-        
         pageControlBackgroundView.snp.makeConstraints { make in
             make.bottom.leading.trailing.equalToSuperview()
             make.height.equalTo(55)
         }
-        
         pageControl.snp.makeConstraints { make in
             make.bottom.equalTo(pageControlBackgroundView.snp.bottom).offset(-15)
             make.centerX.equalTo(pageControlBackgroundView.snp.centerX)
         }
-        
         rocketImageView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(320)
             make.width.equalTo(scrollView.snp.width)
         }
-        NSLayoutConstraint.activate([
-//
-            
-            contentView.topAnchor.constraint(equalTo: rocketImageView.bottomAnchor, constant: -55),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            contentView.heightAnchor.constraint(equalToConstant: 1000),
-            
-            rocketNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
-            rocketNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            
-            gearButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
-            gearButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
-            gearButton.heightAnchor.constraint(equalToConstant: 20),
-            gearButton.widthAnchor.constraint(equalToConstant: 20),
-            
-            launchesButton.topAnchor.constraint(equalTo: secondBurnTimeInSecondsLabel.bottomAnchor, constant: 25),
-            launchesButton.widthAnchor.constraint(equalToConstant: 150),
-            launchesButton.heightAnchor.constraint(equalToConstant: 50),
-            launchesButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            
-            rocketCell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 110),
-            rocketCell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            rocketCell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            rocketCell.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            rocketCell.heightAnchor.constraint(equalToConstant: 120),
-            
-            firstLaunchLabel.topAnchor.constraint(equalTo: rocketCell.bottomAnchor, constant: 25),
-            firstLaunchLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            
-            launchLabel.topAnchor.constraint(equalTo: rocketCell.bottomAnchor, constant: 25),
-            launchLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
-            
-            countryLabel.topAnchor.constraint(equalTo: firstLaunchLabel.bottomAnchor, constant: 25),
-            countryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            
-            whatCountryLabel.topAnchor.constraint(equalTo: launchLabel.bottomAnchor, constant: 25),
-            whatCountryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
-            
-            costLabel.topAnchor.constraint(equalTo: countryLabel.bottomAnchor, constant: 25),
-            costLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            
-            priceLabel.topAnchor.constraint(equalTo: whatCountryLabel.bottomAnchor, constant: 25),
-            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
-            
-            firstStageLabel.topAnchor.constraint(equalTo: costLabel.bottomAnchor, constant: 50),
-            firstStageLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            
-            numberOfEnginesLabel.topAnchor.constraint(equalTo: firstStageLabel.bottomAnchor, constant: 25),
-            numberOfEnginesLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            
-            enginesLabel.topAnchor.constraint(equalTo: firstStageLabel.bottomAnchor, constant: 25),
-            enginesLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
-            
-            amountOfFuelinTonsLabel.topAnchor.constraint(equalTo: numberOfEnginesLabel.bottomAnchor, constant: 25),
-            amountOfFuelinTonsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            
-            amountOfFuelinLabel.topAnchor.constraint(equalTo: enginesLabel.bottomAnchor, constant: 25),
-            amountOfFuelinLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
-            
-            burnTimeInSecondsLabel.topAnchor.constraint(equalTo: amountOfFuelinTonsLabel.bottomAnchor, constant: 25),
-            burnTimeInSecondsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            
-            burnTimeLabel.topAnchor.constraint(equalTo: amountOfFuelinLabel.bottomAnchor, constant: 25),
-            burnTimeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
-            
-            secondStageLabel.topAnchor.constraint(equalTo: burnTimeInSecondsLabel.bottomAnchor, constant: 50),
-            secondStageLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            
-            secondNumberOfEnginesLabel.topAnchor.constraint(equalTo: secondStageLabel.bottomAnchor, constant: 25),
-            secondNumberOfEnginesLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            
-            secondNumberLabel.topAnchor.constraint(equalTo: secondStageLabel.bottomAnchor, constant: 25),
-            secondNumberLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
-            
-            secondAmountOfFuelinTonsLabel.topAnchor.constraint(equalTo: secondNumberOfEnginesLabel.bottomAnchor, constant: 25),
-            secondAmountOfFuelinTonsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            
-            secondAmountOfFuelinLabel.topAnchor.constraint(equalTo: secondNumberLabel.bottomAnchor, constant: 25),
-            secondAmountOfFuelinLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
-            
-            secondBurnTimeInSecondsLabel.topAnchor.constraint(equalTo: secondAmountOfFuelinTonsLabel.bottomAnchor, constant: 25),
-            secondBurnTimeInSecondsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            
-            secondBurnTimeLabel.topAnchor.constraint(equalTo: secondAmountOfFuelinLabel.bottomAnchor, constant: 25),
-            secondBurnTimeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
-        ])
+        contentView.snp.makeConstraints { make in
+            make.top.equalTo(rocketImageView.snp.bottom).offset(-55)
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(1000)
+        }
+        rocketNameLabel.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview().inset(40)
+        }
+        gearButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(40)
+            make.trailing.equalToSuperview().offset(-40)
+            make.height.width.equalTo(20)
+        }
+        launchesButton.snp.makeConstraints { make in
+            make.top.equalTo(secondBurnTimeInSecondsLabel.snp.bottom).offset(25)
+            make.width.equalTo(150)
+            make.height.equalTo(50)
+            make.centerX.equalToSuperview()
+        }
+        rocketCell.snp.makeConstraints { make in
+            make.top.equalTo(contentView.snp.top).offset(110)
+            make.leading.trailing.equalTo(contentView)
+            make.height.equalTo(110)
+        }
+        labelsWithLeading.forEach { label in
+            label.snp.makeConstraints { make in
+                make.leading.equalToSuperview().offset(40)
+            }
+        }
+        labelsWithTrailing.forEach { label in
+            label.snp.makeConstraints { make in
+                make.trailing.equalToSuperview().offset(-40)
+            }
+        }
+        firstLaunchLabel.snp.makeConstraints { make in
+            make.top.equalTo(rocketCell.snp.bottom).offset(25)
+        }
+        launchLabel.snp.makeConstraints { make in
+            make.top.equalTo(rocketCell.snp.bottom).offset(25)
+        }
+        countryLabel.snp.makeConstraints { make in
+            make.top.equalTo(firstLaunchLabel.snp.bottom).offset(25)
+        }
+        whatCountryLabel.snp.makeConstraints { make in
+            make.top.equalTo(launchLabel.snp.bottom).offset(25)
+        }
+        costLabel.snp.makeConstraints { make in
+            make.top.equalTo(countryLabel.snp.bottom).offset(25)
+        }
+        priceLabel.snp.makeConstraints { make in
+            make.top.equalTo(whatCountryLabel.snp.bottom).offset(25)
+        }
+        firstStageLabel.snp.makeConstraints { make in
+            make.top.equalTo(costLabel.snp.bottom).offset(50)
+        }
+        numberOfEnginesLabel.snp.makeConstraints { make in
+            make.top.equalTo(firstStageLabel.snp.bottom).offset(25)
+        }
+        enginesLabel.snp.makeConstraints { make in
+            make.top.equalTo(firstStageLabel.snp.bottom).offset(25)
+        }
+        amountOfFuelinTonsLabel.snp.makeConstraints { make in
+            make.top.equalTo(numberOfEnginesLabel.snp.bottom).offset(25)
+        }
+        amountOfFuelinLabel.snp.makeConstraints { make in
+            make.top.equalTo(enginesLabel.snp.bottom).offset(25)
+        }
+        burnTimeInSecondsLabel.snp.makeConstraints { make in
+            make.top.equalTo(amountOfFuelinTonsLabel.snp.bottom).offset(25)
+        }
+        burnTimeLabel.snp.makeConstraints { make in
+            make.top.equalTo(amountOfFuelinLabel.snp.bottom).offset(25)
+        }
+        secondStageLabel.snp.makeConstraints { make in
+            make.top.equalTo(burnTimeInSecondsLabel.snp.bottom).offset(50)
+        }
+        secondNumberOfEnginesLabel.snp.makeConstraints { make in
+            make.top.equalTo(secondStageLabel.snp.bottom).offset(25)
+        }
+        secondNumberLabel.snp.makeConstraints { make in
+            make.top.equalTo(secondStageLabel.snp.bottom).offset(25)
+        }
+        secondAmountOfFuelinTonsLabel.snp.makeConstraints { make in
+            make.top.equalTo(secondNumberOfEnginesLabel.snp.bottom).offset(25)
+        }
+        secondAmountOfFuelinLabel.snp.makeConstraints { make in
+            make.top.equalTo(secondNumberLabel.snp.bottom).offset(25)
+        }
+        secondBurnTimeInSecondsLabel.snp.makeConstraints { make in
+            make.top.equalTo(secondAmountOfFuelinTonsLabel.snp.bottom).offset(25)
+        }
+        secondBurnTimeLabel.snp.makeConstraints { make in
+            make.top.equalTo(secondAmountOfFuelinLabel.snp.bottom).offset(25)
+        }
     }
     
     private func contentViewUI() {
@@ -266,18 +278,10 @@ class RocketScreenViewController: UIViewController {
         
         let maskLayer = CAShapeLayer()
         maskLayer.path = path.cgPath
-        
         contentView.layer.mask = maskLayer
     }
     
     private func setupUI(for currentPage: Int) {
-        view.backgroundColor = .black
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.view.backgroundColor = .clear
-        
-        rocketCell.translatesAutoresizingMaskIntoConstraints = false
         
         guard viewModel.rocketData.indices.contains(currentPage) else { return }
         let currentRocket = viewModel.rocketData[currentPage]
@@ -306,12 +310,6 @@ class RocketScreenViewController: UIViewController {
                 rocketImageView.sd_setImage(with: url)
             }
         }
-        
-        pageControl.addTarget(self, action: #selector(pageControlDidChange(_:)), for: .valueChanged)
-    }
-    
-    @objc private func pageControlDidChange(_ sender: UIPageControl) {
-        setupUI(for: sender.currentPage)
     }
     
     private func fetchData() {
@@ -322,8 +320,13 @@ class RocketScreenViewController: UIViewController {
         }
     }
     
-    
     //MARK: - Buttons and preset
+    private func setupActions() {
+        launchesButton.addTarget(self, action: #selector(launchesButtonTapped), for: .touchUpInside)
+        gearButton.addTarget(self, action: #selector(gearButtonTapped), for: .touchUpInside)
+        pageControl.addTarget(self, action: #selector(pageControlDidChange(_:)), for: .valueChanged)
+    }
+    
     func openLaunchVC(serialNumber: Int) {
         guard viewModel.rocketData.indices.contains(serialNumber) else { return }
         let rocket = viewModel.rocketData[serialNumber]
@@ -333,20 +336,15 @@ class RocketScreenViewController: UIViewController {
         launchVC.rocketName = rocket.name
         launchVC.title = rocket.name
         navigationController?.pushViewController(launchVC, animated: true)
-        
     }
     
-    private func launcButton() {
-        launchesButton.addTarget(self, action: #selector(launchesButtonTapped), for: .touchUpInside)
+    @objc private func pageControlDidChange(_ sender: UIPageControl) {
+        setupUI(for: sender.currentPage)
     }
     
     @objc func launchesButtonTapped() {
         openLaunchVC(serialNumber: pageControl.currentPage)
         
-    }
-    
-    private func setupGearButton() {
-        gearButton.addTarget(self, action: #selector(gearButtonTapped), for: .touchUpInside)
     }
     
     @objc private func gearButtonTapped() {
@@ -359,7 +357,7 @@ class RocketScreenViewController: UIViewController {
     }
     
     //MARK: - Preset for label
-   private func label(text: String, textColor: UIColor, textAlignment: NSTextAlignment, _ uiFont: UIFont) -> UILabel {
+    private func label(text: String, textColor: UIColor, textAlignment: NSTextAlignment, _ uiFont: UIFont) -> UILabel {
         let label = UILabel()
         label.text = text
         label.font = uiFont
