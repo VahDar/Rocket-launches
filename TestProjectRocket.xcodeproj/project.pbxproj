@@ -14,6 +14,8 @@
 		FC2B14CC2B9B260700179D1D /* RocketViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B14CB2B9B260700179D1D /* RocketViewCell.swift */; };
 		FC5C37F82BA4B1280072FB2D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C37F72BA4B1280072FB2D /* SettingsViewController.swift */; };
 		FC5C37FA2BA719200072FB2D /* SettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C37F92BA719200072FB2D /* SettingsStorage.swift */; };
+		FC5C38012BAB3E530072FB2D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FC5C38002BAB3E530072FB2D /* SnapKit */; };
+		FC5C38032BAB3E530072FB2D /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = FC5C38022BAB3E530072FB2D /* SnapKit-Dynamic */; };
 		FC8DEE492B9C6B900067706D /* RocketScreenViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8DEE482B9C6B900067706D /* RocketScreenViewModelProtocol.swift */; };
 		FC8DEE4C2B9C6DF40067706D /* RocketContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8DEE4B2B9C6DF40067706D /* RocketContainer.swift */; };
 		FC9C636129D2CF4C006EA975 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C636029D2CF4C006EA975 /* AppDelegate.swift */; };
@@ -83,6 +85,8 @@
 				FCEFC7392B9A1BB50039CE77 /* Swinject in Frameworks */,
 				FC258B8F2B9E2C08003BAC0B /* SDWebImageMapKit in Frameworks */,
 				FCEFC73B2B9A1BB50039CE77 /* Swinject-Dynamic in Frameworks */,
+				FC5C38012BAB3E530072FB2D /* SnapKit in Frameworks */,
+				FC5C38032BAB3E530072FB2D /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +294,8 @@
 				FCEFC73A2B9A1BB50039CE77 /* Swinject-Dynamic */,
 				FC258B8C2B9E2C08003BAC0B /* SDWebImage */,
 				FC258B8E2B9E2C08003BAC0B /* SDWebImageMapKit */,
+				FC5C38002BAB3E530072FB2D /* SnapKit */,
+				FC5C38022BAB3E530072FB2D /* SnapKit-Dynamic */,
 			);
 			productName = TestProjectRocket;
 			productReference = FC9C635D29D2CF4C006EA975 /* TestProjectRocket.app */;
@@ -322,6 +328,7 @@
 			packageReferences = (
 				FCEFC7372B9A1BB50039CE77 /* XCRemoteSwiftPackageReference "Swinject" */,
 				FC258B8B2B9E2C08003BAC0B /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				FC5C37FF2BAB3E530072FB2D /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = FC9C635E29D2CF4C006EA975 /* Products */;
 			projectDirPath = "";
@@ -592,6 +599,14 @@
 				minimumVersion = 5.19.0;
 			};
 		};
+		FC5C37FF2BAB3E530072FB2D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 		FCEFC7372B9A1BB50039CE77 /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject";
@@ -612,6 +627,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FC258B8B2B9E2C08003BAC0B /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImageMapKit;
+		};
+		FC5C38002BAB3E530072FB2D /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC5C37FF2BAB3E530072FB2D /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		FC5C38022BAB3E530072FB2D /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC5C37FF2BAB3E530072FB2D /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
 		};
 		FCEFC7382B9A1BB50039CE77 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;

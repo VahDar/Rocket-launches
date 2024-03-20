@@ -5,7 +5,7 @@
 //  Created by Vakhtang on 08.03.2024.
 //
 
-import Foundation
+import SnapKit
 import UIKit
 
 class RocketViewCell: UIView {
@@ -130,16 +130,24 @@ class RocketViewCell: UIView {
         payloadView.addSubview(payloadLabel)
         payloadView.addSubview(payLoadTextLabel)
         
+        contentView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
+        
         NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: self.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+//            contentView.topAnchor.constraint(equalTo: self.topAnchor),
+//            contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+//            contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+//            contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
-            scrollView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+//            scrollView.topAnchor.constraint(equalTo: contentView.topAnchor),
+//            scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+//            scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+//            scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
             stack.topAnchor.constraint(equalTo: scrollView.topAnchor),
             stack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 35),
