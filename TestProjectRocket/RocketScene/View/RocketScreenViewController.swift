@@ -148,26 +148,28 @@ class RocketScreenViewController: UIViewController {
             rocketNameLabel, rocketCell, firstLaunchLabel, countryLabel, costLabel, firstStageLabel, numberOfEnginesLabel, amountOfFuelinTonsLabel, burnTimeInSecondsLabel, secondStageLabel, secondNumberOfEnginesLabel, secondAmountOfFuelinTonsLabel, secondBurnTimeInSecondsLabel, launchLabel, priceLabel, whatCountryLabel, enginesLabel, amountOfFuelinLabel, burnTimeLabel, secondNumberLabel, secondBurnTimeLabel, secondAmountOfFuelinLabel, gearButton, launchesButton
         ].forEach(contentView.addSubview)
         
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        pageControlBackgroundView.snp.makeConstraints { make in
+            make.bottom.leading.trailing.equalToSuperview()
+            make.height.equalTo(55)
+        }
+        
+        pageControl.snp.makeConstraints { make in
+            make.bottom.equalTo(pageControlBackgroundView.snp.bottom).offset(-15)
+            make.centerX.equalTo(pageControlBackgroundView.snp.centerX)
+        }
+        
+        rocketImageView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(320)
+            make.width.equalTo(scrollView.snp.width)
+        }
         NSLayoutConstraint.activate([
-            
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-            pageControlBackgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            pageControlBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            pageControlBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            pageControlBackgroundView.heightAnchor.constraint(equalToConstant: 55),
-            
-            pageControl.bottomAnchor.constraint(equalTo: pageControlBackgroundView.bottomAnchor, constant: -10),
-            pageControl.centerXAnchor.constraint(equalTo: pageControlBackgroundView.centerXAnchor),
-            
-            rocketImageView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            rocketImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            rocketImageView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            rocketImageView.heightAnchor.constraint(equalToConstant: 320),
-            rocketImageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+//
             
             contentView.topAnchor.constraint(equalTo: rocketImageView.bottomAnchor, constant: -55),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
