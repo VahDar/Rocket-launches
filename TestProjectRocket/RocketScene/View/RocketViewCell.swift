@@ -178,27 +178,26 @@ class RocketViewCell: UIView {
             make.top.equalTo(diameterLabel.snp.bottom).offset(8)
             make.centerX.equalToSuperview()
         }
-        NSLayoutConstraint.activate([
-
-            
-//            heingtTextLabel.topAnchor.constraint(equalTo: heightLabel.bottomAnchor, constant: 8),
-//            heingtTextLabel.centerXAnchor.constraint(equalTo: heightView.centerXAnchor),
-            
-//            diameterLabel.topAnchor.constraint(equalTo: diameterView.topAnchor, constant: 32),
-//            diameterLabel.centerXAnchor.constraint(equalTo: diameterView.centerXAnchor),
-//            diameterTextLabel.topAnchor.constraint(equalTo: diameterLabel.bottomAnchor, constant: 8),
-//            diameterTextLabel.centerXAnchor.constraint(equalTo: diameterView.centerXAnchor),
-            
-            massLabel.topAnchor.constraint(equalTo: massView.topAnchor, constant: 32),
-            massLabel.centerXAnchor.constraint(equalTo: massView.centerXAnchor),
-            massTextLabel.topAnchor.constraint(equalTo: massLabel.bottomAnchor, constant: 8),
-            massTextLabel.centerXAnchor.constraint(equalTo: massView.centerXAnchor),
-            
-            payloadLabel.topAnchor.constraint(equalTo: payloadView.topAnchor, constant: 32),
-            payloadLabel.centerXAnchor.constraint(equalTo: payloadView.centerXAnchor),
-            payLoadTextLabel.topAnchor.constraint(equalTo: payloadLabel.bottomAnchor, constant: 8),
-            payLoadTextLabel.centerXAnchor.constraint(equalTo: payloadView.centerXAnchor),
-        ])
+        
+        massLabel.snp.makeConstraints { make in
+            make.top.equalTo(32)
+            make.centerX.equalToSuperview()
+        }
+        
+        massTextLabel.snp.makeConstraints { make in
+            make.top.equalTo(massLabel.snp.bottom).offset(8)
+            make.centerX.equalToSuperview()
+        }
+        
+        payloadLabel.snp.makeConstraints { make in
+            make.top.equalTo(32)
+            make.centerX.equalToSuperview()
+        }
+        
+        payLoadTextLabel.snp.makeConstraints { make in
+            make.top.equalTo(payloadLabel.snp.bottom).offset(8)
+            make.centerX.equalToSuperview()
+        }
     }
     
     // MARK: - Configure
