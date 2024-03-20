@@ -138,40 +138,56 @@ class RocketViewCell: UIView {
             make.top.leading.trailing.bottom.equalToSuperview()
         }
         
+        stack.snp.makeConstraints { make in
+            make.top.trailing.bottom.equalToSuperview()
+            make.leading.equalToSuperview().inset(35)
+        }
+        
+        heightView.snp.makeConstraints { make in
+            make.height.width.equalTo(100)
+        }
+        
+        diameterView.snp.makeConstraints { make in
+            make.height.width.equalTo(100)
+        }
+        
+        massView.snp.makeConstraints { make in
+            make.height.width.equalTo(100)
+        }
+        
+        payloadView.snp.makeConstraints { make in
+            make.height.width.equalTo(100)
+        }
+        
+        heightLabel.snp.makeConstraints { make in
+            make.top.equalTo(32)
+            make.centerX.equalToSuperview()
+        }
+        
+        heingtTextLabel.snp.makeConstraints { make in
+            make.top.equalTo(heightLabel.snp.bottom).offset(8)
+            make.centerX.equalToSuperview()
+        }
+        
+        diameterLabel.snp.makeConstraints { make in
+            make.top.equalTo(32)
+            make.centerX.equalToSuperview()
+        }
+        
+        diameterTextLabel.snp.makeConstraints { make in
+            make.top.equalTo(diameterLabel.snp.bottom).offset(8)
+            make.centerX.equalToSuperview()
+        }
         NSLayoutConstraint.activate([
-//            contentView.topAnchor.constraint(equalTo: self.topAnchor),
-//            contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-//            contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-//            contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+
             
-//            scrollView.topAnchor.constraint(equalTo: contentView.topAnchor),
-//            scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-//            scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-//            scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+//            heingtTextLabel.topAnchor.constraint(equalTo: heightLabel.bottomAnchor, constant: 8),
+//            heingtTextLabel.centerXAnchor.constraint(equalTo: heightView.centerXAnchor),
             
-            stack.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            stack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 35),
-            stack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            stack.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            
-            heightView.heightAnchor.constraint(equalToConstant: 100),
-            heightView.widthAnchor.constraint(equalToConstant: 100),
-            diameterView.heightAnchor.constraint(equalToConstant: 100),
-            diameterView.widthAnchor.constraint(equalToConstant: 100),
-            massView.heightAnchor.constraint(equalToConstant: 100),
-            massView.widthAnchor.constraint(equalToConstant: 100),
-            payloadView.heightAnchor.constraint(equalToConstant: 100),
-            payloadView.widthAnchor.constraint(equalToConstant: 100),
-            
-            heightLabel.topAnchor.constraint(equalTo: heightView.topAnchor, constant: 32),
-            heightLabel.centerXAnchor.constraint(equalTo: heightView.centerXAnchor),
-            heingtTextLabel.topAnchor.constraint(equalTo: heightLabel.bottomAnchor, constant: 8),
-            heingtTextLabel.centerXAnchor.constraint(equalTo: heightView.centerXAnchor),
-            
-            diameterLabel.topAnchor.constraint(equalTo: diameterView.topAnchor, constant: 32),
-            diameterLabel.centerXAnchor.constraint(equalTo: diameterView.centerXAnchor),
-            diameterTextLabel.topAnchor.constraint(equalTo: diameterLabel.bottomAnchor, constant: 8),
-            diameterTextLabel.centerXAnchor.constraint(equalTo: diameterView.centerXAnchor),
+//            diameterLabel.topAnchor.constraint(equalTo: diameterView.topAnchor, constant: 32),
+//            diameterLabel.centerXAnchor.constraint(equalTo: diameterView.centerXAnchor),
+//            diameterTextLabel.topAnchor.constraint(equalTo: diameterLabel.bottomAnchor, constant: 8),
+//            diameterTextLabel.centerXAnchor.constraint(equalTo: diameterView.centerXAnchor),
             
             massLabel.topAnchor.constraint(equalTo: massView.topAnchor, constant: 32),
             massLabel.centerXAnchor.constraint(equalTo: massView.centerXAnchor),
