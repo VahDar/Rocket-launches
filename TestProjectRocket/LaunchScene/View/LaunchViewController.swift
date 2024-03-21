@@ -63,12 +63,6 @@ class LaunchViewController: UIViewController {
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
     }
     
     //MARK: - Fetch data
