@@ -60,6 +60,9 @@ class LaunchViewController: UIViewController {
     private func constraints() {
         view.addSubview(collectionView)
         
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
