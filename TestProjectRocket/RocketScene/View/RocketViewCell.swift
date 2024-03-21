@@ -131,11 +131,11 @@ class RocketViewCell: UIView {
         payloadView.addSubview(payLoadTextLabel)
         
         contentView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         scrollView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         stack.snp.makeConstraints { make in

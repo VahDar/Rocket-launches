@@ -64,9 +64,12 @@ class LaunchCollectionViewCell: UICollectionViewCell {
     private func constraints() {
         [nameRocketLabel, dateLaunchLabel, statusLaunchImageView].forEach(contentView.addSubview)
         
+        nameRocketLabel.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview().offset(24)
+        }
         NSLayoutConstraint.activate([
-            nameRocketLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
-            nameRocketLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+//            nameRocketLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
+//            nameRocketLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             
             dateLaunchLabel.topAnchor.constraint(equalTo: nameRocketLabel.bottomAnchor, constant: 7),
             dateLaunchLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
