@@ -67,19 +67,15 @@ class LaunchCollectionViewCell: UICollectionViewCell {
         nameRocketLabel.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().offset(24)
         }
-        NSLayoutConstraint.activate([
-//            nameRocketLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
-//            nameRocketLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            
-            dateLaunchLabel.topAnchor.constraint(equalTo: nameRocketLabel.bottomAnchor, constant: 7),
-            dateLaunchLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            
-            statusLaunchImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            statusLaunchImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            statusLaunchImageView.heightAnchor.constraint(equalToConstant: 60),
-            statusLaunchImageView.widthAnchor.constraint(equalToConstant: 60)
-            
-        ])
+        dateLaunchLabel.snp.makeConstraints { make in
+            make.top.equalTo(nameRocketLabel.snp.bottom).offset(7)
+            make.leading.equalToSuperview().offset(24)
+        }
+        statusLaunchImageView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-40)
+            make.height.width.equalTo(60)
+        }
     }
     
     func confugire(with launch: LaunchModel) {
