@@ -27,6 +27,8 @@
 
 - Swinject
 
+- SnapKit
+
 ## Requirement
 
 - iOS 16.1+
