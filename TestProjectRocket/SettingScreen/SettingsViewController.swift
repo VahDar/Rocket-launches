@@ -15,7 +15,7 @@ protocol SettingsDelegate: AnyObject {
 }
 
 class SettingsViewController: UIViewController {
-
+    
     // MARK: - Properties
     private let lengthUnits = ["m", "ft"]
     private let weightUnits = ["kg", "lb"]
@@ -40,33 +40,33 @@ class SettingsViewController: UIViewController {
     
     @objc func heightSegmentControlChanged(_ sender: UISegmentedControl) {
         let unit = lengthUnits[sender.selectedSegmentIndex]
-            delegate?.didChangeHeightUnit(to: unit)
-            SettingsStorage.saveHeightUnit(unit)
-        }
+        delegate?.didChangeHeightUnit(to: unit)
+        SettingsStorage.saveHeightUnit(unit)
+    }
     
     private lazy var diamentrSegmentalControl = createSegmentedControl(items: lengthUnits, action: #selector(diamentrSegmentControlChanged))
-
+    
     @objc func diamentrSegmentControlChanged(_ sender: UISegmentedControl) {
         let unit = lengthUnits[sender.selectedSegmentIndex]
-            delegate?.didChangeDiameterUnit(to: unit)
-            SettingsStorage.saveDiameterUnit(unit)
-        }
+        delegate?.didChangeDiameterUnit(to: unit)
+        SettingsStorage.saveDiameterUnit(unit)
+    }
     
     private lazy var weightSegmentalControl = createSegmentedControl(items: weightUnits, action: #selector(weightSegmentControlChanged))
     
     @objc func weightSegmentControlChanged(_ sender: UISegmentedControl) {
         let unit = weightUnits[sender.selectedSegmentIndex]
-            delegate?.didChangeMassUnit(to: unit)
-            SettingsStorage.saveMassUnit(unit)
-        }
+        delegate?.didChangeMassUnit(to: unit)
+        SettingsStorage.saveMassUnit(unit)
+    }
     
     private lazy var usefulLoadSegmentalControl = createSegmentedControl(items: weightUnits, action: #selector(usefulLoadSegmentControlChanged))
     
     @objc func usefulLoadSegmentControlChanged(_ sender: UISegmentedControl) {
         let unit = weightUnits[sender.selectedSegmentIndex]
-            delegate?.didChangePayloadUnit(to: unit)
-            SettingsStorage.savePayloadUnit(unit)
-        }
+        delegate?.didChangePayloadUnit(to: unit)
+        SettingsStorage.savePayloadUnit(unit)
+    }
     
     private lazy var backButton: UIButton = {
         let button = UIButton()
@@ -110,39 +110,43 @@ class SettingsViewController: UIViewController {
     
     private func constraints() {
         
-            [heightSegmentalControl, diamentrSegmentalControl, weightSegmentalControl, usefulLoadSegmentalControl, heightLabel, weightLabel, diametrLabel, usefulLoadLabel, backButton, titleLabel].forEach(view.addSubview)
+        [heightSegmentalControl, diamentrSegmentalControl, weightSegmentalControl, usefulLoadSegmentalControl, heightLabel, weightLabel, diametrLabel, usefulLoadLabel, backButton, titleLabel].forEach(view.addSubview)
+        
+        backButton.snp.makeConstraints { make in
+            make
+        }
+        
+        NSLayoutConstraint.activate([
             
-            NSLayoutConstraint.activate([
-                
-                backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-                backButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-                titleLabel.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
-                titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                
-                heightSegmentalControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-                heightSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-                heightSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
-                heightLabel.centerYAnchor.constraint(equalTo: heightSegmentalControl.centerYAnchor),
-                heightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-                
-                diamentrSegmentalControl.topAnchor.constraint(equalTo: heightSegmentalControl.bottomAnchor, constant: 20),
-                diamentrSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-                diamentrSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
-                diametrLabel.centerYAnchor.constraint(equalTo: diamentrSegmentalControl.centerYAnchor),
-                diametrLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-                
-                weightSegmentalControl.topAnchor.constraint(equalTo: diamentrSegmentalControl.bottomAnchor, constant: 20),
-                weightSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-                weightSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
-                weightLabel.centerYAnchor.constraint(equalTo: weightSegmentalControl.centerYAnchor),
-                weightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-                
-                usefulLoadSegmentalControl.topAnchor.constraint(equalTo: weightSegmentalControl.bottomAnchor, constant: 20),
-                usefulLoadSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-                usefulLoadSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
-                usefulLoadLabel.centerYAnchor.constraint(equalTo: usefulLoadSegmentalControl.centerYAnchor),
-                usefulLoadLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            ])
+            backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+            backButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            titleLabel.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            heightSegmentalControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            heightSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            heightSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
+            heightLabel.centerYAnchor.constraint(equalTo: heightSegmentalControl.centerYAnchor),
+            heightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            
+            diamentrSegmentalControl.topAnchor.constraint(equalTo: heightSegmentalControl.bottomAnchor, constant: 20),
+            diamentrSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            diamentrSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
+            diametrLabel.centerYAnchor.constraint(equalTo: diamentrSegmentalControl.centerYAnchor),
+            diametrLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            
+            weightSegmentalControl.topAnchor.constraint(equalTo: diamentrSegmentalControl.bottomAnchor, constant: 20),
+            weightSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            weightSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
+            weightLabel.centerYAnchor.constraint(equalTo: weightSegmentalControl.centerYAnchor),
+            weightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            
+            usefulLoadSegmentalControl.topAnchor.constraint(equalTo: weightSegmentalControl.bottomAnchor, constant: 20),
+            usefulLoadSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            usefulLoadSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
+            usefulLoadLabel.centerYAnchor.constraint(equalTo: usefulLoadSegmentalControl.centerYAnchor),
+            usefulLoadLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+        ])
     }
 }
 
