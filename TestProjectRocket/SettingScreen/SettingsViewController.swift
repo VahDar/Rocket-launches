@@ -130,20 +130,26 @@ class SettingsViewController: UIViewController {
         heightSegmentalControl.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(100)
         }
+        heightLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(heightSegmentalControl.snp.centerY)
+            make.leading.equalToSuperview().offset(40)
+        }
+        diamentrSegmentalControl.snp.makeConstraints { make in
+            make.top.equalTo(heightSegmentalControl.snp.bottom).offset(20)
+        }
         NSLayoutConstraint.activate([
             
 //            backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
 //            backButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
 //            titleLabel.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
 //            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            heightSegmentalControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+//            heightSegmentalControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
 //            heightSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
 //            heightSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
-            heightLabel.centerYAnchor.constraint(equalTo: heightSegmentalControl.centerYAnchor),
-            heightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+//            heightLabel.centerYAnchor.constraint(equalTo: heightSegmentalControl.centerYAnchor),
+//            heightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             
-            diamentrSegmentalControl.topAnchor.constraint(equalTo: heightSegmentalControl.bottomAnchor, constant: 20),
+//            diamentrSegmentalControl.topAnchor.constraint(equalTo: heightSegmentalControl.bottomAnchor, constant: 20),
 //            diamentrSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
 //            diamentrSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
             diametrLabel.centerYAnchor.constraint(equalTo: diamentrSegmentalControl.centerYAnchor),
