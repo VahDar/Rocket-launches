@@ -137,33 +137,24 @@ class SettingsViewController: UIViewController {
         diamentrSegmentalControl.snp.makeConstraints { make in
             make.top.equalTo(heightSegmentalControl.snp.bottom).offset(20)
         }
+        diametrLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(diamentrSegmentalControl.snp.centerY)
+            make.leading.equalToSuperview().offset(40)
+        }
+        weightSegmentalControl.snp.makeConstraints { make in
+            make.top.equalTo(diamentrSegmentalControl.snp.bottom).offset(20)
+        }
+        weightLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(weightSegmentalControl.snp.centerY)
+            make.leading.equalToSuperview().offset(40)
+        }
+        usefulLoadSegmentalControl.snp.makeConstraints { make in
+            make.top.equalTo(weightSegmentalControl.snp.bottom).offset(20)
+        }
         NSLayoutConstraint.activate([
             
-//            backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-//            backButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-//            titleLabel.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
-//            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            heightSegmentalControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-//            heightSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-//            heightSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
-//            heightLabel.centerYAnchor.constraint(equalTo: heightSegmentalControl.centerYAnchor),
-//            heightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            
-//            diamentrSegmentalControl.topAnchor.constraint(equalTo: heightSegmentalControl.bottomAnchor, constant: 20),
-//            diamentrSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-//            diamentrSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
-            diametrLabel.centerYAnchor.constraint(equalTo: diamentrSegmentalControl.centerYAnchor),
-            diametrLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            
-            weightSegmentalControl.topAnchor.constraint(equalTo: diamentrSegmentalControl.bottomAnchor, constant: 20),
-//            weightSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-//            weightSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
-            weightLabel.centerYAnchor.constraint(equalTo: weightSegmentalControl.centerYAnchor),
-            weightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             
             usefulLoadSegmentalControl.topAnchor.constraint(equalTo: weightSegmentalControl.bottomAnchor, constant: 20),
-//            usefulLoadSegmentalControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-//            usefulLoadSegmentalControl.widthAnchor.constraint(equalToConstant: 100),
             usefulLoadLabel.centerYAnchor.constraint(equalTo: usefulLoadSegmentalControl.centerYAnchor),
             usefulLoadLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
         ])
