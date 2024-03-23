@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Swinject
 
 class LaunchSceneViewModel: LaunchSceneViewModelProtocol {
     
@@ -13,8 +14,8 @@ class LaunchSceneViewModel: LaunchSceneViewModelProtocol {
     var networkManager: NetworkManagerProtocol!
     var rocketID: String?
     
-    init(networkManager: NetworkManagerProtocol = NetworkManager(), rocketID: String? = nil) {
-        self.networkManager = networkManager
+    init(networkManager: NetworkManagerProtocol, rocketID: String? = nil) {
+        self.networkManager = Container.network.resolve(NetworkManagerProtocol.self)
         self.rocketID = rocketID
     }
     
