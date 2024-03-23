@@ -151,13 +151,10 @@ class SettingsViewController: UIViewController {
         usefulLoadSegmentalControl.snp.makeConstraints { make in
             make.top.equalTo(weightSegmentalControl.snp.bottom).offset(20)
         }
-        NSLayoutConstraint.activate([
-            
-            
-            usefulLoadSegmentalControl.topAnchor.constraint(equalTo: weightSegmentalControl.bottomAnchor, constant: 20),
-            usefulLoadLabel.centerYAnchor.constraint(equalTo: usefulLoadSegmentalControl.centerYAnchor),
-            usefulLoadLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-        ])
+        usefulLoadLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(usefulLoadSegmentalControl.snp.centerY)
+            make.leading.equalToSuperview().offset(40)
+        }
     }
 }
 
