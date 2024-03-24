@@ -12,9 +12,8 @@ extension Container {
     static let launch: Container = {
        let container = Container()
         
-        container.register(LaunchSceneViewModelProtocol.self) { r in
-            let networkManager = r.resolve(NetworkManagerProtocol.self)!
-           return LaunchSceneViewModel(networkManager: networkManager)
+        container.register(LaunchSceneViewModelProtocol.self) { _ in
+            LaunchSceneViewModel()
         }
         return container
     }()

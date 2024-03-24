@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Swinject
+
 
 
 final class RocketScreenViewModel: RocketScreenViewModelProtocol {
@@ -15,8 +15,8 @@ final class RocketScreenViewModel: RocketScreenViewModelProtocol {
     var networkManager: NetworkManagerProtocol!
     var rocketData: [RocketModel] = []
     
-    init(networkManager: NetworkManagerProtocol) {
-        self.networkManager = Container.network.resolve(NetworkManagerProtocol.self)
+    init(networkManager: NetworkManagerProtocol = NetworkManager()) {
+        self.networkManager = networkManager
     }
 
     
